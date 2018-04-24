@@ -8,27 +8,59 @@ import './LoginInForm.css';
 class LoginInForm extends Component {
 
     constructor(props){
-
         super(props);
         this.state = {
             email: '',
             password: '',
             checkSignUp: false,
+            emailError: false,
+            passwordError: false,
         };
     }
 
     onSubmit = () => {
         let { email, password } = this.state;
         this.props.login(email, password);
-        if(email.length !== 0 && password.length !== 0) {
-            console.log(this.props);
+
+        if(this.state.emailError && this.state.passwordError) {
             this.props.parentMethod();
         }
         this.setState({
             email: '',
             password: ''
         });
+
     };
+
+    handleInput = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        this.setState({[name]: value},
+            () => { this.validateField(name, value) });
+    }
+
+    validateField(fieldName, value) {
+
+        let emailError = this.state.emailError;
+        let passwordError = this.state.passwordError;
+
+        switch(fieldName) {
+            case 'email':
+                let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                emailError = re.test(value);
+                break;
+            case 'password':
+                let reg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                passwordError = reg.test(value);
+                break;
+            default:
+                break;
+        }
+        this.setState({
+            emailError: emailError,
+            passwordError: passwordError
+        });
+    }
 
     HandleClick = () => {
         this.props.changeLoginToSignUp('SignUp');
@@ -37,15 +69,14 @@ class LoginInForm extends Component {
     render() {
         let {email, password} = this.state;
         let {loginError} = this.props;
-        console.log(this.props.isLoginSuccess);
         return(
-            <Form className = 'formLoginIn'>
+            <Form className = 'formLoginIn' error={this.state.formError}>
                 <h1>Log in to your account</h1>
                 <Form.Field>
-                    <input placeholder='Enter your Email' onChange={e => this.setState({email: e.target.value})} value={email} />
+                    <Form.Input  placeholder='Enter your Email' error={!this.state.emailError} onChange={this.handleInput} name = 'email' value={email}/>
                 </Form.Field>
                 <Form.Field>
-                    <input placeholder='Password' onChange={e => this.setState({password: e.target.value})}  value={password} />
+                    <Form.Input  placeholder='Password' error={!this.state.passwordError} onChange={this.handleInput} name = 'password'  value={password} />
                 </Form.Field>
                 <div className="message">
                     { loginError && <div>{loginError.message}</div> }

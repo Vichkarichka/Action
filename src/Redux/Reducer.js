@@ -17,6 +17,31 @@ export function login(email, password) {
     }
 }
 
+export function signup(email, password, confirmPassword, firstName, lastName) {
+    return dispatch => {
+        dispatch(setLoginSuccess(false));
+        dispatch(setLoginError(null));
+
+        callSignupApi(email, password, confirmPassword, firstName, lastName, error => {
+            if (!error) {
+                dispatch(setLoginSuccess(true));
+            } else {
+                dispatch(setLoginError(error));
+            }
+        });
+    }
+}
+
+
+function callSignupApi(email, password, confirmPassword, firstName, lastName, callback) {
+
+    if (email.length === 0 && password.length === 0 && confirmPassword.length === 0 && firstName.length === 0 && lastName.length === 0) {
+        return callback(new Error('Please fill in the fields'));
+    } else {
+        return callback(null);
+    }
+}
+
 function callLoginApi(email, password, callback) {
 
         if (email.length === 0 && password.length === 0) {
