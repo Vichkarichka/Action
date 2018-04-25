@@ -20,46 +20,53 @@ class SignUpForm extends Component {
             firstNameError: false,
             lastNameError: false,
         };
+        this.requestServer = this.requestServer.bind(this);
     }
 
     onSubmit = () => {
+        let temp=this;
         let { email, password, confirmPassword, firstName, lastName} = this.state;
         this.props.signup(email, password, confirmPassword, firstName, lastName);
 
         if(this.state.formValid) {
-            this.requestServer();
-            this.props.parentMethod();
+            this.requestServer().then(function () {
+                console.log(temp.state.error);
+                if(temp.state.error) {
+                    temp.setState({
+                        email: '',
+                    });
+                } else {
+                    temp.props.parentMethod();
+                }
+            });
         }
-        this.setState({
-            email: '',
-            password: '',
-            confirmPassword: '',
-            firstName: '',
-            lastName: '',
-        });
     };
 
     requestServer = () => {
-
+        let self = this;
         let postData = JSON.stringify({
             email: this.state.email,
             password: this.state.password,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
         });
-
         let axiosConfig = {
             headers: {
                 "Content-type": "application/json",
             }
         };
-
-        axios.post('http://127.0.0.1:8100/signUp', postData, axiosConfig)
+      return axios.post('http://127.0.0.1:8100/signUp', postData, axiosConfig)
             .then(function (response) {
                 console.log(response);
+                self.setState({
+                    error: false,
+                });
             })
             .catch(function (error) {
                 console.log(error);
+                self.setState({
+                    error: true,
+                });
             });
     };
 
@@ -131,10 +138,10 @@ class SignUpForm extends Component {
                         <Form.Input placeholder='Email Address' onChange={this.handleInput} error={!this.state.emailError} name = 'email' value={email} />
                     </Form.Field>
                     <Form.Field>
-                        <Form.Input placeholder='Password' onChange={this.handleInput} error={!this.state.passwordError} name = 'password' value={password} />
+                        <Form.Input type='password' placeholder='Password' onChange={this.handleInput} error={!this.state.passwordError} name = 'password' value={password} />
                     </Form.Field>
                     <Form.Field>
-                        <Form.Input placeholder='Confirm Password' onChange={this.handleInput} error={!this.state.confirmPasswordError} name = 'confirmPassword' value={confirmPassword} />
+                        <Form.Input type='password' placeholder='Confirm Password' onChange={this.handleInput} error={!this.state.confirmPasswordError} name = 'confirmPassword' value={confirmPassword} />
                     </Form.Field>
                     <Form.Field>
                         <Form.Input placeholder='First Name' onChange={this.handleInput} error={!this.state.firstNameError} name = 'firstName' value={firstName} />

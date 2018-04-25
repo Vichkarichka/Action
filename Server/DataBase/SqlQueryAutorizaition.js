@@ -20,6 +20,11 @@ exports.loginUserIntoApp = function loginData(data) {
     return returnPromise(sql, dataForLogin);
 }
 
+exports.checkEmail = function checkEmail(data) {
+    let sql = "SELECT emailUsers, idUsers FROM Users WHERE emailUsers = ?";
+    return returnPromise(sql, data.email);
+}
+
 function returnPromise(sql, dataForDB) {
     return Promise.using(getSqlConnection(), function(connection) {
         return connection.query(sql, dataForDB).then(function(rows) {
