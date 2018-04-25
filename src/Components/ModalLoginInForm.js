@@ -11,7 +11,8 @@ class ModalLoginInForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            modalOpen: false
+            modalOpen: false,
+            response: '',
         };
     }
     handleOpen = () => {
@@ -21,6 +22,7 @@ class ModalLoginInForm extends Component {
     handleClose = () => {
         this.setState({ modalOpen: false })
     };
+
 
     render() {
 

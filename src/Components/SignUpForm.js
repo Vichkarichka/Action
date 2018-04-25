@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import {changeLoginToSignUp, signup} from "../Redux/Reducer";
+import axios from 'axios';
 
 class SignUpForm extends Component {
 
@@ -26,6 +27,7 @@ class SignUpForm extends Component {
         this.props.signup(email, password, confirmPassword, firstName, lastName);
 
         if(this.state.formValid) {
+            this.requestServer();
             this.props.parentMethod();
         }
         this.setState({
@@ -37,12 +39,36 @@ class SignUpForm extends Component {
         });
     };
 
+    requestServer = () => {
+
+        let postData = JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+        });
+
+        let axiosConfig = {
+            headers: {
+                "Content-type": "application/json",
+            }
+        };
+
+        axios.post('http://127.0.0.1:8100/signUp', postData, axiosConfig)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
     handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
-    }
+    };
 
     validateField(fieldName, value) {
 

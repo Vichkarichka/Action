@@ -1,0 +1,4 @@
+exports.objERRORS = objERRORS = {
+    USER_LOGIN: "USER_LOGIN_ERROR",
+    USER_SINGUP: "USER_LOGIN_ERROR",
+};

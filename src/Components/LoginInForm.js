@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { login, changeLoginToSignUp } from '../Redux/Reducer';
 import SocialButton from './SocialButton';
 import './LoginInForm.css';
+import axios from "axios/index";
 
 class LoginInForm extends Component {
 
@@ -23,7 +24,8 @@ class LoginInForm extends Component {
         this.props.login(email, password);
 
         if(this.state.emailError && this.state.passwordError) {
-            this.props.parentMethod();
+           this.serverRequest();
+           this.props.parentMethod();
         }
         this.setState({
             email: '',
@@ -31,6 +33,27 @@ class LoginInForm extends Component {
         });
 
     };
+
+    serverRequest = () => {
+        let postData = JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+        });
+
+        let axiosConfig = {
+            headers: {
+                "Content-type": "application/json",
+            }
+        };
+
+        axios.post('http://127.0.0.1:8100/loginIn', postData, axiosConfig)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     handleInput = (e) => {
         const name = e.target.name;
