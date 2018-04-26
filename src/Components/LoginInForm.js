@@ -46,14 +46,15 @@ class LoginInForm extends Component {
             }
         };
 
-        axios.post('http://127.0.0.1:8100/loginIn', postData, axiosConfig)
+        axios.post('http://127.0.0.1:8200/loginIn', postData, axiosConfig)
             .then(function (response) {
-                console.log(response);
+                console.log(response.data);
+                window.sessionStorage.setItem("items", JSON.stringify(response.data.token));
             })
             .catch(function (error) {
                 console.log(error);
             });
-    }
+    };
 
     handleInput = (e) => {
         const name = e.target.name;

@@ -30,13 +30,14 @@ class SignUpForm extends Component {
 
         if(this.state.formValid) {
             this.requestServer().then(function () {
-                console.log(temp.state.error);
                 if(temp.state.error) {
                     temp.setState({
                         email: '',
                     });
                 } else {
                     temp.props.parentMethod();
+                    /*var storedArray = JSON.parse(sessionStorage.getItem("items"));
+                    console.log(storedArray);*/
                 }
             });
         }
@@ -55,7 +56,7 @@ class SignUpForm extends Component {
                 "Content-type": "application/json",
             }
         };
-      return axios.post('http://127.0.0.1:8100/signUp', postData, axiosConfig)
+      return axios.post('http://127.0.0.1:8200/signUp', postData, axiosConfig)
             .then(function (response) {
                 console.log(response);
                 self.setState({

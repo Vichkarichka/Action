@@ -5,6 +5,9 @@ import SignUpForm from './SignUpForm';
 import './ModalLoginInForm.css';
 import {connect} from "react-redux";
 import {changeLoginToSignUp} from "../Redux/Reducer";
+import { NavLink } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
+import FirstPage from "./FirstPage";
 
 class ModalLoginInForm extends Component {
 
@@ -39,15 +42,21 @@ class ModalLoginInForm extends Component {
                 break;
         }
         return (
-            <Modal
-                trigger={<Button onClick={this.handleOpen}>LOGIN IN</Button>}
-                open={this.state.modalOpen}
-                closeIcon={<Button onClick={this.handleClose}>Exit</Button>}
-                basic
-                size='fullscreen'
-            >
-               {location}
-            </Modal>
+            <div>
+                <Modal
+                    trigger={<Button className='loginButton' basic onClick={this.handleOpen}>LOGIN IN</Button>}
+                    open={this.state.modalOpen}
+                    closeIcon={<Button className='exitButton' basic color='red' content='Red' onClick={this.handleClose}>Exit</Button>}
+                    basic
+                    size='fullscreen'
+                >
+                    {location}
+                </Modal>
+                {
+                    this.props.isLoginSuccess &&
+                    <Link to='/lk'><Button  className='privateAccount' basic>LK</Button></Link>
+                }
+            </div>
         )
     }
 }

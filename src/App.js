@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import FirstPage from './Components/FirstPage';
-import { Provider } from 'react-redux';
-import store from './Redux/Store';
+import Main from './Components/Main';
+
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-          <FirstPage />
-      </Provider>
+        <div>
+            <Main />
+        </div>
     );
   }
 }
