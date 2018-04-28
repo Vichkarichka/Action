@@ -3,6 +3,7 @@ import { Button, Form } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import {changeLoginToSignUp, signup} from "../Redux/Reducer";
 import axios from 'axios';
+import InputForm from './InputForm';
 
 class SignUpForm extends Component {
 
@@ -14,11 +15,7 @@ class SignUpForm extends Component {
             confirmPassword: '',
             firstName: '',
             lastName: '',
-            emailError: false,
-            passwordError: false,
-            confirmPasswordError: false,
-            firstNameError: false,
-            lastNameError: false,
+            doubleEmail: false,
         };
         this.requestServer = this.requestServer.bind(this);
     }
@@ -33,8 +30,12 @@ class SignUpForm extends Component {
                 if(temp.state.error) {
                     temp.setState({
                         email: '',
+                        doubleEmail:true,
                     });
                 } else {
+                    temp.setState({
+                        doubleEmail:false,
+                    });
                     temp.props.parentMethod();
                     /*var storedArray = JSON.parse(sessionStorage.getItem("items"));
                     console.log(storedArray);*/
@@ -71,100 +72,50 @@ class SignUpForm extends Component {
             });
     };
 
-    handleInput = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({[name]: value},
-            () => { this.validateField(name, value) });
+    handleClick = () => {
+        this.props.changeLoginToSignUp('LoginIn');
     };
-
-    validateField(fieldName, value) {
-
-        let emailError = this.state.emailError;
-        let passwordError = this.state.passwordError;
-        let confirmPasswordError = this.state.confirmPasswordError;
-        let firstNameError = this.state.firstNameError;
-        let lastNameError = this.state.lastNameError;
-        let reg;
-        switch(fieldName) {
-
-            case 'email':
-                reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                emailError = reg.test(value);
-                break;
-            case 'password':
-                reg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-                passwordError = reg.test(value);
-                break
-            case 'confirmPassword':
-                reg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-                confirmPasswordError = reg.test(value);
-                break;
-            case 'firstName':
-                reg = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                firstNameError = reg.test(value);
-                break;
-            case 'lastName':
-                reg = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-                lastNameError = reg.test(value);
-                break;
-            default:
-                break;
-        }
+    handleInput = (value) => {
         this.setState({
-            emailError: emailError,
-            passwordError: passwordError,
-            confirmPasswordError: confirmPasswordError,
-            firstNameError: firstNameError,
-            lastNameError: lastNameError,
-        }, this.closeForm);
+            email: value.email,
+            password: value.password,
+            confirmPassword: value.confirmPassword,
+            firstName: value.firstName,
+            lastName: value.lastName,
+        });
+    };
+    valueForm = (data) => {
+        console.log(data);
+        this.setState({
+            emailError: data.emailError,
+            passwordError: data.passwordError,
+            confirmPasswordError: data.confirmPasswordError,
+            firstNameError: data.firstNameError,
+            lastNameError: data.lastNameError,
+        },this.closeForm);
     }
 
     closeForm() {
         this.setState({formValid: this.state.emailError && this.state.passwordError
-        && this.state.confirmPasswordError && this.state.firstNameError && this.state.lastNameError });
+                && this.state.confirmPasswordError && this.state.firstNameError && this.state.lastNameError },
+        );
     }
 
-    handleClick = () => {
-        this.props.changeLoginToSignUp('LoginIn');
-    };
-
     render() {
-        let {email, password, confirmPassword, firstName, lastName} = this.state;
-        let {loginError} = this.props;
         return(
-                <Form className = 'formLoginIn'>
-                    <h1>Create an account</h1>
-                    <Form.Field>
-                        <Form.Input placeholder='Email Address' onChange={this.handleInput} error={!this.state.emailError} name = 'email' value={email} />
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input type='password' placeholder='Password' onChange={this.handleInput} error={!this.state.passwordError} name = 'password' value={password} />
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input type='password' placeholder='Confirm Password' onChange={this.handleInput} error={!this.state.confirmPasswordError} name = 'confirmPassword' value={confirmPassword} />
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input placeholder='First Name' onChange={this.handleInput} error={!this.state.firstNameError} name = 'firstName' value={firstName} />
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input placeholder='Last Name' onChange={this.handleInput} error={!this.state.lastNameError} name = 'lastName' value={lastName} />
-                    </Form.Field>
-                    <div className="message">
-                        { loginError && <div>{loginError.message}</div> }
-                    </div>
-                    <Button type='submit' onClick = {this.onSubmit} >Sign Up</Button>
-                <p className='TextForPeople'>Already have an account?
-                    <a onClick={this.handleClick}>Log In</a>
-                </p>
-            </Form>
+               <div>
+                   <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} duplex = {this.state.doubleEmail}/>
+                   <Button type='submit' onClick = {this.onSubmit} >Sign Up</Button>
+                   <p className='TextForPeople'>Already have an account?
+                       <a onClick={this.handleClick}>Log In</a>
+                   </p>
+               </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        isLoginSuccess: state.isLoginSuccess,
         loginError: state.loginError,
     };
 };

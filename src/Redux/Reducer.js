@@ -1,6 +1,8 @@
 const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
+const SET_SIGN_UP_SUCCESS = 'SET_SIGN_UP_SUCCESS';
 const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 const CHANGE_LOCATION = 'CHANGE_LOCATION';
+const SET_LOGIN_VALUE = 'SET_LOGIN_VALUE';
 
 export function login(email, password) {
     return dispatch => {
@@ -9,7 +11,7 @@ export function login(email, password) {
 
         callLoginApi(email, password, error => {
             if (!error) {
-                dispatch(setLoginSuccess(true));
+                dispatch(setLoginSuccess(true,email));
             } else {
                 dispatch(setLoginError(error));
             }
@@ -19,17 +21,25 @@ export function login(email, password) {
 
 export function signup(email, password, confirmPassword, firstName, lastName) {
     return dispatch => {
-        dispatch(setLoginSuccess(false));
+        dispatch(setSignUpSuccess(false,email));
         dispatch(setLoginError(null));
 
         callSignupApi(email, password, confirmPassword, firstName, lastName, error => {
             if (!error) {
-                dispatch(setLoginSuccess(true));
+                dispatch(setSignUpSuccess(true));
             } else {
                 dispatch(setLoginError(error));
             }
         });
     }
+}
+
+export function loginValue(data) {
+    return {
+        type: SET_LOGIN_VALUE,
+        data
+    }
+
 }
 
 
@@ -51,15 +61,25 @@ function callLoginApi(email, password, callback) {
         }
 }
 
-function setLoginSuccess(isLoginSuccess) {
+function setSignUpSuccess(isSignUpSuccess, email) {
 
     return {
-        type: SET_LOGIN_SUCCESS,
-        isLoginSuccess
+        type: SET_SIGN_UP_SUCCESS,
+        isSignUpSuccess,
+        email
     };
 }
 
- export function changeLoginToSignUp(location) {
+function setLoginSuccess(isLoginSuccess, email) {
+
+    return {
+        type: SET_LOGIN_SUCCESS,
+        isLoginSuccess,
+        email
+    };
+}
+
+export function changeLoginToSignUp(location) {
     return {
         type: CHANGE_LOCATION,
         location
@@ -75,13 +95,20 @@ function setLoginError(loginError) {
 
 export default function reducer(state = {
     isLoginSuccess: false,
+    isSignUpSuccess:false,
     location: 'LoginIn',
 }, action) {
     switch (action.type) {
 
         case SET_LOGIN_SUCCESS:
             return Object.assign({}, state, {
-                isLoginSuccess: action.isLoginSuccess
+                isLoginSuccess: action.isLoginSuccess,
+                email:action.email,
+            });
+
+        case SET_SIGN_UP_SUCCESS:
+            return Object.assign({}, state, {
+                isSignUpSuccess: action.isSignUpSuccess,
             });
 
         case SET_LOGIN_ERROR:
@@ -93,6 +120,11 @@ export default function reducer(state = {
             console.log({...state});
             return Object.assign({}, state, {
                 location: action.location
+            });
+
+        case SET_LOGIN_VALUE:
+            return Object.assign({}, state, {
+                data: action.data
             });
 
         default:

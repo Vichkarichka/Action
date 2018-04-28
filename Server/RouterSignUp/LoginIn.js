@@ -30,6 +30,8 @@ router.post('/', (req, res) => {
             res.status(201).json({
                 message: "ok",
                 email: result[0].emailUsers,
+                firstName: result[0].firstNameUsers,
+                lastName: result[0].lastNameUsers,
                 token: token,
             });
         } else {

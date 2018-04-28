@@ -5,9 +5,8 @@ import SignUpForm from './SignUpForm';
 import './ModalLoginInForm.css';
 import {connect} from "react-redux";
 import {changeLoginToSignUp} from "../Redux/Reducer";
-import { NavLink } from 'react-router-dom';
 import { Link, Route, Switch } from 'react-router-dom';
-import FirstPage from "./FirstPage";
+
 
 class ModalLoginInForm extends Component {
 
@@ -52,10 +51,6 @@ class ModalLoginInForm extends Component {
                 >
                     {location}
                 </Modal>
-                {
-                    this.props.isLoginSuccess &&
-                    <Link to='/lk'><Button  className='privateAccount' basic>LK</Button></Link>
-                }
             </div>
         )
     }

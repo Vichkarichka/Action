@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { login, changeLoginToSignUp } from '../Redux/Reducer';
+import { login, changeLoginToSignUp, loginValue } from '../Redux/Reducer';
 import SocialButton from './SocialButton';
 import './LoginInForm.css';
 import axios from "axios/index";
@@ -20,12 +20,22 @@ class LoginInForm extends Component {
     }
 
     onSubmit = () => {
+
+        let temp = this;
         let { email, password } = this.state;
-        this.props.login(email, password);
+
 
         if(this.state.emailError && this.state.passwordError) {
-           this.serverRequest();
-           this.props.parentMethod();
+           this.serverRequest().then(function () {
+               if(temp.state.error) {
+                   temp.setState({
+                       email: '',
+                   });
+               } else {
+                   temp.props.login(email, password);
+                   temp.props.parentMethod();
+               }
+           });
         }
         this.setState({
             email: '',
@@ -35,6 +45,7 @@ class LoginInForm extends Component {
     };
 
     serverRequest = () => {
+        let self = this;
         let postData = JSON.stringify({
             email: this.state.email,
             password: this.state.password,
@@ -46,13 +57,19 @@ class LoginInForm extends Component {
             }
         };
 
-        axios.post('http://127.0.0.1:8200/loginIn', postData, axiosConfig)
+       return axios.post('http://127.0.0.1:8200/loginIn', postData, axiosConfig)
             .then(function (response) {
-                console.log(response.data);
                 window.sessionStorage.setItem("items", JSON.stringify(response.data.token));
+                self.props.loginValue(response.data);
+                self.setState({
+                    error: false,
+                });
             })
             .catch(function (error) {
                 console.log(error);
+                self.setState({
+                    error: true,
+                });
             });
     };
 
@@ -119,13 +136,15 @@ const mapStateToProps = (state) => {
     return {
         isLoginSuccess: state.isLoginSuccess,
         loginError: state.loginError,
+        data: state.data,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         login: (email, password) => dispatch(login(email, password)),
-        changeLoginToSignUp: (location) => dispatch(changeLoginToSignUp(location))
+        changeLoginToSignUp: (location) => dispatch(changeLoginToSignUp(location)),
+        loginValue: (data) => dispatch(loginValue(data)),
     };
 };
 
