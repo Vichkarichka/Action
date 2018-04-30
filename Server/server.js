@@ -3,7 +3,20 @@ const app = express();
 var bodyParser = require('body-parser');
 var signUp = require('./RouterSignUp/SignUp');
 var loginIn = require('./RouterSignUp/LoginIn');
+var path = require('path');
 
+const multer = require( "multer" );
+const storage = multer.diskStorage({
+    destination(req, file, cb) {
+        cb(null, '../public')
+    },
+    filename(req, file, cb) {
+
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({ storage: storage });
 
 const port = process.env.PORT || 8200;
 
@@ -27,5 +40,11 @@ app.use('/', function(req, res, next) {
 
 app.use('/signUp', signUp);
 app.use('/loginIn', loginIn);
+
+
+app.post( "/upload", upload.single( "file" ), ( req, res ) => {
+    console.log(req.file, 'file');
+    res.sendStatus(200);
+} );
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

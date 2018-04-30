@@ -8,6 +8,7 @@ import InputForm from './InputForm';
 import './SettingUser.css';
 import {changeLoginToSignUp, login, loginValue} from "../Redux/Reducer";
 import {connect} from "react-redux";
+import axios from "axios/index";
 
 class SettingUser extends React.Component {
     constructor(props) {
@@ -16,8 +17,8 @@ class SettingUser extends React.Component {
             file: '',
             imagePreviewUrl: ''
         };
-        this._handleImageChange = this._handleImageChange.bind(this);
-        this._handleSubmit = this._handleSubmit.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);
     }
 
     handleInput = (value) => {
@@ -31,7 +32,7 @@ class SettingUser extends React.Component {
     };
 
     valueForm = (data) => {
-        console.log(data);
+
         this.setState({
             emailError: data.emailError,
             passwordError: data.passwordError,
@@ -47,25 +48,43 @@ class SettingUser extends React.Component {
         );
     }
 
-    _handleSubmit(e) {
+    handleFormSubmit = (e) => {
         e.preventDefault();
-
-    }
-    _handleImageChange(e) {
-        e.preventDefault();
-
-        let reader = new FileReader();
-        let file = e.target.files[0];
-
-        reader.onloadend = () => {
-            this.setState({
-                file: file,
-                imagePreviewUrl: reader.result
+        const formData = new FormData();
+        formData.append( "file", this.state.file);
+        return axios.post('http://127.0.0.1:8200/upload', formData)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
             });
-        }
-
-        reader.readAsDataURL(file)
     }
+
+    handleFileChange = ( e ) => {
+        this.setState( { file: e.target.files[ 0 ] } );
+    }
+
+   /* handleClick = () => {
+
+        var formData = new FormData();
+
+        formData.append('file', this.state.file);
+
+        let axiosConfig = {
+            headers: {
+                "Content-type": "multipart/form-data",
+            }
+        };
+
+        return axios.post('http://127.0.0.1:8200/upload', formData, axiosConfig)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };*/
 
     render() {
         let {imagePreviewUrl} = this.state;
@@ -75,7 +94,6 @@ class SettingUser extends React.Component {
         } else {
             imagePreview = emptyUser;
         }
-        console.log(this.props.data);
         return (
             <div>
                 <div>
@@ -83,13 +101,17 @@ class SettingUser extends React.Component {
                         <Link to='/'> <Image src= {logo} size='small' /></Link>
                     </Segment>
                 </div>
-                <Form onSubmit={this._handleSubmit}>
+                <Form onSubmit={this.handleFormSubmit}>
                     <Image src= {imagePreview} size='medium' bordered circular />
-                    <Input type="file" size='mini' onChange={this._handleImageChange} />
-                    <Button basic type="submit" onClick={this._handleSubmit}>Upload Image</Button>
+                    <input
+                        type="file"
+                        id="file"
+                        onChange={this.handleFileChange}
+                    />
+                    <button>Upload</button>
                 </Form>
                 <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} data ={this.props.data}/>
-                <Button className='buttonSave' basic type="submit" >Save</Button>
+                <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>
             </div>
         )
     }

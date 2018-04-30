@@ -13,11 +13,11 @@ class InputForm extends Component {
             confirmPassword: '',
             firstName: '',
             lastName: '',
-            emailError: false,
-            passwordError: false,
-            confirmPasswordError: false,
-            firstNameError: false,
-            lastNameError: false,
+            emailError: true,
+            passwordError: true,
+            confirmPasswordError: true,
+            firstNameError: true,
+            lastNameError: true,
         };
     }
 
@@ -32,13 +32,14 @@ class InputForm extends Component {
     };
 
     validateField(fieldName, value) {
-
+        console.log(fieldName, value);
         let emailError = this.state.emailError;
         let passwordError = this.state.passwordError;
         let confirmPasswordError = this.state.confirmPasswordError;
         let firstNameError = this.state.firstNameError;
         let lastNameError = this.state.lastNameError;
         let reg;
+
         switch(fieldName) {
 
             case 'email':
@@ -88,7 +89,6 @@ class InputForm extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.data);
         if(this.props.data){
             this.setState({
                 email: this.props.data.email,
@@ -100,13 +100,13 @@ class InputForm extends Component {
 
     render() {
         let {email, password, confirmPassword, firstName, lastName} = this.state;
-        console.log(this.state);
         let {loginError} = this.props;
+        console.log(this.state);
         return(
             <Form className = 'formLoginIn'>
                 <h1>Create an account</h1>
                 <Form.Field>
-                    <Form.Input placeholder='Email Address' onChange={this.handleInput} error={!this.state.emailError} name = 'email' value={email} />
+                    <Form.Input placeholder='Email Address' onChange={this.handleInput}  error={!this.state.emailError} name = 'email' value={email} />
                 </Form.Field>
                 <Form.Field>
                     <Form.Input type='password' placeholder='Password' onChange={this.handleInput} error={!this.state.passwordError} name = 'password' value={password} />
