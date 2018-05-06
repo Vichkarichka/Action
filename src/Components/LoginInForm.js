@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Icon } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { login, changeLoginToSignUp, loginValue } from '../Redux/Reducer';
 import SocialButton from './SocialButton';
@@ -24,7 +24,6 @@ class LoginInForm extends Component {
         let temp = this;
         let { email, password } = this.state;
 
-
         if(this.state.emailError && this.state.passwordError) {
            this.serverRequest().then(function () {
                if(temp.state.error) {
@@ -41,7 +40,6 @@ class LoginInForm extends Component {
             email: '',
             password: ''
         });
-
     };
 
     serverRequest = () => {
@@ -60,12 +58,31 @@ class LoginInForm extends Component {
        return axios.post('http://127.0.0.1:8200/loginIn', postData, axiosConfig)
             .then(function (response) {
                 window.sessionStorage.setItem("items", JSON.stringify(response.data.token));
-                self.props.loginValue(response.data);
+                if(!response.data.urlImage)
+                {
+                    self.setState({
+                        email: response.data.email,
+                        firstName: response.data.firstName,
+                        idUsers: response.data.idUsers,
+                        lastName: response.data.lastName,
+                        token: response.data.token,
+                        urlImage: "public/empty-avatar.jpg",
+                    });
+                } else {
+                    self.setState({
+                        email: response.data.email,
+                        firstName: response.data.firstName,
+                        idUsers: response.data.idUsers,
+                        lastName: response.data.lastName,
+                        token: response.data.token,
+                        urlImage: response.data.urlImage,
+                    });
+                }
+                self.props.loginValue(self.state);
                 self.setState({
                     error: false,
                 });
-            })
-            .catch(function (error) {
+            }).catch(function (error) {
                 console.log(error);
                 self.setState({
                     error: true,
@@ -122,10 +139,10 @@ class LoginInForm extends Component {
                 <div className="message">
                     { loginError && <div>{loginError.message}</div> }
                 </div>
-                <Button type='submit' onClick = {this.onSubmit} >Login In</Button>
-                <p className='TextForPeople'>or signup with your social account</p>
+                <Button  type='submit' onClick = {this.onSubmit} >Login In</Button>
+                <p className='Text'>or signup with your social account</p>
                 <SocialButton/>
-                <p className='TextForPeople'>Don't have an account?
+                <p className='Text'>Don't have an account?
                     <a onClick={this.HandleClick}>Create now</a>
                 </p>
             </Form>

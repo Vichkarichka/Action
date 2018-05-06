@@ -5,6 +5,7 @@ import logo from '../Style/logo.jpeg';
 import { Redirect, Link } from 'react-router-dom';
 import './FirstPage.css';
 import { connect } from "react-redux";
+import axios from "axios/index";
 
 class FirstPage extends Component {
 
@@ -17,9 +18,30 @@ class FirstPage extends Component {
     }
 
     handleSetting = () => {
-        this.setState({
-            redirectToSetting: true,
-        })
+        let temp = this;
+        var storedArray = JSON.parse(sessionStorage.getItem("items"));
+
+        let postData = JSON.stringify({
+            token: storedArray,
+        });
+        let axiosConfig = {
+            headers: {
+                "Content-type": "application/json",
+            }
+        };
+
+        axios.post('http://127.0.0.1:8200/authorization', postData, axiosConfig)
+            .then(function (response) {
+                temp.setState({
+                    redirectToSetting: true,
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+               temp.setState({
+                    redirectToSetting: false,
+                });
+            });
     };
 
     render() {
@@ -37,7 +59,7 @@ class FirstPage extends Component {
             <Link to='/'> <Image src={logo} size='small'/></Link>
                 {
                     this.props.isLoginSuccess &&
-                        <Dropdown text={this.props.email}  floating labeled button icon='user' className='privateAccount'>
+                        <Dropdown text={this.props.data.email}  floating labeled button icon={<Image src = {"http://localhost:8200/"+ this.props.data.urlImage} style = {{width:50, height:50, marginTop:-15 }} />} className='privateAccount'>
                             <Dropdown.Menu>
                                 <Dropdown.Item>New Lot</Dropdown.Item>
                                 <Dropdown.Item>Edit Permissions</Dropdown.Item>
@@ -62,6 +84,7 @@ const mapStateToProps = (state) => {
     return {
         isLoginSuccess: state.isLoginSuccess,
         email: state.email,
+        data: state.data,
     };
 };
 

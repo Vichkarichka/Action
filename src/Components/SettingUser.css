@@ -1,12 +1,21 @@
 .ui.medium.image {
     height: 152px !important;
     width: 152px !important;
-    margin-left: 12% !important;
+    margin-left: 15% !important;
     margin-top: 2% !important;
 }
 .ui.form {
     margin-left: 35% !important;
 }
 .buttonSave {
-    margin-left: 48% !important;
+    width: 30% !important;
+    margin-left: 35% !important;
+}
+#file{
+    width: 46% !important;
+}
+.buttonUpload {
+    width: 46% !important;
+    margin-left: -46% !important;
+    margin-top: 6% !important;
 }

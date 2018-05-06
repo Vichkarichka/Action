@@ -3,6 +3,7 @@ const SET_SIGN_UP_SUCCESS = 'SET_SIGN_UP_SUCCESS';
 const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 const CHANGE_LOCATION = 'CHANGE_LOCATION';
 const SET_LOGIN_VALUE = 'SET_LOGIN_VALUE';
+const SET_URL_VALUE = 'SET_URL_VALUE';
 
 export function login(email, password) {
     return dispatch => {
@@ -21,7 +22,7 @@ export function login(email, password) {
 
 export function signup(email, password, confirmPassword, firstName, lastName) {
     return dispatch => {
-        dispatch(setSignUpSuccess(false,email));
+        dispatch(setSignUpSuccess(false, email));
         dispatch(setLoginError(null));
 
         callSignupApi(email, password, confirmPassword, firstName, lastName, error => {
@@ -39,16 +40,25 @@ export function loginValue(data) {
         type: SET_LOGIN_VALUE,
         data
     }
-
 }
 
+export function saveUserAvatar(urlImage) {
+    return {
+        type: SET_URL_VALUE,
+        urlImage
+    }
+}
 
 function callSignupApi(email, password, confirmPassword, firstName, lastName, callback) {
-
-    if (email.length === 0 && password.length === 0 && confirmPassword.length === 0 && firstName.length === 0 && lastName.length === 0) {
-        return callback(new Error('Please fill in the fields'));
+    if (email.length !== 0 && password.length !== 0 && confirmPassword.length !== 0 && firstName.length !== 0 && lastName.length !== 0) {
+       if(password === confirmPassword)
+        {
+            return callback(null);
+        } else {
+           return callback(new Error('Wrong password and confirm password'));
+       }
     } else {
-        return callback(null);
+        return callback(new Error('Please fill in the fields'));
     }
 }
 
@@ -80,6 +90,7 @@ function setLoginSuccess(isLoginSuccess, email) {
 }
 
 export function changeLoginToSignUp(location) {
+
     return {
         type: CHANGE_LOCATION,
         location
@@ -127,6 +138,9 @@ export default function reducer(state = {
                 data: action.data
             });
 
+        case SET_URL_VALUE:
+            return {...state, data: {...state.data,
+                    urlImage: action.urlImage}}
         default:
             return state;
     }

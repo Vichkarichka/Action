@@ -6,19 +6,22 @@ import { Button, Form } from 'semantic-ui-react';
 import emptyUser from '../Style/empty-avatar.jpg';
 import InputForm from './InputForm';
 import './SettingUser.css';
-import {changeLoginToSignUp, login, loginValue} from "../Redux/Reducer";
 import {connect} from "react-redux";
 import axios from "axios/index";
+import {saveUserAvatar, loginValue} from "../Redux/Reducer";
 
 class SettingUser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             file: '',
-            imagePreviewUrl: ''
+            imagePreviewUrl: '',
+            source: emptyUser,
+            urlImage: this.props.data.urlImage,
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleInput = (value) => {
@@ -32,13 +35,13 @@ class SettingUser extends React.Component {
     };
 
     valueForm = (data) => {
-
         this.setState({
             emailError: data.emailError,
             passwordError: data.passwordError,
             confirmPasswordError: data.confirmPasswordError,
             firstNameError: data.firstNameError,
             lastNameError: data.lastNameError,
+
         },this.closeForm);
     }
 
@@ -50,49 +53,61 @@ class SettingUser extends React.Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
+        let self = this;
+        let idUsers = this.props.data.idUsers;
         const formData = new FormData();
         formData.append( "file", this.state.file);
-        return axios.post('http://127.0.0.1:8200/upload', formData)
-            .then(function (response) {
-                console.log(response);
+        formData.append('data', idUsers);
+
+        axios.post('http://127.0.0.1:8200/upload', formData)
+            .then(function (res) {
+              axios.get('http://127.0.0.1:8200/upload/' + idUsers)
+                    .then(res => {
+                        self.props.saveUserAvatar(res.data.urlImage);
+                    }).catch(function (error) {
+                    console.log(error);
+                });
             })
             .catch(function (error) {
                 console.log(error);
             });
+        return false;
     }
 
     handleFileChange = ( e ) => {
-        this.setState( { file: e.target.files[ 0 ] } );
+        this.setState( {file: e.target.files[0]} );
     }
 
-   /* handleClick = () => {
-
-        var formData = new FormData();
-
-        formData.append('file', this.state.file);
+    handleClick = () => {
+        let self = this;
+        let idUsers = this.props.data.idUsers;
+        let postData = JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+        });
 
         let axiosConfig = {
             headers: {
-                "Content-type": "multipart/form-data",
+                "Content-type": "application/json",
             }
         };
-
-        return axios.post('http://127.0.0.1:8200/upload', formData, axiosConfig)
+        axios.post('http://127.0.0.1:8200/settingData/' + idUsers, postData, axiosConfig)
             .then(function (response) {
-                console.log(response);
+                self.props.loginValue(self.state);
             })
             .catch(function (error) {
                 console.log(error);
             });
-    };*/
+    };
 
     render() {
-        let {imagePreviewUrl} = this.state;
-        let imagePreview = null;
-        if (imagePreviewUrl) {
-            imagePreview = imagePreviewUrl;
+        let avatar;
+        if(this.props.data.urlImage){
+            avatar = "http://localhost:8200/" + this.props.data.urlImage;
         } else {
-            imagePreview = emptyUser;
+            avatar = this.state.source;
         }
         return (
             <div>
@@ -102,13 +117,13 @@ class SettingUser extends React.Component {
                     </Segment>
                 </div>
                 <Form onSubmit={this.handleFormSubmit}>
-                    <Image src= {imagePreview} size='medium' bordered circular />
+                    <Image src= {avatar} size='medium' bordered circular />
                     <input
                         type="file"
                         id="file"
                         onChange={this.handleFileChange}
                     />
-                    <button>Upload</button>
+                    <Button className='buttonUpload' basic>Upload</Button>
                 </Form>
                 <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} data ={this.props.data}/>
                 <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>
@@ -124,4 +139,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(SettingUser);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginValue: (data) => dispatch(loginValue(data)),
+        saveUserAvatar: (urlImage) => dispatch(saveUserAvatar(urlImage)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingUser);

@@ -14,6 +14,7 @@ router.use(bodyParser.urlencoded({
 router.post('/', (req, res) => {
     let data = req.body;
     user.loginUserIntoApp(data).then((result)=> {
+        console.log(result);
         let passwordLogin = crypto.encodePassword(data.password);
         let passwordDataBase = result[0].passwordUsers;
         let password = crypto.decodePassword(passwordDataBase);
@@ -25,14 +26,14 @@ router.post('/', (req, res) => {
             };
 
             let token = jwt.sign(payload,'Secret',{ expiresIn: '1d' });
-            console.log(token);
-
             res.status(201).json({
                 message: "ok",
                 email: result[0].emailUsers,
                 firstName: result[0].firstNameUsers,
                 lastName: result[0].lastNameUsers,
                 token: token,
+                idUsers: result[0].idUsers,
+                urlImage: result[0].urlImage,
             });
         } else {
             res.status(409).json({

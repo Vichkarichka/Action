@@ -32,7 +32,6 @@ class InputForm extends Component {
     };
 
     validateField(fieldName, value) {
-        console.log(fieldName, value);
         let emailError = this.state.emailError;
         let passwordError = this.state.passwordError;
         let confirmPasswordError = this.state.confirmPasswordError;
@@ -84,7 +83,14 @@ class InputForm extends Component {
         if(nextProps.duplex){
             this.setState({
                 email: '',
-            })
+            });
+        }
+        if(nextProps.pass)
+        {
+            this.setState({
+                password: '',
+                confirmPassword: '',
+            });
         }
     }
 
@@ -101,7 +107,6 @@ class InputForm extends Component {
     render() {
         let {email, password, confirmPassword, firstName, lastName} = this.state;
         let {loginError} = this.props;
-        console.log(this.state);
         return(
             <Form className = 'formLoginIn'>
                 <h1>Create an account</h1>
@@ -121,7 +126,9 @@ class InputForm extends Component {
                     <Form.Input placeholder='Last Name' onChange={this.handleInput} error={!this.state.lastNameError} name = 'lastName' value={lastName} />
                 </Form.Field>
                 <div className="message">
-                    { loginError && <div>{loginError.message}</div> }
+                    { loginError &&
+                    <div>{loginError.message}</div>
+                    }
                 </div>
             </Form>
         );

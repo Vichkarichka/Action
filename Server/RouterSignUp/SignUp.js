@@ -4,31 +4,15 @@ var bodyParser = require('body-parser');
 var user = require('../DataBase/SqlQueryAutorizaition');
 var ob = require('../ErrorObject/Errors');
 var crypto = require('../EncodeDecodeFunc/Crypto');
+var ch = require('../Middleware/CheckEmail');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.post('/', function(req, res, next) {
-    var data = req.body;
 
-    user.checkEmail(data).then(function(result) {
-        if (result.length === 0) {
-            return next();
-        } else {
-            res.status(409).json({
-                message: ob.objERRORS.USER_SINGUP,
-            });
-        }
-    }).catch(function(error) {
-        res.status(404).json({
-            message: ob.objERRORS.USER_SINGUP,
-        });
-    });
-});
-
-router.post('/', (req, res) => {
+router.post('/',ch.checkEmail, (req, res) => {
     let data = req.body;
     let password = crypto.encodePassword(data.password);
     user.pushRegistationDataToDatabase(data, password).then((result)=> {

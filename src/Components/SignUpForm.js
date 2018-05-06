@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {changeLoginToSignUp, signup} from "../Redux/Reducer";
 import axios from 'axios';
 import InputForm from './InputForm';
+import './SignUpForm.css';
 
 class SignUpForm extends Component {
 
@@ -21,15 +22,16 @@ class SignUpForm extends Component {
     }
 
     onSubmit = () => {
-        let temp=this;
+        let temp = this;
         let { email, password, confirmPassword, firstName, lastName} = this.state;
         this.props.signup(email, password, confirmPassword, firstName, lastName);
-
-        if(this.state.formValid) {
+        if(this.state.formValid && this.props.isSignUpSuccess) {
+            temp.setState({
+                wrongPassword: false,
+            });
             this.requestServer().then(function () {
                 if(temp.state.error) {
                     temp.setState({
-                        email: '',
                         doubleEmail:true,
                     });
                 } else {
@@ -37,9 +39,11 @@ class SignUpForm extends Component {
                         doubleEmail:false,
                     });
                     temp.props.parentMethod();
-                    /*var storedArray = JSON.parse(sessionStorage.getItem("items"));
-                    console.log(storedArray);*/
                 }
+            });
+        } else {
+            temp.setState({
+                wrongPassword: true,
             });
         }
     };
@@ -59,7 +63,6 @@ class SignUpForm extends Component {
         };
       return axios.post('http://127.0.0.1:8200/signUp', postData, axiosConfig)
             .then(function (response) {
-                console.log(response);
                 self.setState({
                     error: false,
                 });
@@ -75,6 +78,7 @@ class SignUpForm extends Component {
     handleClick = () => {
         this.props.changeLoginToSignUp('LoginIn');
     };
+
     handleInput = (value) => {
         this.setState({
             email: value.email,
@@ -84,8 +88,8 @@ class SignUpForm extends Component {
             lastName: value.lastName,
         });
     };
+
     valueForm = (data) => {
-        console.log(data);
         this.setState({
             emailError: data.emailError,
             passwordError: data.passwordError,
@@ -104,8 +108,8 @@ class SignUpForm extends Component {
     render() {
         return(
                <div>
-                   <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} duplex = {this.state.doubleEmail}/>
-                   <Button type='submit' onClick = {this.onSubmit} >Sign Up</Button>
+                   <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} duplex = {this.state.doubleEmail} pass = {this.state.wrongPassword}/>
+                   <Button  className='buttonSignUp' type='submit' onClick = {this.onSubmit} >Sign Up</Button>
                    <p className='TextForPeople'>Already have an account?
                        <a onClick={this.handleClick}>Log In</a>
                    </p>
@@ -117,6 +121,7 @@ class SignUpForm extends Component {
 const mapStateToProps = (state) => {
     return {
         loginError: state.loginError,
+        isSignUpSuccess: state.isSignUpSuccess,
     };
 };
 

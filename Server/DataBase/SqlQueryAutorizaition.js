@@ -14,8 +14,8 @@ exports.pushRegistationDataToDatabase = function insertData(data, password) {
 }
 
 exports.loginUserIntoApp = function loginData(data) {
-    let sql = "SELECT emailUsers, passwordUsers, firstNameUsers, idUsers, lastNameUsers" +
-        " FROM Users WHERE emailUsers = ? ";
+    let sql = "SELECT emailUsers, passwordUsers, firstNameUsers, idUsers, lastNameUsers, Images.urlImage FROM " +
+    "Action.Users left join Action.Images ON Users.idUsers = Images.emailIdUser where emailUsers = ?";
     let dataForLogin = [data.email];
     return returnPromise(sql, dataForLogin);
 }
