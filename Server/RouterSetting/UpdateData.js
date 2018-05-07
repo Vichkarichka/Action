@@ -39,7 +39,7 @@ router.post("/:id", function(req, res) {
         }).catch((error) => {
             console.log(error);
             res.status(401).json({
-                message: ob.objERRORS.USER_SINGUP,
+                message: ob.objERRORS.USER_SIGNUP,
             });
         });
     } else {
@@ -48,7 +48,7 @@ router.post("/:id", function(req, res) {
         }).catch((error) => {
             console.log(error);
             res.status(401).json({
-                message: ob.objERRORS.USER_SINGUP,
+                message: ob.objERRORS.USER_SIGNUP,
             });
         });
     }

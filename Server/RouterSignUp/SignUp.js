@@ -20,12 +20,12 @@ router.post('/',ch.checkEmail, (req, res) => {
             res.status(201).send("Successfully");
         } else {
             res.status(409).json({
-                message: ob.objERRORS.USER_SINGUP,
+                message: ob.objERRORS.USER_SIGNUP,
             });
         }
     }).catch((error) => {
         res.status(409).json({
-            message: ob.objERRORS.USER_SINGUP,
+            message: ob.objERRORS.USER_SIGNUP,
         });
     });
 });

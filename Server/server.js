@@ -9,8 +9,22 @@ var ob = require('./ErrorObject/Errors');
 var upload = require('./RouterForImage/Upload');
 var updateData = require('./RouterSetting/UpdateData');
 var path = require('path');
-
+var http = require('http');
 const port = process.env.PORT || 8200;
+
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+
+io.on('connection', function (socket) {
+    console.log("Connected succesfully to the socket ...");
+
+    socket.emit('news', 'Good News');
+
+    socket.on('send', function (data) {
+        io.emit('news', data);
+        console.log(data);
+    });
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -18,6 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/public', express.static((path.join(__dirname, 'public'))));
+
 app.use('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "*");
@@ -48,4 +63,4 @@ app.post("/authorization", (req, res) => {
     });
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+server.listen(port, () => console.log(`Listening on port ${port}`));

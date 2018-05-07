@@ -1,7 +1,6 @@
 import React from 'react'
-import { Segment, Image, Input } from 'semantic-ui-react';
-import logo from '../Style/logo.jpeg';
-import { Link } from 'react-router-dom';
+import { Image} from 'semantic-ui-react';
+import Header from './Header';
 import { Button, Form } from 'semantic-ui-react';
 import emptyUser from '../Style/empty-avatar.jpg';
 import InputForm from './InputForm';
@@ -17,11 +16,19 @@ class SettingUser extends React.Component {
             file: '',
             imagePreviewUrl: '',
             source: emptyUser,
-            urlImage: this.props.data.urlImage,
+            urlImage: '' ,
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentWillMount() {
+        if(this.props.data){
+            this.setState({
+                urlImage: this.props.data.urlImage
+            });
+        }
     }
 
     handleInput = (value) => {
@@ -104,7 +111,7 @@ class SettingUser extends React.Component {
 
     render() {
         let avatar;
-        if(this.props.data.urlImage){
+        if(this.props.data){
             avatar = "http://localhost:8200/" + this.props.data.urlImage;
         } else {
             avatar = this.state.source;
@@ -112,11 +119,9 @@ class SettingUser extends React.Component {
         return (
             <div>
                 <div>
-                    <Segment raised>
-                        <Link to='/'> <Image src= {logo} size='small' /></Link>
-                    </Segment>
+                <Header/>
                 </div>
-                <Form onSubmit={this.handleFormSubmit}>
+                <Form onSubmit={this.handleFormSubmit} className='FormImage'>
                     <Image src= {avatar} size='medium' bordered circular />
                     <input
                         type="file"
