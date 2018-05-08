@@ -27,7 +27,6 @@ class FirstPage extends Component {
     }
 
     initSocket = () => {
-
         const socket = socketIOClient("http://localhost:8200");
         socket.on('connect', () => {
             console.log('Connected');

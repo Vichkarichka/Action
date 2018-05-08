@@ -5,6 +5,7 @@ import enUS from 'rc-calendar/lib/locale/en_US';
 import TimePickerPanel from 'rc-time-picker/lib/Panel';
 import 'rc-calendar/assets/index.css';
 import 'rc-time-picker/assets/index.css';
+import './Demo.css';
 
 import moment from 'moment';
 import 'moment/locale/zh-cn';
@@ -12,17 +13,9 @@ import 'moment/locale/en-gb';
 
 import { Input } from 'semantic-ui-react';
 
-
-
-
 moment.locale('en-gb');
-
-
 const now = moment();
-
 now.utcOffset(0);
-
-
 const defaultCalendarValue = now.clone();
 defaultCalendarValue.add(-1, 'month');
 
@@ -41,11 +34,14 @@ function newArray(start, end) {
 }
 
 function disabledDate(current) {
+    if (!current) {
+        return false;
+    }
     const date = moment();
     date.hour(0);
     date.minute(0);
     date.second(0);
-    return current.isBefore(date);  // can not select days before today
+    return current.valueOf() < date.valueOf();
 }
 
 function disabledTime(time, type) {
@@ -54,43 +50,27 @@ function disabledTime(time, type) {
         return {
             disabledHours() {
                 const hours = newArray(0, 60);
-                hours.splice(20, 4);
+                hours.splice(0, 60);
                 return hours;
             },
             disabledMinutes(h) {
-                if (h === 20) {
-                    return newArray(0, 31);
-                } else if (h === 23) {
-                    return newArray(30, 60);
-                }
                 return [];
-            },
-            disabledSeconds() {
-                return [55, 56];
             },
         };
     }
     return {
         disabledHours() {
             const hours = newArray(0, 60);
-            hours.splice(2, 6);
+            hours.splice(0, 60);
             return hours;
         },
         disabledMinutes(h) {
-            if (h === 20) {
-                return newArray(0, 31);
-            } else if (h === 23) {
-                return newArray(30, 60);
-            }
             return [];
-        },
-        disabledSeconds() {
-            return [55, 56];
         },
     };
 }
 
-const formatStr = 'YYYY-MM-DD HH:mm:ss';
+const formatStr = 'DD-MM-YYYY HH:mm:ss';
 function format(v) {
     return v ? v.format(formatStr) : '';
 }
@@ -99,29 +79,31 @@ function isValidRange(v) {
     return v && v[0] && v[1];
 }
 
-function onStandaloneChange(value) {
-    console.log('onChange');
-    console.log(value[0] && format(value[0]), value[1] && format(value[1]));
-}
-
-function onStandaloneSelect(value) {
-    console.log('onSelect');
-    console.log(format(value[0]), format(value[1]));
-}
 
 export default class Demo extends React.Component {
-    state = {
-        value: [],
-        hoverValue: [],
+    constructor(props){
+        super(props);
+        this.state = {
+            values: [],
+            hoverValue: [],
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    onChange = (value) => {
-        console.log('onChange', value);
-        this.setState({ value });
-    }
+    onChange = (values) => {
+        this.setState({
+            values: values,
+        });
+    };
 
     onHoverChange = (hoverValue) => {
         this.setState({ hoverValue });
+    };
+
+    handleSubmit() {
+        let startData = this.state.values[0]._d;
+        let endData = this.state.values[1]._d;
+        this.props.onSetData({ startData: startData, endData: endData })
     }
 
     render() {
@@ -135,12 +117,14 @@ export default class Demo extends React.Component {
                 defaultValue={[now, now.clone().add(1, 'months')]}
                 locale={enUS}
                 disabledTime={disabledTime}
+                disabledDate={disabledDate}
                 timePicker={timePickerElement}
+                onOk={this.handleSubmit}
             />
         );
         return (
             <Picker
-                value={state.value}
+                value={state.values}
                 onChange={this.onChange}
                 animation="slide-up"
                 calendar={calendar}
@@ -150,7 +134,7 @@ export default class Demo extends React.Component {
                         return (<span>
                 <Input
                     placeholder="please select start and end time"
-                    style={{ width: 350 }}
+                    style={{ width: 500 }}
                     disabled={state.disabled}
                     readOnly
                     className="ant-calendar-picker-input ant-input"

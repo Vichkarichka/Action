@@ -10,6 +10,7 @@ var upload = require('./RouterForImage/Upload');
 var updateData = require('./RouterSetting/UpdateData');
 var path = require('path');
 var http = require('http');
+var newLot = require('./RouterLots/NewLot');
 const port = process.env.PORT || 8200;
 
 var server = http.createServer(app);
@@ -50,6 +51,8 @@ app.use('/signUp', signUp);
 app.use('/loginIn', loginIn);
 app.use('/upload', upload);
 app.use('/settingData', updateData);
+app.use('/newLots', newLot);
+
 
 app.post("/authorization", (req, res) => {
     jwt.verify(req.body.token, 'Secret', function(err, decoded) {
