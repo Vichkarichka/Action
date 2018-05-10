@@ -18,9 +18,11 @@ class NewLots extends React.Component {
             textField: '',
             planets: [],
             value: 'select',
-            url: emptyUser,
+            url: [],
             nameError: true,
             priceError: true,
+            selectError: true,
+            files: [],
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
@@ -37,11 +39,12 @@ class NewLots extends React.Component {
         let nameError = this.state.nameError;
         let priceError = this.state.priceError;
         let reg;
+        let selectError = this.state.value;
 
         switch(fieldName) {
 
             case 'namelot':
-                reg = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
+                reg = /^([a-zA-Z0-9 .,_-]+)$/;
                 nameError = reg.test(value);
                 break;
             case 'price':
@@ -51,36 +54,53 @@ class NewLots extends React.Component {
             default:
                 break;
         }
+        if (selectError === 'Select category')
+        {
+            selectError = false;
+        }
         this.setState({
             nameError: nameError,
             priceError: priceError ,
+            selectError: selectError,
         },this.validInput);
     }
 
     validInput() {
-        this.setState({formValid: this.state.nameError && this.state.priceError});
+        this.setState({formValid: this.state.nameError && this.state.priceError && this.state.selectError});
     }
 
     handleFileChange = ( e ) => {
-        this.setState( {file: e.target.files[0]}, () =>{
-            let reader = new FileReader();
-            reader.onload = () =>{
-                this.setState({
-                    url: reader.result,
-                })
-            };
-            if(this.state.file){
-                reader.readAsDataURL(this.state.file);
+        this.setState( {files: e.target.files}, () =>{
+
+            for (let i = 0; i < this.state.files.length; i++) {
+                this.setupReader(this.state.files[i]);
             }
         });
     };
 
+    setupReader(files) {
+        let reader = new FileReader();
+        reader.onload = () => {
+            let url = this.state.url;
+            url.push(reader.result);
+            this.setState({
+                url: url,
+            });
+        };
+        reader.readAsDataURL(files);
+    }
+
     handleFormSubmit(e) {
+
         e.preventDefault();
         let nameLot = this.state.namelot;
         let priceLot = this.state.price;
-        if(nameLot.length === 0 && priceLot.length === 0) {
+        console.log(nameLot.length === 0 && priceLot.length === 0 && !this.state.formValid);
+        if(nameLot.length === 0 && priceLot.length === 0 && !this.state.formValid) {
             this.setState({
+                nameError: false,
+                priceError: false ,
+                selectError: false,
                 formValid: false,
             });
         } else {
@@ -91,7 +111,6 @@ class NewLots extends React.Component {
     };
 
     requestServer = () => {
-        let self = this;
 
         let dataLot = {
           nameLot: this.state.namelot,
@@ -104,9 +123,11 @@ class NewLots extends React.Component {
         };
 
         const formData = new FormData();
-        formData.append( "file", this.state.file);
+        for( let i = 0; i <= this.state.files.length; i++)
+        {
+            formData.append( "file", this.state.files[i]);
+        }
         formData.append( "lotData" , JSON.stringify(dataLot));
-        console.log(this.state);
         axios.post('http://127.0.0.1:8200/newlots', formData)
             .then(function (res) {
                 console.log(res);
@@ -134,7 +155,7 @@ class NewLots extends React.Component {
         axios.get('http://127.0.0.1:8200/newLots')
             .then(response => {
             initialPlanets = response.data.result.map((planet) => {
-                return planet
+                return planet;
             });
             this.setState({
                 planets: initialPlanets,
@@ -145,9 +166,14 @@ class NewLots extends React.Component {
     }
 
     render() {
+        console.log(this.state.url[0]);
         let category = this.state.planets;
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
+        );
+        let urlImage = this.state.url;
+        let urlImages = urlImage.map((urlItem) =>
+            <Image src = {urlItem} size='medium' bordered className ='imgUrl' />
         );
         let {namelot, price, textField} = this.state;
         return (
@@ -157,12 +183,15 @@ class NewLots extends React.Component {
                 </div>
                 <Form className = 'formNewLot' onSubmit={this.handleFormSubmit}>
                     <h1>Create new lot</h1>
-                    <Form.Field>
-                        <Image src = {this.state.url} size='medium' bordered />
+                        <Form.Field>
+                        {urlImages}
+                        </Form.Field>
+                   <Form.Field>
                         <input
                             type="file"
                             id="imgLot"
                             onChange={this.handleFileChange}
+                            multiple
                         />
                     </Form.Field>
                     <Form.Field>
@@ -175,8 +204,8 @@ class NewLots extends React.Component {
                     <Demo onSetData={this.handleData}/>
                 </Form.Field>
                     <Form.Field>
-                    <select placeholder='Select category' onChange={this.change} value={this.state.value}>
-                        <option>Selsect category</option>
+                    <select onChange={this.change} value={this.state.value} >
+                        <option>Select category</option>
                         {optionItems}
                     </select>
                     </Form.Field>

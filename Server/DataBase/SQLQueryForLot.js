@@ -7,7 +7,7 @@ exports.getCategory = function getData() {
     return returnPromise(sql);
 };
 
-exports.setValueLot = function setData(path, dataLot) {
+exports.setValueLot = function setData(dataLot) {
     let valueLot = {
         nameLot: dataLot.nameLot,
         startTime: dataLot.startTime,
@@ -15,13 +15,28 @@ exports.setValueLot = function setData(path, dataLot) {
         descriptionLot: dataLot.textField,
         priceLot: dataLot.price,
         categoryLot: dataLot.value,
-        ImgLot: path,
         nameUser: dataLot.idUsers,
     };
 
     let sql = "INSERT INTO Lot SET ?";
     return returnPromise(sql, valueLot);
 };
+
+exports.setImage = function(filesPath, idLot) {
+    let imgLot = [];
+    let sql;
+
+    for(let i = 0; i < filesPath.length; i++) {
+         imgLot.push([
+            filesPath[i],
+             idLot,
+    ]);
+    }
+    console.log(imgLot);
+    sql = "INSERT INTO ImagesLot (imagesLotUrl, idLot) VALUES ?";
+    return returnPromise(sql, [imgLot]);
+};
+
 
 function returnPromise(sql, dataForDB) {
     return Promise.using(getSqlConnection(), function(connection) {

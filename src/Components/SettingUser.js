@@ -122,7 +122,7 @@ class SettingUser extends React.Component {
                 <Header/>
                 </div>
                 <Form onSubmit={this.handleFormSubmit} className='FormImage'>
-                    <Image src= {avatar} size='medium' bordered circular />
+                    <Image src= {avatar} size='medium' bordered circular className = "avatar" />
                     <input
                         type="file"
                         id="file"

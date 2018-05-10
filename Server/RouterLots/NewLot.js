@@ -32,22 +32,29 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post("/", upload.single("file"), (req, res) => {
+router.post("/", upload.any(), (req, res) => {
 
-    let filePath = req.file.path;
-    let lotData = JSON.parse(req.body.lotData);
-    user.setValueLot(filePath, lotData).then((result) => {
-        res.status(200).json({
-            message: "Ok",
+    let filesPath = [];
+    for(let i = 0; i < req.files.length; i++){
+        filesPath.push(req.files[i].path);
+    }
+        //let filePath = req.files ? req.files.path : null;
+        let lotData = JSON.parse(req.body.lotData);
+        user.setValueLot(lotData).then((result) => {
+            user.setImage(filesPath, result.insertId).then((result) => {
+                console.log(result);
+            }).catch((error) => {
+                console.log(error);
+                res.status(401).json({
+                    message: ob.objERRORS.USER_SIGNUP,
+                });
+            });
+        }).catch((error) => {
+            console.log(error);
+            res.status(401).json({
+                message: ob.objERRORS.USER_SIGNUP,
+            });
         });
-    }).catch((error) => {
-        console.log(error);
-        res.status(401).json({
-            message: ob.objERRORS.USER_SIGNUP,
-        });
-    });
 });
-
-
 
 module.exports = router;
