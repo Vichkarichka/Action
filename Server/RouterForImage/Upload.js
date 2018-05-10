@@ -3,9 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var user = require('../DataBase/SqlQuerySettingUser');
 var ob = require('../ErrorObject/Errors');
-const fileType = require('file-type');
 var path = require('path');
-const fs = require('fs');
 
 const multer = require( "multer" );
 const storage = multer.diskStorage({
@@ -15,7 +13,7 @@ const storage = multer.diskStorage({
     filename(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
-})
+});
 
 const upload = multer({ storage: storage });
 

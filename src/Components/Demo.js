@@ -8,7 +8,6 @@ import 'rc-time-picker/assets/index.css';
 import './Demo.css';
 
 import moment from 'moment';
-import 'moment/locale/zh-cn';
 import 'moment/locale/en-gb';
 
 import { Input } from 'semantic-ui-react';

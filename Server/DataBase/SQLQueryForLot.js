@@ -7,6 +7,22 @@ exports.getCategory = function getData() {
     return returnPromise(sql);
 };
 
+exports.setValueLot = function setData(path, dataLot) {
+    let valueLot = {
+        nameLot: dataLot.nameLot,
+        startTime: dataLot.startTime,
+        endTime: dataLot.endTime,
+        descriptionLot: dataLot.textField,
+        priceLot: dataLot.price,
+        categoryLot: dataLot.value,
+        ImgLot: path,
+        nameUser: dataLot.idUsers,
+    };
+
+    let sql = "INSERT INTO Lot SET ?";
+    return returnPromise(sql, valueLot);
+};
+
 function returnPromise(sql, dataForDB) {
     return Promise.using(getSqlConnection(), function(connection) {
         return connection.query(sql, dataForDB).then(function(rows) {

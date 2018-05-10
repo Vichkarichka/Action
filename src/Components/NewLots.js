@@ -7,12 +7,13 @@ import {saveUserAvatar, loginValue} from "../Redux/Reducer";
 import Demo from "./Demo";
 import emptyUser from '../Style/empty-avatar.jpg';
 import "./NewLots.css";
+import moment from 'moment';
 
 class NewLots extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            namelot: '',
             price: '',
             textField: '',
             planets: [],
@@ -39,7 +40,7 @@ class NewLots extends React.Component {
 
         switch(fieldName) {
 
-            case 'name':
+            case 'namelot':
                 reg = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
                 nameError = reg.test(value);
                 break;
@@ -53,8 +54,11 @@ class NewLots extends React.Component {
         this.setState({
             nameError: nameError,
             priceError: priceError ,
-        });
-        console.log(this.state);
+        },this.validInput);
+    }
+
+    validInput() {
+        this.setState({formValid: this.state.nameError && this.state.priceError});
     }
 
     handleFileChange = ( e ) => {
@@ -71,23 +75,58 @@ class NewLots extends React.Component {
         });
     };
 
-
     handleFormSubmit(e) {
         e.preventDefault();
-        console.log(this.state);
+        let nameLot = this.state.namelot;
+        let priceLot = this.state.price;
+        if(nameLot.length === 0 && priceLot.length === 0) {
+            this.setState({
+                formValid: false,
+            });
+        } else {
+            this.setState({
+                formValid: true,
+            }, this.requestServer);
+        }
+    };
 
-    }
+    requestServer = () => {
+        let self = this;
+
+        let dataLot = {
+          nameLot: this.state.namelot,
+          price: this.state.price,
+          textField: this.state.textField,
+          value: this.state.value,
+          startTime: this.state.startTime,
+          endTime: this.state.endTime,
+          idUsers: this.props.data.idUsers,
+        };
+
+        const formData = new FormData();
+        formData.append( "file", this.state.file);
+        formData.append( "lotData" , JSON.stringify(dataLot));
+        console.log(this.state);
+        axios.post('http://127.0.0.1:8200/newlots', formData)
+            .then(function (res) {
+                console.log(res);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
     handleData = (data) => {
-        console.log(data);
+        data.startData = moment(data.startData).format('YYYY-MM-DD HH:mm:ss');
+        data.endData = moment(data.endData).format('YYYY-MM-DD HH:mm:ss');
         this.setState({
             startTime: data.startData,
             endTime: data.endData,
-        })
+        });
     };
 
     change = (event) => {
         this.setState({value: event.target.value});
-        console.log(event.target.value);
     };
 
     componentDidMount() {
@@ -110,7 +149,7 @@ class NewLots extends React.Component {
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
         );
-        let {name, price, textField} = this.state;
+        let {namelot, price, textField} = this.state;
         return (
             <div>
                 <div>
@@ -127,7 +166,7 @@ class NewLots extends React.Component {
                         />
                     </Form.Field>
                     <Form.Field>
-                        <Form.Input placeholder='Name lot' onChange={this.handleInput} error={!this.state.nameError} name = 'namelot' value = {name}/>
+                        <Form.Input placeholder='Name lot' onChange={this.handleInput} error={!this.state.nameError} name = 'namelot' value = {namelot}/>
                     </Form.Field>
                     <Form.Field>
                         <Form.Input type = 'number' min = {0} placeholder='Price' onChange={this.handleInput} error={!this.state.priceError} name = 'price' value = {price}/>
