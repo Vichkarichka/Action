@@ -38,8 +38,9 @@ exports.setImage = function(filesPath, idLot) {
 };
 
 exports.getLots = function (userId) {
-    let sql = "SELECT idLot, nameLot, startTime, endTime, descriptionLot, priceLot, categoryLot, nameUser" +
-    " FROM Lot WHERE nameUser = " + userId;
+    let sql = "SELECT idLot, nameLot, startTime, endTime, descriptionLot, priceLot, CategoryLot.nameCategory as categoryLot, nameUser " +
+    " FROM Lot left join Action.CategoryLot ON CategoryLot.idCategoryLot = Lot.categoryLot" +
+    " WHERE nameUser = " + userId;
     return returnPromise(sql);
 };
 

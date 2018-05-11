@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/public', express.static((path.join(__dirname, 'public'))));
+app.use('/ImageLot', express.static((path.join(__dirname, 'ImageLot'))));
 
 app.use('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

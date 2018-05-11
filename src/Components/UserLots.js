@@ -32,64 +32,36 @@ class UserLots extends React.Component {
         if(!this.props.lot) return null;
         const paragraph = "gskgsgshshhdhdfhd";
         console.log(this.props.lot);
+
+        let urlImage = this.props.lot.result;
+        let urlImages = urlImage.map((urlItem) =>
+            <Item key = {urlItem.idLot}>
+                <Item.Image src={'http://localhost:8200/'+ urlItem.img[0].imagesLotUrl } />
+
+                <Item.Content key = {urlItem.idLot}>
+                    <Item.Header as='a' key = {urlItem.idLot}>{urlItem.nameLot}</Item.Header>
+                    <Item.Meta>
+                        <span  key = {urlItem.idLot}>{urlItem.priceLot + '$'}</span>
+                    </Item.Meta>
+                    <Item.Description>{urlItem.descriptionLot}</Item.Description>
+                    <Item.Extra>
+                        <Label>{urlItem.categoryLot}</Label>
+                    </Item.Extra>
+                    <Button key = {urlItem.idLot} primary floated='right' basic>
+                        Edit
+                    </Button>
+                </Item.Content>
+            </Item>
+        );
         return (
             <div>
                 <div>
                     <Header/>
                 </div>
                 <Item.Group divided>
-                    <Item>
-                        <Item.Image src='/assets/images/wireframe/image.png' />
 
-                        <Item.Content>
-                            <Item.Header as='a'>12 Years a Slave</Item.Header>
-                            <Item.Meta>
-                                <span className='cinema'>Union Square 14</span>
-                            </Item.Meta>
-                            <Item.Description>{paragraph}</Item.Description>
-                            <Item.Extra>
-                                <Label>IMAX</Label>
-                                <Label icon='globe' content='Additional Languages' />
-                            </Item.Extra>
-                        </Item.Content>
-                    </Item>
+                            {urlImages}
 
-                    <Item>
-                        <Item.Image src='/assets/images/wireframe/image.png' />
-
-                        <Item.Content>
-                            <Item.Header as='a'>My Neighbor Totoro</Item.Header>
-                            <Item.Meta>
-                                <span className='cinema'>IFC Cinema</span>
-                            </Item.Meta>
-                            <Item.Description>{paragraph}</Item.Description>
-                            <Item.Extra>
-                                <Button primary floated='right'>
-                                    Buy tickets
-                                    <Icon name='right chevron' />
-                                </Button>
-                                <Label>Limited</Label>
-                            </Item.Extra>
-                        </Item.Content>
-                    </Item>
-
-                    <Item>
-                        <Item.Image src='/assets/images/wireframe/image.png' />
-
-                        <Item.Content>
-                            <Item.Header as='a'>Watchmen</Item.Header>
-                            <Item.Meta>
-                                <span className='cinema'>IFC</span>
-                            </Item.Meta>
-                            <Item.Description>{paragraph}</Item.Description>
-                            <Item.Extra>
-                                <Button primary floated='right'>
-                                    Buy tickets
-                                    <Icon name='right chevron' />
-                                </Button>
-                            </Item.Extra>
-                        </Item.Content>
-                    </Item>
                 </Item.Group>
             </div>
         )
@@ -111,3 +83,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLots);
+

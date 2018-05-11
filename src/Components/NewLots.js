@@ -165,7 +165,6 @@ class NewLots extends React.Component {
     }
 
     render() {
-        console.log(this.state.url[0]);
         let category = this.state.planets;
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
