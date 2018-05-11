@@ -2,12 +2,12 @@ var express = require('express');
 var Promise = require("bluebird");
 var getSqlConnection = require("./DataBaseConnection");
 
-exports.getCategory = function getData() {
+exports.getCategory = function () {
     let sql = "SELECT idCategoryLot, nameCategory FROM CategoryLot ORDER BY nameCategory ASC ";
     return returnPromise(sql);
 };
 
-exports.setValueLot = function setData(dataLot) {
+exports.setValueLot = function (dataLot) {
     let valueLot = {
         nameLot: dataLot.nameLot,
         startTime: dataLot.startTime,
@@ -35,6 +35,17 @@ exports.setImage = function(filesPath, idLot) {
     console.log(imgLot);
     sql = "INSERT INTO ImagesLot (imagesLotUrl, idLot) VALUES ?";
     return returnPromise(sql, [imgLot]);
+};
+
+exports.getLots = function (userId) {
+    let sql = "SELECT idLot, nameLot, startTime, endTime, descriptionLot, priceLot, categoryLot, nameUser" +
+    " FROM Lot WHERE nameUser = " + userId;
+    return returnPromise(sql);
+};
+
+exports.getLotsImage = function (idLot) {
+    let sql = "SELECT idImagesLot, imagesLotUrl, idLot FROM ImagesLot WHERE idLot = " + idLot;
+    return returnPromise(sql);
 };
 
 

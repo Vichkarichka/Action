@@ -1,11 +1,10 @@
 import React from 'react'
 import Header from './Header';
-import { Form, Image, Button, Select, TextArea } from 'semantic-ui-react';
+import { Form, Image, Button, TextArea } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import {saveUserAvatar, loginValue} from "../Redux/Reducer";
 import Demo from "./Demo";
-import emptyUser from '../Style/empty-avatar.jpg';
 import "./NewLots.css";
 import moment from 'moment';
 
@@ -181,11 +180,9 @@ class NewLots extends React.Component {
                 <div>
                     <Header/>
                 </div>
+                <h1>Create new lot</h1>
+                {urlImages}
                 <Form className = 'formNewLot' onSubmit={this.handleFormSubmit}>
-                    <h1>Create new lot</h1>
-                        <Form.Field>
-                        {urlImages}
-                        </Form.Field>
                    <Form.Field>
                         <input
                             type="file"
@@ -212,7 +209,7 @@ class NewLots extends React.Component {
                     <Form.Field>
                     <TextArea autoHeight placeholder='Add desription about lot' onChange={this.handleInput} name = 'textField' value = {textField} />
                 </Form.Field>
-                    <Button className='buttonUploadh' basic>Create Lot</Button>
+                    <Button className='buttonCreateLot' basic>Create Lot</Button>
                 </Form>
             </div>
         )

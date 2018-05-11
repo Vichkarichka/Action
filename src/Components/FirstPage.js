@@ -14,7 +14,7 @@ class FirstPage extends Component {
         };
     }
 
-    send = () => {
+   /* send = () => {
         this.state.socket.emit('send', "Big");
     };
 
@@ -37,7 +37,7 @@ class FirstPage extends Component {
         });
 
         this.setState({socket});
-    };
+    };*/
 
 
 
@@ -46,8 +46,8 @@ class FirstPage extends Component {
             <div>
                 <ModalLoginInForm/>
                 <Header/>
-                <p>{this.state.response}</p>
-                <button onClick = {this.send}>Click</button>
+                {/*<p>{this.state.response}</p>
+                <button onClick = {this.send}>Click</button>*/}
             </div>
         )
     }

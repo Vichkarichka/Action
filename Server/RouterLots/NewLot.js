@@ -3,8 +3,6 @@ var router = express.Router();
 var user = require('../DataBase/SQLQueryForLot');
 var ob = require('../ErrorObject/Errors');
 var path = require('path');
-var bodyParser = require('body-parser');
-
 
 const multer = require( "multer" );
 

@@ -133,7 +133,7 @@ export default class Demo extends React.Component {
                         return (<span>
                 <Input
                     placeholder="please select start and end time"
-                    style={{ width: 500 }}
+                    style={{ width: 410 }}
                     disabled={state.disabled}
                     readOnly
                     className="ant-calendar-picker-input ant-input"

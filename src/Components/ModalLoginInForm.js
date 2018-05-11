@@ -5,8 +5,6 @@ import SignUpForm from './SignUpForm';
 import './ModalLoginInForm.css';
 import {connect} from "react-redux";
 import {changeLoginToSignUp} from "../Redux/Reducer";
-import { Link, Route, Switch } from 'react-router-dom';
-
 
 class ModalLoginInForm extends Component {
 
@@ -45,10 +43,10 @@ class ModalLoginInForm extends Component {
                 <Modal
                     trigger={<Button className='loginButton' basic onClick={this.handleOpen}>LOGIN IN</Button>}
                     open={this.state.modalOpen}
-                    closeIcon={<Button className='exitButton' basic color='red' content='Red' onClick={this.handleClose}>Exit</Button>}
                     basic
                     size='fullscreen'
                 >
+                    <Button className='exitButton' basic color='red' content='Red' onClick={this.handleClose}>Exit</Button>
                     {location}
                 </Modal>
             </div>

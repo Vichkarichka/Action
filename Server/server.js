@@ -4,13 +4,12 @@ var bodyParser = require('body-parser');
 var signUp = require('./RouterSignUp/SignUp');
 var loginIn = require('./RouterSignUp/LoginIn');
 var jwt = require('jsonwebtoken');
-var user = require('./DataBase/SqlQuerySettingUser');
-var ob = require('./ErrorObject/Errors');
 var upload = require('./RouterForImage/Upload');
 var updateData = require('./RouterSetting/UpdateData');
 var path = require('path');
 var http = require('http');
 var newLot = require('./RouterLots/NewLot');
+var userLot = require('./RouterLots/UserLot');
 const port = process.env.PORT || 8200;
 
 var server = http.createServer(app);
@@ -52,6 +51,7 @@ app.use('/loginIn', loginIn);
 app.use('/upload', upload);
 app.use('/settingData', updateData);
 app.use('/newLots', newLot);
+app.use('/userLots', userLot);
 
 
 app.post("/authorization", (req, res) => {

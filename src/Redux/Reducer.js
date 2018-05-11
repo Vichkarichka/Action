@@ -4,6 +4,7 @@ const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 const CHANGE_LOCATION = 'CHANGE_LOCATION';
 const SET_LOGIN_VALUE = 'SET_LOGIN_VALUE';
 const SET_URL_VALUE = 'SET_URL_VALUE';
+const SET_LOT_VALUE = 'SET_LOT_VALUE';
 
 export function login(email, password) {
     return dispatch => {
@@ -47,6 +48,14 @@ export function saveUserAvatar(urlImage) {
         type: SET_URL_VALUE,
         urlImage
     }
+}
+
+export function saveDataLot (lot) {
+    return {
+        type: SET_LOT_VALUE,
+        lot
+    }
+
 }
 
 function callSignupApi(email, password, confirmPassword, firstName, lastName, callback) {
@@ -140,7 +149,13 @@ export default function reducer(state = {
 
         case SET_URL_VALUE:
             return {...state, data: {...state.data,
-                    urlImage: action.urlImage}}
+                    urlImage: action.urlImage}};
+
+        case SET_LOT_VALUE:
+            return Object.assign({}, state, {
+                lot: action.lot
+            });
+
         default:
             return state;
     }

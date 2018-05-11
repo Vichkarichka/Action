@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import {changeLoginToSignUp, signup} from "../Redux/Reducer";
 import axios from 'axios';

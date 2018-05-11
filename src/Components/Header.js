@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { Segment, Image, Button, Dropdown, Icon } from 'semantic-ui-react';
-import ModalLoginInForm from './ModalLoginInForm';
+import { Segment, Image, Dropdown } from 'semantic-ui-react';
 import logo from '../Style/logo.jpeg';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from "react-redux";
@@ -11,16 +10,18 @@ class Header extends Component {
     constructor(props){
         super(props);
         this.state ={
-            redirectToSetting: false,
-            redirectToNewLot: false,
+            redirect: false,
+            address: '',
         };
         this.handleSetting = this.handleSetting.bind(this);
     }
 
-    handleSetting = () => {
+    handleSetting = (e) => {
+        e.preventDefault();
+        let address = e.target.dataset.to;
         let temp = this;
-        var storedArray = JSON.parse(sessionStorage.getItem("items"));
 
+        var storedArray = JSON.parse(sessionStorage.getItem("items"));
         let postData = JSON.stringify({
             token: storedArray,
         });
@@ -32,33 +33,20 @@ class Header extends Component {
 
         axios.post('http://127.0.0.1:8200/authorization', postData, axiosConfig)
             .then(function (response) {
-                temp.setState({
-                    redirectToSetting: true,
-                });
+                    temp.setState({
+                        redirect: true,
+                        address: address,
+                    });
             })
             .catch(function (error) {
                 console.log(error);
-                temp.setState({
-                    redirectToSetting: false,
-                });
             });
     };
 
-    handleNewLots = () => {
-        this.setState({
-            redirectToNewLot: true,
-        });
-    };
-
     render() {
-        const { redirectToSetting, redirectToNewLot } = this.state;
-        if (redirectToSetting) {
+        if (this.state.redirect) {
             return (
-                <Redirect to='/lk' />
-            )
-        } if (redirectToNewLot) {
-            return (
-                <Redirect to='/newLots' />
+                <Redirect to = {this.state.address}/>
             )
         }
         return (
@@ -69,10 +57,14 @@ class Header extends Component {
                     this.props.isLoginSuccess &&
                     <Dropdown text={this.props.data.email}  floating labeled button icon={<Image src = {"http://localhost:8200/"+ this.props.data.urlImage} style = {{width:50, height:50, marginTop:-15 }} />} className='privateAccount'>
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={this.handleNewLots}>New Lot</Dropdown.Item>
-                            <Dropdown.Item>Edit Permissions</Dropdown.Item>
+                            <Dropdown.Item data-to ='/newLots' onClick={this.handleSetting}>
+                                New Lot
+                            </Dropdown.Item>
+                            <Dropdown.Item data-to ='/lotsUser' onClick={this.handleSetting}>
+                                My Lot's
+                            </Dropdown.Item>
                             <Dropdown.Item>History Lot's</Dropdown.Item>
-                            <Dropdown.Item onClick={this.handleSetting}>
+                            <Dropdown.Item data-to ='/lk' onClick={this.handleSetting}>
                                 Setting
                             </Dropdown.Item>
                             <Dropdown.Divider />
