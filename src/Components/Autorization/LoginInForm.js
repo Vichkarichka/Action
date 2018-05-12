@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { login, changeLoginToSignUp, loginValue } from '../Redux/Reducer';
-import SocialButton from './SocialButton';
+import { login, changeLoginToSignUp, loginValue } from '../../Redux/Reducer';
+import SocialButton from '../SocialButton';
 import './LoginInForm.css';
 import axios from "axios/index";
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Image} from 'semantic-ui-react';
-import Header from './Header';
-import { Button, Form } from 'semantic-ui-react';
-import emptyUser from '../Style/empty-avatar.jpg';
-import InputForm from './InputForm';
+import Header from '../Header';
+import { Button, Form, Message } from 'semantic-ui-react';
+import emptyUser from '../../Style/empty-avatar.jpg';
+import InputForm from '../InputForm';
 import './SettingUser.css';
 import {connect} from "react-redux";
 import axios from "axios/index";
-import {saveUserAvatar, loginValue} from "../Redux/Reducer";
+import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
 
 class SettingUser extends React.Component {
     constructor(props) {
@@ -17,6 +17,7 @@ class SettingUser extends React.Component {
             imagePreviewUrl: '',
             source: emptyUser,
             urlImage: '' ,
+            idUsers: '',
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
@@ -26,7 +27,8 @@ class SettingUser extends React.Component {
     componentWillMount() {
         if(this.props.data){
             this.setState({
-                urlImage: this.props.data.urlImage
+                urlImage: this.props.data.urlImage,
+                idUsers: this.props.data.idUsers,
             });
         }
     }
@@ -50,7 +52,7 @@ class SettingUser extends React.Component {
             lastNameError: data.lastNameError,
 
         },this.closeForm);
-    }
+    };
 
     closeForm() {
         this.setState({formValid: this.state.emailError && this.state.passwordError
@@ -61,14 +63,13 @@ class SettingUser extends React.Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         let self = this;
-        let idUsers = this.props.data.idUsers;
         const formData = new FormData();
         formData.append( "file", this.state.file);
-        formData.append('data', idUsers);
+        formData.append('data', self.state.idUsers);
 
         axios.post('http://127.0.0.1:8200/upload', formData)
             .then(function (res) {
-              axios.get('http://127.0.0.1:8200/upload/' + idUsers)
+              axios.get('http://127.0.0.1:8200/upload/' + self.state.idUsers)
                     .then(res => {
                         self.props.saveUserAvatar(res.data.urlImage);
                     }).catch(function (error) {
@@ -79,11 +80,11 @@ class SettingUser extends React.Component {
                 console.log(error);
             });
         return false;
-    }
+    };
 
     handleFileChange = ( e ) => {
         this.setState( {file: e.target.files[0]} );
-    }
+    };
 
     handleClick = () => {
         let self = this;
@@ -102,9 +103,16 @@ class SettingUser extends React.Component {
         };
         axios.post('http://127.0.0.1:8200/settingData/' + idUsers, postData, axiosConfig)
             .then(function (response) {
+                self.setState({
+                    success: true,
+                });
+                setTimeout(()=>self.setState({success: false}), 3000);
                 self.props.loginValue(self.state);
             })
             .catch(function (error) {
+                self.setState({
+                    success: false,
+                });
                 console.log(error);
             });
     };
@@ -116,6 +124,7 @@ class SettingUser extends React.Component {
         } else {
             avatar = this.state.source;
         }
+
         return (
             <div>
                 <div>
@@ -132,6 +141,14 @@ class SettingUser extends React.Component {
                 </Form>
                 <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} data ={this.props.data}/>
                 <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>
+                {
+                    this.state.success &&
+                    <Message
+                        success
+                        header='Your user registration was successful'
+                        content='You may now log-in with the username you have chosen'
+                    />
+            }
             </div>
         )
     }

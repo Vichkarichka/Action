@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './Header';
+import Header from '../Header';
 import {connect} from "react-redux";
 import axios from "axios/index";
-import { saveDataLot } from "../Redux/Reducer";
+import { saveDataLot } from "../../Redux/Reducer";
 import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
 
 class UserLots extends React.Component {
@@ -41,13 +41,13 @@ class UserLots extends React.Component {
                 <Item.Content key = {urlItem.idLot}>
                     <Item.Header as='a' key = {urlItem.idLot}>{urlItem.nameLot}</Item.Header>
                     <Item.Meta>
-                        <span  key = {urlItem.idLot}>{urlItem.priceLot + '$'}</span>
+                        <span>{urlItem.priceLot + '$'}</span>
                     </Item.Meta>
                     <Item.Description>{urlItem.descriptionLot}</Item.Description>
                     <Item.Extra>
                         <Label>{urlItem.categoryLot}</Label>
                     </Item.Extra>
-                    <Button key = {urlItem.idLot} primary floated='right' basic>
+                    <Button primary floated='right' basic>
                         Edit
                     </Button>
                 </Item.Content>

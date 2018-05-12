@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import FirstPage from './FirstPage';
-import SettingUser from "./SettingUser";
-import NewLots from "./NewLots";
-import UserLots from "./UserLots";
+import FirstPage from './HomePage/FirstPage';
+import SettingUser from "./EditUser/SettingUser";
+import NewLots from "./Lot\'s/NewLots";
+import UserLots from "./Lot\'s/UserLots";
 
 const Main = () => (
     <main>

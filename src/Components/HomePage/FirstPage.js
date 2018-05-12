@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import ModalLoginInForm from './ModalLoginInForm';
+import ModalLoginInForm from '../Autorization/ModalLoginInForm';
 import './FirstPage.css';
 import { connect } from "react-redux";
-import Header from './Header';
+import Header from '../Header';
 import socketIOClient from 'socket.io-client';
 
 class FirstPage extends Component {

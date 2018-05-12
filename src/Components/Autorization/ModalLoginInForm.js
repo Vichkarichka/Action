@@ -4,7 +4,7 @@ import LoginInForm from './LoginInForm';
 import SignUpForm from './SignUpForm';
 import './ModalLoginInForm.css';
 import {connect} from "react-redux";
-import {changeLoginToSignUp} from "../Redux/Reducer";
+import {changeLoginToSignUp} from "../../Redux/Reducer";
 
 class ModalLoginInForm extends Component {
 

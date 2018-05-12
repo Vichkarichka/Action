@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from './Header';
+import Header from '../Header';
 import { Form, Image, Button, TextArea } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import axios from "axios/index";
-import {saveUserAvatar, loginValue} from "../Redux/Reducer";
-import Demo from "./Demo";
+import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
+import Demo from "../DataTimePicker/Demo";
 import "./NewLots.css";
 import moment from 'moment';
 

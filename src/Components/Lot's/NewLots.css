@@ -3,10 +3,13 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+h1 {
+    margin-left: 35% !important;
+}
+
 .imgUrl {
     display: inline-block !important;
     margin-left: 2% !important;
-
     width: 152px !important;
 }
 .formNewLot {
