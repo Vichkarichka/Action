@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import ModalLoginInForm from '../Autorization/ModalLoginInForm';
 import './FirstPage.css';
 import { connect } from "react-redux";
-import Header from '../Header';
 import socketIOClient from 'socket.io-client';
+import HatWrapper from '../Header/HatWrapper';
 
 class FirstPage extends Component {
 
@@ -44,8 +43,7 @@ class FirstPage extends Component {
     render() {
         return (
             <div>
-                <ModalLoginInForm/>
-                <Header/>
+                <HatWrapper/>
                 {/*<p>{this.state.response}</p>
                 <button onClick = {this.send}>Click</button>*/}
             </div>

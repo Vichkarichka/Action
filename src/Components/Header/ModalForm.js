@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Button, Modal} from 'semantic-ui-react';
-import LoginInForm from './LoginInForm';
-import SignUpForm from './SignUpForm';
-import './ModalLoginInForm.css';
-import {connect} from "react-redux";
-import {changeLoginToSignUp} from "../../Redux/Reducer";
+import { Button, Modal, Dropdown, Search } from 'semantic-ui-react';
+import LoginInForm from '../Autorization/LoginInForm';
+import SignUpForm from '../Autorization/SignUpForm';
+import './ModalForm.css';
+import { connect } from "react-redux";
+import { changeLoginToSignUp, getValueCategory } from "../../Redux/Reducer";
+import { getSections } from '../Function';
 
-class ModalLoginInForm extends Component {
+class ModalForm extends Component {
 
     constructor(props){
         super(props);
@@ -23,9 +24,16 @@ class ModalLoginInForm extends Component {
         this.setState({ modalOpen: false })
     };
 
+    componentDidMount() {
+        getSections().then((initialCategory) => {
+            this.props.getValueCategory(initialCategory);
+        });
+    };
+
 
     render() {
-
+        if(!this.props.category) return null;
+        let category = this.props.category;
     let location;
         switch (this.props.location) {
             case "SignUp":
@@ -41,7 +49,7 @@ class ModalLoginInForm extends Component {
         return (
             <div>
                 <Modal
-                    trigger={<Button className='loginButton' basic onClick={this.handleOpen}>LOGIN IN</Button>}
+                    trigger={<Button className='loginButton'  onClick={this.handleOpen}>LOGIN IN</Button>}
                     open={this.state.modalOpen}
                     basic
                     size='fullscreen'
@@ -49,6 +57,12 @@ class ModalLoginInForm extends Component {
                     <Button className='exitButton' basic color='red' content='Red' onClick={this.handleClose}>Exit</Button>
                     {location}
                 </Modal>
+                    <Dropdown className='sections' text='SECTIONS' options={category.map(categoryItem => ({
+                        key: categoryItem.idCategoryLot,
+                        value: categoryItem.idCategoryLot,
+                        text: categoryItem.nameCategory,
+                    }))} />
+                        <Search/>
             </div>
         )
     }
@@ -58,12 +72,14 @@ const mapStateToProps = (state) => {
     return {
         isLoginSuccess: state.isLoginSuccess,
         location: state.location,
+        category: state.category,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeLoginToSignUp: (location) => dispatch(changeLoginToSignUp(location))
+        changeLoginToSignUp: (location) => dispatch(changeLoginToSignUp(location)),
+        getValueCategory: (category) => dispatch(getValueCategory(category)),
     };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ModalLoginInForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalForm);

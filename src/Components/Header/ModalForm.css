@@ -1,0 +1,23 @@
+.ui.fullscreen.basic.modal.transition.visible.active {
+   margin-top: 0 !important;
+}
+.loginButton {
+   margin-top: 1% !important;
+   margin-left: 60% !important;
+   border-radius: 0 !important;
+   background-color: #fdfdff !important;
+   color: rgba(0,0,0,.87) !important;
+}
+.exitButton {
+   margin-left: 95% !important;
+}
+.text {
+   font-weight: 700;
+}
+.ui.search {
+   margin-left: 3% !important;
+   display: inline-block !important;
+}
+.sections {
+   margin-left: 1% !important;
+}

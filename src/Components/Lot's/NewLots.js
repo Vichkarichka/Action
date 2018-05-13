@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Header';
+import HatWrapper from '../Header/HatWrapper';
 import { Form, Image, Button, TextArea } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import axios from "axios/index";
@@ -15,7 +15,7 @@ class NewLots extends React.Component {
             namelot: '',
             price: '',
             textField: '',
-            planets: [],
+            category: [],
             value: 'select',
             url: [],
             nameError: true,
@@ -94,7 +94,6 @@ class NewLots extends React.Component {
         e.preventDefault();
         let nameLot = this.state.namelot;
         let priceLot = this.state.price;
-        console.log(nameLot.length === 0 && priceLot.length === 0 && !this.state.formValid);
         if(nameLot.length === 0 && priceLot.length === 0 && !this.state.formValid) {
             this.setState({
                 nameError: false,
@@ -149,23 +148,8 @@ class NewLots extends React.Component {
         this.setState({value: event.target.value});
     };
 
-    componentDidMount() {
-        let initialPlanets = [];
-        axios.get('http://127.0.0.1:8200/newLots')
-            .then(response => {
-            initialPlanets = response.data.result.map((planet) => {
-                return planet;
-            });
-            this.setState({
-                planets: initialPlanets,
-            });
-            }).catch(function (error) {
-            console.log(error);
-        });
-    }
-
     render() {
-        let category = this.state.planets;
+        let category = this.props.category;
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
         );
@@ -177,9 +161,9 @@ class NewLots extends React.Component {
         return (
             <div>
                 <div>
-                    <Header/>
+                    <HatWrapper/>
                 </div>
-                <h1>Create new lot</h1>
+                <h1 className='createLot'>Create new lot</h1>
                 {urlImages}
                 <Form className = 'formNewLot' onSubmit={this.handleFormSubmit}>
                    <Form.Field>
@@ -218,6 +202,7 @@ class NewLots extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.data,
+        category: state.category,
     };
 };
 

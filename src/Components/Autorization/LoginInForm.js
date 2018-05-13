@@ -139,7 +139,7 @@ class LoginInForm extends Component {
                 <div className="message">
                     { loginError && <div>{loginError.message}</div> }
                 </div>
-                <Button  type='submit' onClick = {this.onSubmit} >Login In</Button>
+                <Button  className='buttonLoginIn' type='submit' onClick = {this.onSubmit} >Login In</Button>
                 <p className='Text'>or signup with your social account</p>
                 <SocialButton/>
                 <p className='Text'>Don't have an account?

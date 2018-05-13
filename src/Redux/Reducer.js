@@ -5,6 +5,7 @@ const CHANGE_LOCATION = 'CHANGE_LOCATION';
 const SET_LOGIN_VALUE = 'SET_LOGIN_VALUE';
 const SET_URL_VALUE = 'SET_URL_VALUE';
 const SET_LOT_VALUE = 'SET_LOT_VALUE';
+const SET_CATEGORY_VALUE = 'SET_CATEGORY_VALUE';
 
 export function login(email, password) {
     return dispatch => {
@@ -99,7 +100,6 @@ function setLoginSuccess(isLoginSuccess, email) {
 }
 
 export function changeLoginToSignUp(location) {
-
     return {
         type: CHANGE_LOCATION,
         location
@@ -110,6 +110,12 @@ function setLoginError(loginError) {
     return {
         type: SET_LOGIN_ERROR,
         loginError
+    }
+}
+export function getValueCategory (category) {
+    return {
+        type: SET_CATEGORY_VALUE,
+        category
     }
 }
 
@@ -154,6 +160,11 @@ export default function reducer(state = {
         case SET_LOT_VALUE:
             return Object.assign({}, state, {
                 lot: action.lot
+            });
+
+        case SET_CATEGORY_VALUE:
+            return Object.assign({}, state, {
+                category: action.category
             });
 
         default:

@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Header';
+import HatWrapper from '../Header/HatWrapper';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import { saveDataLot } from "../../Redux/Reducer";
@@ -56,7 +56,7 @@ class UserLots extends React.Component {
         return (
             <div>
                 <div>
-                    <Header/>
+                    <HatWrapper/>
                 </div>
                 <Item.Group divided>
 

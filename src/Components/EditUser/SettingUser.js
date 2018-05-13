@@ -1,7 +1,7 @@
 import React from 'react'
-import { Image} from 'semantic-ui-react';
-import Header from '../Header';
-import { Button, Form, Message } from 'semantic-ui-react';
+import ModalLoginInForm from '../Header/ModalForm';
+import Header from '../Header/Header';
+import { Button, Form, Message, Image } from 'semantic-ui-react';
 import emptyUser from '../../Style/empty-avatar.jpg';
 import InputForm from '../InputForm';
 import './SettingUser.css';
@@ -128,6 +128,7 @@ class SettingUser extends React.Component {
         return (
             <div>
                 <div>
+                    <ModalLoginInForm/>
                 <Header/>
                 </div>
                 <Form onSubmit={this.handleFormSubmit} className='FormImage'>
@@ -140,7 +141,6 @@ class SettingUser extends React.Component {
                     <Button className='buttonUpload' basic>Upload</Button>
                 </Form>
                 <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} data ={this.props.data}/>
-                <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>
                 {
                     this.state.success &&
                     <Message
@@ -148,7 +148,8 @@ class SettingUser extends React.Component {
                         header='Your user registration was successful'
                         content='You may now log-in with the username you have chosen'
                     />
-            }
+                }
+                <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>
             </div>
         )
     }
