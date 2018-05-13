@@ -21,3 +21,6 @@
 .sections {
    margin-left: 1% !important;
 }
+.ui.container {
+   width: 100% !important;
+}

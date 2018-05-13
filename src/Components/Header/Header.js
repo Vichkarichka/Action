@@ -4,6 +4,7 @@ import logo from '../../Style/logo.jpeg';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import axios from "axios/index";
+import {changeLoginToSignUp, login, loginValue} from "../../Redux/Reducer";
 
 class Header extends Component {
 
@@ -20,8 +21,11 @@ class Header extends Component {
         e.preventDefault();
         let address = e.target.dataset.to;
         let temp = this;
-
-        var storedArray = JSON.parse(sessionStorage.getItem("items"));
+        if(address === '/')
+        {
+           this.props.login('','');
+        }
+        let storedArray = JSON.parse(sessionStorage.getItem("items"));
         let postData = JSON.stringify({
             token: storedArray,
         });
@@ -52,7 +56,7 @@ class Header extends Component {
         return (
                 <Segment raised>
             <span>
-            <Link to='/'> <Image src={logo} size='small'/></Link>
+            <Link to ='/'> <Image src={logo} size='small'/></Link>
                 {
                     this.props.isLoginSuccess &&
                     <Dropdown text={this.props.data.email}  floating labeled button icon={<Image src = {"http://localhost:8200/"+ this.props.data.urlImage} style = {{width:50, height:50, marginTop:-15 }} />} className='privateAccount'>
@@ -69,7 +73,7 @@ class Header extends Component {
                             </Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Header>Exit</Dropdown.Header>
-                            <Dropdown.Item>Log out</Dropdown.Item>
+                            <Dropdown.Item data-to ='/' onClick={this.handleSetting}>Log out</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 }
@@ -86,5 +90,10 @@ const mapStateToProps = (state) => {
         data: state.data,
     };
 };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        login: (email, password) => dispatch(login(email, password)),
+    };
+};
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
