@@ -3,6 +3,7 @@ import './FirstPage.css';
 import { connect } from "react-redux";
 import socketIOClient from 'socket.io-client';
 import HatWrapper from '../Header/HatWrapper';
+import ActiveLots from './ActiveLots';
 
 class FirstPage extends Component {
 
@@ -44,6 +45,7 @@ class FirstPage extends Component {
         return (
             <div>
                 <HatWrapper/>
+                <ActiveLots/>
                 {/*<p>{this.state.response}</p>
                 <button onClick = {this.send}>Click</button>*/}
             </div>

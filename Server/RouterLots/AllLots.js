@@ -4,9 +4,8 @@ var user = require('../DataBase/SQLQueryForLot');
 var ob = require('../ErrorObject/Errors');
 
 
-router.get("/:id", function(req, res) {
-    let userId = req.params.id;
-    user.getLots(userId).then(async(result)=> {
+router.get("/", function(req, res) {
+    user.getAllLots().then(async(result)=> {
         const promise = [];
         const mas = [];
         for(let i = 0; i< result.length; i++) {

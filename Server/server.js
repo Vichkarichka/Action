@@ -10,6 +10,7 @@ var path = require('path');
 var http = require('http');
 var newLot = require('./RouterLots/NewLot');
 var userLot = require('./RouterLots/UserLot');
+var allLots = require('./RouterLots/AllLots');
 const port = process.env.PORT || 8200;
 
 var server = http.createServer(app);
@@ -53,6 +54,7 @@ app.use('/upload', upload);
 app.use('/settingData', updateData);
 app.use('/newLots', newLot);
 app.use('/userLots', userLot);
+app.use('/allLots', allLots);
 
 
 app.post("/authorization", (req, res) => {

@@ -4,7 +4,7 @@ import logo from '../../Style/logo.jpeg';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import axios from "axios/index";
-import {changeLoginToSignUp, login, loginValue} from "../../Redux/Reducer";
+import { login } from "../../Redux/Reducer";
 
 class Header extends Component {
 

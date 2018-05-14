@@ -49,6 +49,13 @@ exports.getLotsImage = function (idLot) {
     return returnPromise(sql);
 };
 
+exports.getAllLots = function () {
+    let sql = "SELECT idLot, nameLot, startTime, endTime, descriptionLot, priceLot," +
+        " CategoryLot.nameCategory as categoryLot, Users.emailUsers as nameUser " +
+        " FROM Lot LEFT JOIN Action.CategoryLot ON CategoryLot.idCategoryLot = Lot.categoryLot " +
+        "LEFT JOIN Action.Users ON Lot.nameUser = Users.idUsers";
+    return returnPromise(sql);
+};
 
 function returnPromise(sql, dataForDB) {
     return Promise.using(getSqlConnection(), function(connection) {

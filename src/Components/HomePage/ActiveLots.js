@@ -1,11 +1,10 @@
 import React from 'react'
-import HatWrapper from '../Header/HatWrapper';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import { saveDataLot } from "../../Redux/Reducer";
 import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
 
-class UserLots extends React.Component {
+class ActiveLots extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,10 +17,9 @@ class UserLots extends React.Component {
     }
 
     requestToServer = () => {
-        let idUsers = this.props.data.idUsers;
-        axios.get('http://127.0.0.1:8200/userLots/' + idUsers)
+        axios.get('http://127.0.0.1:8200/allLots')
             .then(res => {
-                this.props.saveDataLot(res.data);
+               console.log(res);
             }).catch(function (error) {
             console.log(error);
         });
@@ -29,7 +27,7 @@ class UserLots extends React.Component {
 
     render() {
 
-        if(!this.props.lot) return null;
+        /*if(!this.props.lot) return null;
 
         let urlImage = this.props.lot.result;
         let urlImages = urlImage.map((urlItem) =>
@@ -50,15 +48,12 @@ class UserLots extends React.Component {
                     </Button>
                 </Item.Content>
             </Item>
-        );
+        );*/
         return (
             <div>
-                <div>
-                    <HatWrapper/>
-                </div>
                 <Item.Group divided>
 
-                            {urlImages}
+
 
                 </Item.Group>
             </div>
@@ -80,5 +75,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLots);
-
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveLots);
