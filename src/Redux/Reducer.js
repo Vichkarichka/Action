@@ -6,6 +6,7 @@ const SET_LOGIN_VALUE = 'SET_LOGIN_VALUE';
 const SET_URL_VALUE = 'SET_URL_VALUE';
 const SET_LOT_VALUE = 'SET_LOT_VALUE';
 const SET_CATEGORY_VALUE = 'SET_CATEGORY_VALUE';
+const SET_LOTS_VALUES = 'SET_LOTS_VALUES';
 
 export function login(email, password) {
     return dispatch => {
@@ -56,7 +57,13 @@ export function saveDataLot (lot) {
         type: SET_LOT_VALUE,
         lot
     }
+}
 
+export function saveAllDataLots (lots) {
+    return {
+        type: SET_LOTS_VALUES,
+        lots
+    }
 }
 
 function callSignupApi(email, password, confirmPassword, firstName, lastName, callback) {
@@ -165,6 +172,11 @@ export default function reducer(state = {
         case SET_CATEGORY_VALUE:
             return Object.assign({}, state, {
                 category: action.category
+            });
+
+        case SET_LOTS_VALUES:
+            return Object.assign({}, state, {
+                lots: action.lots
             });
 
         default:

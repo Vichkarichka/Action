@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { Segment, Image, Dropdown } from 'semantic-ui-react';
 import logo from '../../Style/logo.jpeg';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import axios from "axios/index";
 import { login } from "../../Redux/Reducer";
+import './Header.css'
+
 
 class Header extends Component {
 
@@ -96,4 +98,6 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(Header)
+);

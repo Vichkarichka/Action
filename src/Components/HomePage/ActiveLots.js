@@ -1,8 +1,11 @@
 import React from 'react'
 import {connect} from "react-redux";
 import axios from "axios/index";
-import { saveDataLot } from "../../Redux/Reducer";
-import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
+import { saveAllDataLots } from "../../Redux/Reducer";
+import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react';
+import './ActiveLots.css';
+import CountDown from '../CountDown';
+import moment from 'moment';
 
 class ActiveLots extends React.Component {
     constructor(props) {
@@ -12,6 +15,12 @@ class ActiveLots extends React.Component {
         };
     }
 
+    headerClick = (e) => {
+       // console.log("1");
+        e.preventDefault();
+        console.log(e.target.id);
+    };
+
     componentDidMount() {
         this.requestToServer();
     }
@@ -19,7 +28,7 @@ class ActiveLots extends React.Component {
     requestToServer = () => {
         axios.get('http://127.0.0.1:8200/allLots')
             .then(res => {
-               console.log(res);
+               this.props.saveAllDataLots(res.data);
             }).catch(function (error) {
             console.log(error);
         });
@@ -27,34 +36,37 @@ class ActiveLots extends React.Component {
 
     render() {
 
-        /*if(!this.props.lot) return null;
+        if(!this.props.lots) return null;
 
-        let urlImage = this.props.lot.result;
+        let urlImage = this.props.lots.result;
         let urlImages = urlImage.map((urlItem) =>
-            <Item key = {urlItem.idLot}>
-                <Item.Image src={'http://localhost:8200/'+ urlItem.img[0].imagesLotUrl } />
+            <Item key = {urlItem.idLot} >
+                <Item.Image size= "small" src={'http://localhost:8200/'+ urlItem.img[0].imagesLotUrl } />
 
-                <Item.Content key = {urlItem.idLot}>
-                    <Item.Header as='a' key = {urlItem.idLot}>{urlItem.nameLot}</Item.Header>
+                <Item.Content  key = {urlItem.idLot} >
+                    <Item.Header   onClick={this.headerClick} id = {urlItem.idLot}  key = {urlItem.idLot}>
+                        {urlItem.nameLot}
+                    </Item.Header>
                     <Item.Meta>
                         <span>{urlItem.priceLot + '$'}</span>
                     </Item.Meta>
                     <Item.Description>{urlItem.descriptionLot}</Item.Description>
+                    {
+                        moment(urlItem.startTime).format('DD.MM.YYYY, LTS') <= new Date(Date.now()).toLocaleString('ru') &&
+                        <CountDown date={urlItem.endTime}/>
+                    }
                     <Item.Extra>
                         <Label>{urlItem.categoryLot}</Label>
                     </Item.Extra>
-                    <Button primary floated='right' basic>
-                        Edit
-                    </Button>
+                    <Item.Extra content={urlItem.nameUser} />
                 </Item.Content>
             </Item>
-        );*/
+        );
         return (
             <div>
-                <Item.Group divided>
+                <Item.Group divided link className = "AllLots">
 
-
-
+                {urlImages}
                 </Item.Group>
             </div>
         )
@@ -65,13 +77,13 @@ class ActiveLots extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.data,
-        lot: state.lot,
+        lots: state.lots,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        saveDataLot: (lot) => dispatch(saveDataLot(lot)),
+        saveAllDataLots: (lots) => dispatch(saveAllDataLots(lots)),
     };
 };
 
