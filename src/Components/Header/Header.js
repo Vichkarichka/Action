@@ -19,6 +19,14 @@ class Header extends Component {
         this.handleSetting = this.handleSetting.bind(this);
     }
 
+    componentDidUpdate () {
+        if (this.state.redirect) {
+            this.setState({
+                redirect: false
+            })
+        }
+    }
+
     handleSetting = (e) => {
         e.preventDefault();
         let address = e.target.dataset.to;
@@ -52,7 +60,7 @@ class Header extends Component {
     render() {
         if (this.state.redirect) {
             return (
-                <Redirect to = {this.state.address}/>
+                <Redirect push to = {this.state.address}/>
             )
         }
         return (
@@ -98,6 +106,5 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(Header)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
