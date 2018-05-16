@@ -4,6 +4,7 @@ import FirstPage from './HomePage/FirstPage';
 import SettingUser from "./EditUser/SettingUser";
 import NewLots from "./Lot\'s/NewLots";
 import UserLots from "./Lot\'s/UserLots";
+import LotPage from "./Lot\'s/LotPage";
 
 const Main = () => (
 
@@ -12,6 +13,7 @@ const Main = () => (
         <Route path="/lk" exact component={SettingUser} />
         <Route path="/newLots" exact component={NewLots} />
         <Route path="/lotsUser" exact component={UserLots} />
+        <Route path="/lotsUser/:userId" exact component={LotPage} />
     </Switch>
 
 );

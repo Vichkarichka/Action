@@ -2,7 +2,8 @@ import React from 'react'
 import {connect} from "react-redux";
 import axios from "axios/index";
 import { saveAllDataLots } from "../../Redux/Reducer";
-import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Item, Label } from 'semantic-ui-react';
 import './ActiveLots.css';
 import CountDown from '../CountDown';
 import moment from 'moment';
@@ -14,12 +15,6 @@ class ActiveLots extends React.Component {
 
         };
     }
-
-    headerClick = (e) => {
-       // console.log("1");
-        e.preventDefault();
-        console.log(e.target.id);
-    };
 
     componentDidMount() {
         this.requestToServer();
@@ -44,9 +39,11 @@ class ActiveLots extends React.Component {
                 <Item.Image size= "small" src={'http://localhost:8200/'+ urlItem.img[0].imagesLotUrl } />
 
                 <Item.Content  key = {urlItem.idLot} >
-                    <Item.Header   onClick={this.headerClick} id = {urlItem.idLot}  key = {urlItem.idLot}>
+                    <Link to={`/lotsUser/${urlItem.idLot}`}>
+                        <Item.Header   key = {urlItem.idLot}>
                         {urlItem.nameLot}
                     </Item.Header>
+                    </Link>
                     <Item.Meta>
                         <span>{urlItem.priceLot + '$'}</span>
                     </Item.Meta>
@@ -71,7 +68,6 @@ class ActiveLots extends React.Component {
             </div>
         )
     }
-
 }
 
 const mapStateToProps = (state) => {
