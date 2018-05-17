@@ -51,7 +51,7 @@ exports.getLotsImage = (idLot) => {
 
 exports.getAllLots = () =>{
     let sql = "SELECT idLot, nameLot, startTime, endTime, descriptionLot, priceLot,\n" +
-        "         CategoryLot.nameCategory as categoryLot, Users.emailUsers as nameUser, BidValue.newBid as newBid,\n" +
+        "         CategoryLot.nameCategory as categoryLot, idCategoryLot, Users.emailUsers as nameUser, BidValue.newBid as newBid,\n" +
         "         BidValue.countBidLot as countBidLot\n" +
         "         FROM Lot LEFT JOIN Action.CategoryLot ON CategoryLot.idCategoryLot = Lot.categoryLot \n" +
         "        LEFT JOIN Action.Users ON Lot.nameUser = Users.idUsers \n" +

@@ -8,3 +8,8 @@
     color: rgb(0, 0, 0);
     font-weight: 700;
 }
+.ui.pagination.pointing.secondary.menu {
+    padding-bottom: 15px;
+    border-bottom: 0 !important;
+    margin: 0 50%;
+}

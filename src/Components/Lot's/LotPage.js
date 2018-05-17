@@ -29,7 +29,6 @@ class LotPage extends Component {
 
 
     render() {
-        console.log(this.props.data);
         if(!this.props.lots) return null;
         let urlImage = this.props.lots.result;
         let lotData = urlImage.filter(lot => lot.idLot === parseInt(this.state.lotId));
