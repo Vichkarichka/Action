@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import HatWrapper from '../Header/HatWrapper';
-import { Item, Label, Button } from 'semantic-ui-react';
+import { Item, Label, Button, Container } from 'semantic-ui-react';
 import './LotPage.css';
 import { Carousel } from 'react-responsive-carousel';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -68,7 +68,7 @@ class LotPage extends Component {
                                 <strong>{"Please register to make a bet."}</strong>
                             </Item.Description>)
                         || ((urlItem.nameUser === this.props.data.email) &&
-                            <Button disabled ={this.checkTime(urlItem.startTime)}>EDIT</Button>) ||
+                            <Button className='buttonEditLot' disabled ={this.checkTime(urlItem.startTime)}>EDIT</Button>) ||
                         <BidLots value = {lotData} />
                     }
                 </Item.Content>
@@ -77,9 +77,11 @@ class LotPage extends Component {
         return (
             <div>
                 <HatWrapper/>
-                <Item.Group className = "Lot">
-                    {urlImages}
-                </Item.Group>
+                <Container>
+                    <Item.Group className = "Lot">
+                        {urlImages}
+                    </Item.Group>
+                </Container>
             </div>
         )
     }
