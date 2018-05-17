@@ -7,6 +7,8 @@ const SET_URL_VALUE = 'SET_URL_VALUE';
 const SET_LOT_VALUE = 'SET_LOT_VALUE';
 const SET_CATEGORY_VALUE = 'SET_CATEGORY_VALUE';
 const SET_LOTS_VALUES = 'SET_LOTS_VALUES';
+const SET_BIT_VALUES = 'SET_BIT_VALUES';
+const LOGOUT = 'LOGOUT';
 
 export function login(email, password) {
     return dispatch => {
@@ -66,6 +68,14 @@ export function saveAllDataLots (lots) {
     }
 }
 
+export function bidValue(bid, countBid) {
+    return {
+        type: SET_BIT_VALUES,
+        bid,
+        countBid
+    }
+}
+
 function callSignupApi(email, password, confirmPassword, firstName, lastName, callback) {
     if (email.length !== 0 && password.length !== 0 && confirmPassword.length !== 0 && firstName.length !== 0 && lastName.length !== 0) {
        if(password === confirmPassword)
@@ -113,6 +123,13 @@ export function changeLoginToSignUp(location) {
     }
 }
 
+export function logout() {
+    return {
+        type: LOGOUT,
+    }
+
+}
+
 function setLoginError(loginError) {
     return {
         type: SET_LOGIN_ERROR,
@@ -130,6 +147,7 @@ export default function reducer(state = {
     isLoginSuccess: false,
     isSignUpSuccess:false,
     location: 'LoginIn',
+
 }, action) {
     switch (action.type) {
 
@@ -179,6 +197,17 @@ export default function reducer(state = {
                 lots: action.lots
             });
 
+        case SET_BIT_VALUES:
+            return Object.assign({}, state, {
+                bid: action.bid,
+                countBid: action.countBid
+            });
+
+        case LOGOUT:
+            return Object.assign({}, state, {
+                data: null,
+                isLoginSuccess: false,
+            });
         default:
             return state;
     }

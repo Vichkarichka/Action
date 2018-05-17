@@ -4,7 +4,7 @@ import logo from '../../Style/logo.jpeg';
 import { Redirect, Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import axios from "axios/index";
-import { login } from "../../Redux/Reducer";
+import { logout } from "../../Redux/Reducer";
 import './Header.css'
 
 
@@ -33,9 +33,10 @@ class Header extends Component {
         let temp = this;
         if(address === '/')
         {
-           this.props.login('','');
+           this.props.logout();
         }
         let storedArray = JSON.parse(sessionStorage.getItem("items"));
+        console.log(storedArray);
         let postData = JSON.stringify({
             token: storedArray,
         });
@@ -47,10 +48,13 @@ class Header extends Component {
 
         axios.post('http://127.0.0.1:8200/authorization', postData, axiosConfig)
             .then(function (response) {
+                console.log(response);
+                if(response.data.success){
                     temp.setState({
                         redirect: true,
                         address: address,
                     });
+                }
             })
             .catch(function (error) {
                 console.log(error);
@@ -102,7 +106,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (email, password) => dispatch(login(email, password)),
+        logout: () => dispatch(logout()),
     };
 };
 

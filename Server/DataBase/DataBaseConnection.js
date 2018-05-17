@@ -1,6 +1,6 @@
-var mysql = require('promise-mysql');
+let mysql = require('promise-mysql');
 
-var connect = mysql.createPool({
+let connect = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'root',
@@ -9,7 +9,7 @@ var connect = mysql.createPool({
 });
 
 function getSqlConnection() {
-    return connect.getConnection().disposer(function (connection) {
+    return connect.getConnection().disposer((connection) => {
         connect.releaseConnection(connection);
     });
 }

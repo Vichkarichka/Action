@@ -11,21 +11,15 @@ var http = require('http');
 var newLot = require('./RouterLots/NewLot');
 var userLot = require('./RouterLots/UserLot');
 var allLots = require('./RouterLots/AllLots');
+
 const port = process.env.PORT || 8200;
 
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+var io = module.exports.io = require('socket.io').listen(server);
+var socketConfig = require('./SocketConfig');
 
-io.on('connection', function (socket) {
-    console.log("Connected succesfully to the socket ...");
+io.on('connection', socketConfig);
 
-    socket.emit('news', 'Good News');
-
-    socket.on('send', function (data) {
-        io.emit('news', data);
-        console.log(data);
-    });
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -62,7 +56,7 @@ app.post("/authorization", (req, res) => {
         if (err) {
             return res.json({ success: false, message: 'Failed to authenticate token.' });
         } else {
-            res.sendStatus(200);
+            res.status(200).json({ success: true });;
             console.log(decoded);
             //next();
         }

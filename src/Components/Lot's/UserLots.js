@@ -13,7 +13,7 @@ class UserLots extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.requestToServer();
     }
 
@@ -28,13 +28,12 @@ class UserLots extends React.Component {
     };
 
     render() {
-
         if(!this.props.lot) return null;
 
         let urlImage = this.props.lot.result;
         let urlImages = urlImage.map((urlItem) =>
             <Item key = {urlItem.idLot}>
-                <Item.Image src={'http://localhost:8200/'+ urlItem.img[0].imagesLotUrl } />
+                <Item.Image src={'http://localhost:8200/'+ ((urlItem.img && urlItem.img[0].imagesLotUrl) || 'ImageLot/empty.png' ) } />
 
                 <Item.Content key = {urlItem.idLot}>
                     <Item.Header as='a' key = {urlItem.idLot}>{urlItem.nameLot}</Item.Header>

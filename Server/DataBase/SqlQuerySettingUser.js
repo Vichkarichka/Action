@@ -1,8 +1,8 @@
-var express = require('express');
-var Promise = require("bluebird");
-var getSqlConnection = require("./DataBaseConnection");
+let express = require('express');
+let Promise = require("bluebird");
+let getSqlConnection = require("./DataBaseConnection");
 
-exports.pushUrlImageToDatabase = function insertData(data, idUsers) {
+exports.pushUrlImageToDatabase = (data, idUsers) => {
     let dataUser = {
         urlImage: data,
         emailIdUser: idUsers
@@ -11,12 +11,12 @@ exports.pushUrlImageToDatabase = function insertData(data, idUsers) {
     let sql = "INSERT INTO Images SET ?";
     return returnPromise(sql, dataUser);
 }
-exports.getUrlImages = function getImages(id) {
+exports.getUrlImages = (id) => {
     let sql = "SELECT idImages, urlImage, emailIdUser FROM Images WHERE emailIdUser = ?";
     return returnPromise(sql, id);
 }
 
-exports.updateUrlImage = function updateData(data, idUsers) {
+exports.updateUrlImage = (data, idUsers) => {
     let dataUser = {
         urlImage: data,
         emailIdUser: idUsers
@@ -26,7 +26,7 @@ exports.updateUrlImage = function updateData(data, idUsers) {
     return returnPromise(sql, dataUser);
 }
 
-exports.uploadDataUser = function uploadData(data, idUsers, password) {
+exports.uploadDataUser = (data, idUsers, password) => {
 
     let dataUser = {
         emailUsers: data.email,
@@ -38,7 +38,7 @@ exports.uploadDataUser = function uploadData(data, idUsers, password) {
     return returnPromise(sql, dataUser);
 }
 
-exports.uploadData = function editData(data, idUsers) {
+exports.uploadData = (data, idUsers) => {
     let dataUser = {
         emailUsers: data.email,
         firstNameUsers: data.firstName,
@@ -48,12 +48,11 @@ exports.uploadData = function editData(data, idUsers) {
     return returnPromise(sql, dataUser);
 }
 
-
-function returnPromise(sql, dataForDB) {
-    return Promise.using(getSqlConnection(), function(connection) {
-        return connection.query(sql, dataForDB).then(function(rows) {
+returnPromise = (sql, dataForDB) => {
+    return Promise.using(getSqlConnection(), (connection) => {
+        return connection.query(sql, dataForDB).then((rows) => {
             return rows;
-        }).catch(function(error) {
+        }).catch((error) => {
             console.log(error);
         });
     });

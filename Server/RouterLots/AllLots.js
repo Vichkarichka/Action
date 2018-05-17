@@ -9,13 +9,15 @@ router.get("/", function(req, res) {
         const promise = [];
         const mas = [];
         for(let i = 0; i< result.length; i++) {
+
             promise.push(user.getLotsImage(result[i].idLot));
         }
         for await (const items of promise) {
             mas.push(items);
         }
-        for(let i = 0; i< result.length; i++){
-            if(result[i].idLot === mas[i][i].idLot) {
+        for(let i = 0; i < result.length; i++){
+            if(mas[i].length === 0) continue;
+            if(result[i].idLot === mas[i][0].idLot) {
                 result[i].img = mas[i];
             }
         }

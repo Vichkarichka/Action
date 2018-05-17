@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './FirstPage.css';
 import { connect } from "react-redux";
-import socketIOClient from 'socket.io-client';
 import HatWrapper from '../Header/HatWrapper';
 import ActiveLots from './ActiveLots';
 
@@ -13,33 +12,6 @@ class FirstPage extends Component {
 
         };
     }
-
-   /* send = () => {
-        this.state.socket.emit('send', "Big");
-    };
-
-    componentWillMount() {
-        this.initSocket();
-    }
-
-    componentWillUnmount() {
-        this.state.socket.close();
-    }
-
-    initSocket = () => {
-        const socket = socketIOClient("http://localhost:8200");
-        socket.on('connect', () => {
-            console.log('Connected');
-        });
-
-        socket.on('news', (data) => {
-            this.setState({response: data});
-        });
-
-        this.setState({socket});
-    };*/
-
-
 
     render() {
         return (

@@ -16,7 +16,7 @@ class ActiveLots extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.requestToServer();
     }
 
@@ -36,7 +36,7 @@ class ActiveLots extends React.Component {
         let urlImage = this.props.lots.result;
         let urlImages = urlImage.map((urlItem) =>
             <Item key = {urlItem.idLot} >
-                <Item.Image size= "small" src={'http://localhost:8200/'+ urlItem.img[0].imagesLotUrl } />
+                <Item.Image size= "small" src={'http://localhost:8200/'+ ((urlItem.img && urlItem.img[0].imagesLotUrl) || 'ImageLot/empty.png' )  } />
 
                 <Item.Content  key = {urlItem.idLot} >
                     <Link to={`/lotsUser/${urlItem.idLot}`}>
@@ -45,7 +45,7 @@ class ActiveLots extends React.Component {
                     </Item.Header>
                     </Link>
                     <Item.Meta>
-                        <span>{urlItem.priceLot + '$'}</span>
+                        <span>{urlItem.newBid + '$'}</span>
                     </Item.Meta>
                     <Item.Description>{urlItem.descriptionLot}</Item.Description>
                     {
