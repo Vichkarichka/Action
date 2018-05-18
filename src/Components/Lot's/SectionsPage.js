@@ -4,15 +4,25 @@ import HatWrapper from '../Header/HatWrapper';
 import { Item, Container } from 'semantic-ui-react';
 import { bidValue } from "../../Redux/Reducer";
 import { renderLot } from "../Function";
+import PaginationComponent from '../Pagination';
+import './SectionsPage.css';
 
 class SectionsPage extends Component {
 
     constructor(props){
         super(props);
         this.state ={
-
+            start: 0,
+            end: 4
         };
     }
+
+    handleValue = (value) => {
+        this.setState({
+            start: value.start,
+            end: value.end
+        });
+    };
 
     render() {
        let sectionsId = this.props.match.params.sectionId;
@@ -24,9 +34,16 @@ class SectionsPage extends Component {
             <div>
                 <HatWrapper/>
                 <Container>
-                    <Item.Group className = "Lot">
+                    <Item.Group divided className = "Lot">
+                        <Item.Header className = 'HeaderSectionsLots'>
+                            {"SECTIONS"}
+                        </Item.Header>
                         {displayLot}
                     </Item.Group>
+                    {
+                        lotData.length > this.state.end &&
+                        <PaginationComponent onSetStartEndValue={this.handleValue}/>
+                    }
                 </Container>
             </div>
         )

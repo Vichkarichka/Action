@@ -32,7 +32,6 @@ exports.setImage = (filesPath, idLot) => {
              idLot,
     ]);
     }
-    console.log(imgLot);
     sql = "INSERT INTO ImagesLot (imagesLotUrl, idLot) VALUES ?";
     return returnPromise(sql, [imgLot]);
 };

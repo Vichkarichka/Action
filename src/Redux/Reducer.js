@@ -4,7 +4,6 @@ const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 const CHANGE_LOCATION = 'CHANGE_LOCATION';
 const SET_LOGIN_VALUE = 'SET_LOGIN_VALUE';
 const SET_URL_VALUE = 'SET_URL_VALUE';
-const SET_LOT_VALUE = 'SET_LOT_VALUE';
 const SET_CATEGORY_VALUE = 'SET_CATEGORY_VALUE';
 const SET_LOTS_VALUES = 'SET_LOTS_VALUES';
 const SET_BIT_VALUES = 'SET_BIT_VALUES';
@@ -51,13 +50,6 @@ export function saveUserAvatar(urlImage) {
     return {
         type: SET_URL_VALUE,
         urlImage
-    }
-}
-
-export function saveDataLot (lot) {
-    return {
-        type: SET_LOT_VALUE,
-        lot
     }
 }
 
@@ -181,11 +173,6 @@ export default function reducer(state = {
         case SET_URL_VALUE:
             return {...state, data: {...state.data,
                     urlImage: action.urlImage}};
-
-        case SET_LOT_VALUE:
-            return Object.assign({}, state, {
-                lot: action.lot
-            });
 
         case SET_CATEGORY_VALUE:
             return Object.assign({}, state, {

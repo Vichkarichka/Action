@@ -36,8 +36,6 @@ class ActiveLots extends React.Component {
         });
     };
 
-
-
     render() {
         if(!this.props.lots) return null;
         let lot = this.props.lots.result.slice(this.state.start, this.state.end);

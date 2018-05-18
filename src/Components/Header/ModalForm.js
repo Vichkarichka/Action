@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Modal, Search } from 'semantic-ui-react';
+import { Button, Modal} from 'semantic-ui-react';
 import LoginInForm from '../Autorization/LoginInForm';
 import SignUpForm from '../Autorization/SignUpForm';
 import './ModalForm.css';
 import { connect } from "react-redux";
 import { changeLoginToSignUp } from "../../Redux/Reducer";
 import Sections from "./Sections";
+import SearchInput from '../SearchInput';
 
 class ModalForm extends Component {
 
@@ -51,7 +52,7 @@ class ModalForm extends Component {
                     {location}
                 </Modal>
                   <Sections/>
-                        <Search/>
+                        <SearchInput/>
             </div>
         )
     }

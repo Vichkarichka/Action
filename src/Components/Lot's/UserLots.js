@@ -2,64 +2,50 @@ import React from 'react'
 import HatWrapper from '../Header/HatWrapper';
 import {connect} from "react-redux";
 import axios from "axios/index";
-import { saveDataLot } from "../../Redux/Reducer";
-import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
+import { renderLot } from '../Function';
+import './UserLots.css';
+import PaginationComponent from '../Pagination';
 
 class UserLots extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            start: 0,
+            end: 4
         };
     }
 
-    componentWillMount() {
-        this.requestToServer();
-    }
-
-    requestToServer = () => {
-        let idUsers = this.props.data.idUsers;
-        axios.get('http://127.0.0.1:8200/userLots/' + idUsers)
-            .then(res => {
-                this.props.saveDataLot(res.data);
-            }).catch(function (error) {
-            console.log(error);
+    handleValue = (value) => {
+        this.setState({
+            start: value.start,
+            end: value.end
         });
     };
 
     render() {
-        if(!this.props.lot) return null;
-
-        let urlImage = this.props.lot.result;
-        let urlImages = urlImage.map((urlItem) =>
-            <Item key = {urlItem.idLot}>
-                <Item.Image src={'http://localhost:8200/'+ ((urlItem.img && urlItem.img[0].imagesLotUrl) || 'ImageLot/empty.png' ) } />
-
-                <Item.Content key = {urlItem.idLot}>
-                    <Item.Header as='a' key = {urlItem.idLot}>{urlItem.nameLot}</Item.Header>
-                    <Item.Meta>
-                        <span>{urlItem.priceLot + '$'}</span>
-                    </Item.Meta>
-                    <Item.Description>{urlItem.descriptionLot}</Item.Description>
-                    <Item.Extra>
-                        <Label>{urlItem.categoryLot}</Label>
-                    </Item.Extra>
-                    <Button primary floated='right' basic>
-                        Edit
-                    </Button>
-                </Item.Content>
-            </Item>
-        );
+        if(!this.props.lots) return null;
+        let lot = this.props.lots.result;
+        let lotUser = lot.filter(lot => lot.nameUser === this.props.data.email);
+        let displayLot = renderLot(lotUser);
         return (
             <div>
                 <div>
                     <HatWrapper/>
                 </div>
-                <Item.Group divided>
+                <Item.Group divided className = 'UserLots'>
+                    <Item.Header className = 'HeaderUserLots'>
+                        {"MY LOT'S"}
+                    </Item.Header>
 
-                            {urlImages}
+                    {displayLot}
 
                 </Item.Group>
+                {
+                    lotUser.length > this.state.end &&
+                    <PaginationComponent onSetStartEndValue={this.handleValue}/>
+                }
+
             </div>
         )
     }
@@ -69,15 +55,10 @@ class UserLots extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.data,
-        lot: state.lot,
+        lots: state.lots,
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        saveDataLot: (lot) => dispatch(saveDataLot(lot)),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLots);
+export default connect(mapStateToProps, null)(UserLots);
 
