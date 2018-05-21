@@ -19,8 +19,20 @@ export const getSections = () => {
     });
 };
 
+this.selectDisplay = (start, end) => {
+    let display;
+    if(new Date(end) < new Date(Date.now())) {
+        display =  <strong>{"ACTION IS OVER"}</strong>
+    } else if(new Date(start) < new Date(Date.now())) {
+        display =  <CountDown date={end}/>
+    } else {
+        display = <strong>{"ACTIONS START " + new Date (new Date(start) - new Date(Date.now())).getDay() + " DAY"}</strong>
+    }
+    return display;
+};
 
 export const renderLot = (lot) => {
+
     let display = lot.map((urlItem) =>
         <Item key = {urlItem.idLot} >
             <Item.Image size= "small" src={'http://localhost:8200/'+ ((urlItem.img && urlItem.img[0].imagesLotUrl) || 'ImageLot/empty.png' )  } />
@@ -36,8 +48,7 @@ export const renderLot = (lot) => {
                 </Item.Meta>
                 <Item.Description>{urlItem.descriptionLot}</Item.Description>
                 {
-                    moment(urlItem.startTime).format('DD.MM.YYYY, LTS') <= new Date(Date.now()).toLocaleString('ru') &&
-                    <CountDown date={urlItem.endTime}/>
+                    this.selectDisplay(urlItem.startTime,urlItem.endTime)
                 }
                 <Item.Extra>
                     <Label>{urlItem.categoryLot}</Label>

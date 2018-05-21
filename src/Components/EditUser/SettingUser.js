@@ -144,7 +144,7 @@ class SettingUser extends React.Component {
                     this.state.success &&
                     <Message
                         success
-                        header='Your user registration was successful'
+                        header='Your user update info was successful'
                         content='You may now log-in with the email you have chosen'
                     />
                 }

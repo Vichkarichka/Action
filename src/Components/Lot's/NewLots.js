@@ -1,12 +1,13 @@
 import React from 'react'
 import HatWrapper from '../Header/HatWrapper';
-import { Form, Image, Button, TextArea, Message, Icon } from 'semantic-ui-react';
+import { Button, Message, } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
-import Demo from "../DataTimePicker/Demo";
+import LotForm from '../LotForm';
+
 import "./NewLots.css";
-import moment from 'moment';
+
 
 class NewLots extends React.Component {
     constructor(props) {
@@ -18,84 +19,32 @@ class NewLots extends React.Component {
             category: [],
             value: 'select',
             url: [],
-            nameError: true,
-            priceError: true,
-            selectError: true,
             files: [],
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.requestServer = this.requestServer.bind(this);
     }
 
-    handleInput = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({[name]: value},() => {
-            this.validateField(name, value);
-        })
-    };
-
-    validateField(fieldName, value) {
-        let nameError = this.state.nameError;
-        let priceError = this.state.priceError;
-        let reg;
-        let selectError = this.state.value;
-
-        switch(fieldName) {
-
-            case 'namelot':
-                reg = /^([a-zA-Z0-9 .,_-]+)$/;
-                nameError = reg.test(value);
-                break;
-            case 'price':
-                reg = /^\d{1,8}(?:\.\d{1,4})?$/;
-                priceError = reg.test(value);
-                break;
-            default:
-                break;
-        }
-        if (selectError === 'Select category')
-        {
-            selectError = false;
-        }
+    handleInput = (values) => {
+        console.log(values);
         this.setState({
-            nameError: nameError,
-            priceError: priceError ,
-            selectError: selectError,
-        },this.validInput);
-    }
-
-    validInput() {
-        this.setState({formValid: this.state.nameError && this.state.priceError && this.state.selectError});
-    }
-
-    handleFileChange = ( e ) => {
-        console.log(e.target.files);
-        this.setState( {files: e.target.files}, () =>{
-
-            for (let i = 0; i < this.state.files.length; i++) {
-                this.setupReader(this.state.files[i]);
-            }
+            namelot: values.namelot,
+            price: values.price,
+            textField: values.textField,
+            value: values.value,
+            files: values.files,
+            startTime: values.startTime,
+            endTime: values.endTime,
+            formValid: values.formValid,
         });
     };
-
-    setupReader(files) {
-        let reader = new FileReader();
-        reader.onload = () => {
-            let url = this.state.url;
-            url.push(reader.result);
-            this.setState({
-                url: url,
-            });
-        };
-        reader.readAsDataURL(files);
-    }
 
     handleFormSubmit(e) {
 
         e.preventDefault();
         let nameLot = this.state.namelot;
         let priceLot = this.state.price;
+        console.log(nameLot, priceLot);
         if(nameLot.length === 0 && priceLot.length === 0 && !this.state.formValid) {
             this.setState({
                 nameError: false,
@@ -144,81 +93,16 @@ class NewLots extends React.Component {
             });
     };
 
-    handleData = (data) => {
-        data.startData = moment(data.startData).format('YYYY-MM-DD HH:mm:ss');
-        data.endData = moment(data.endData).format('YYYY-MM-DD HH:mm:ss');
-        this.setState({
-            startTime: data.startData,
-            endTime: data.endData,
-        });
-    };
-
-    change = (event) => {
-        this.setState({value: event.target.value});
-    };
-
-    HandleClose = (e) => {
-        e.preventDefault();
-        let url = this.state.url;
-        while (url.indexOf(e.target.dataset.to) !== -1) {
-            url.splice(url.indexOf(e.target.dataset.to), 1);
-        }
-        this.setState({
-            url: url,
-        });
-
-    };
 
     render() {
-        console.log(this.state.success);
-        let category = this.props.category;
-        let optionItems = category.map((categoryItem) =>
-            <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
-        );
-        let urlImage = this.state.url;
-        let urlImages = urlImage.map((urlItem, index) =>
-            <div  style={{ width: 175, height: 175 }}  key = {index}>
-                <Icon  name='close' onClick = {this.HandleClose} data-to = {urlItem}  />
-                <Image  src = {urlItem} size='medium' bordered className ='imgUrl' />
-            </div>
-        );
-        let { namelot, price, textField } = this.state;
         return (
             <div>
                 <div>
                     <HatWrapper/>
                 </div>
                 <h1 className='createLot'>Create new lot</h1>
-                {urlImages}
-                <Form className = 'formNewLot' onSubmit={this.handleFormSubmit}>
-                   <Form.Field>
-                        <input
-                            type="file"
-                            id="imgLot"
-                            onChange={this.handleFileChange}
-                            multiple
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input placeholder='Name lot' onChange={this.handleInput} error={!this.state.nameError} name = 'namelot' value = {namelot}/>
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input type = 'number' min = {0} placeholder='Price' onChange={this.handleInput} error={!this.state.priceError} name = 'price' value = {price}/>
-                    </Form.Field>
-                    <Form.Field>
-                    <Demo onSetData={this.handleData}/>
-                </Form.Field>
-                    <Form.Field>
-                    <select onChange={this.change} value={this.state.value} >
-                        <option>Select category</option>
-                        {optionItems}
-                    </select>
-                    </Form.Field>
-                    <Form.Field>
-                    <TextArea autoHeight placeholder='Add desription about lot' onChange={this.handleInput} name = 'textField' value = {textField} />
-                </Form.Field>
-                    <Button className='buttonCreateLot' basic>Create Lot</Button>
-                </Form>
+                    <LotForm onInputValue={this.handleInput}/>
+                    <Button className='buttonCreateLot' basic onClick={this.handleFormSubmit}>Create Lot</Button>
                 {
                     this.state.success &&
                     <Message
