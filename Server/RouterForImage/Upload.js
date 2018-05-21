@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var user = require('../DataBase/SqlQuerySettingUser');
-var ob = require('../ErrorObject/Errors');
-var path = require('path');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const user = require('../DataBase/SqlQuerySettingUser');
+const ob = require('../ErrorObject/Errors');
+const path = require('path');
 
 const multer = require( "multer" );
 const storage = multer.diskStorage({
@@ -23,7 +23,7 @@ router.use(bodyParser.urlencoded({
 }));
 
 
-router.get("/:id", function(req, res) {
+router.get("/:id", (req, res) => {
     let userId = req.params.id;
     user.getUrlImages(userId).then((result)=> {
         if (result.length !== 0) {

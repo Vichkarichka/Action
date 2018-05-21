@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var user = require('../DataBase/SQLQueryForLot');
-var ob = require('../ErrorObject/Errors');
-var path = require('path');
+const express = require('express');
+const router = express.Router();
+const user = require('../DataBase/SQLQueryForLot');
+const ob = require('../ErrorObject/Errors');
+const path = require('path');
 
 const multer = require( "multer" );
 
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
     user.getCategory().then((result)=> {
             res.status(201).json({
                 result: result,
@@ -40,7 +40,9 @@ router.post("/", upload.any(), (req, res) => {
         let lotData = JSON.parse(req.body.lotData);
         user.setValueLot(lotData).then((result) => {
             user.setImage(filesPath, result.insertId).then((result) => {
-                console.log(result);
+                res.status(201).json({
+                    message: "ok",
+                });
             }).catch((error) => {
                 console.log(error);
                 res.status(401).json({

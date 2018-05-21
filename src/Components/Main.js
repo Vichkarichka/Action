@@ -6,6 +6,7 @@ import NewLots from "./Lot\'s/NewLots";
 import UserLots from "./Lot\'s/UserLots";
 import LotPage from "./Lot\'s/LotPage";
 import SectionsPage from "./Lot\'s/SectionsPage";
+import EditLot from "./Lot\'s/EditLot";
 
 const Main = () => (
 
@@ -16,6 +17,7 @@ const Main = () => (
         <Route path="/lotsUser" exact component={UserLots} />
         <Route path="/lotsUser/:userId" exact component={LotPage} />
         <Route path="/sections/:sectionId" exact component={SectionsPage} />
+        <Route path="/editLots/:lotId" exact component={EditLot} />
     </Switch>
 
 );

@@ -4,6 +4,7 @@ import HatWrapper from '../Header/HatWrapper';
 import { Item, Label, Button, Container } from 'semantic-ui-react';
 import './LotPage.css';
 import { Carousel } from 'react-responsive-carousel';
+import { Link } from 'react-router-dom';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import moment from "moment/moment";
 import { bidValue } from "../../Redux/Reducer";
@@ -67,7 +68,8 @@ class LotPage extends Component {
                                 <strong>{"Please register to make a bet."}</strong>
                             </Item.Description>)
                         || ((urlItem.nameUser === this.props.data.email) &&
-                            <Button className='buttonEditLot' disabled ={this.checkTime(urlItem.startTime)}>EDIT</Button>) ||
+                            <Link to={`/editLots/${urlItem.idLot}`}>
+                            <Button className='buttonEditLot' disabled ={this.checkTime(urlItem.startTime)}>EDIT</Button></Link>) ||
                         <BidLots value = {lotData} />
                     }
                 </Item.Content>

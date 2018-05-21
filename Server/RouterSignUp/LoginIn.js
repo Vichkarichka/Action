@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var user = require('../DataBase/SqlQueryAutorizaition');
-var ob = require('../ErrorObject/Errors');
-var crypto = require('../EncodeDecodeFunc/Crypto');
-var jwt = require('jsonwebtoken');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const user = require('../DataBase/SqlQueryAutorizaition');
+const ob = require('../ErrorObject/Errors');
+const crypto = require('../EncodeDecodeFunc/Crypto');
+const jwt = require('jsonwebtoken');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({

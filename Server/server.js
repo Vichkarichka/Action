@@ -1,22 +1,23 @@
 const express = require('express');
 const app = express();
-var bodyParser = require('body-parser');
-var signUp = require('./RouterSignUp/SignUp');
-var loginIn = require('./RouterSignUp/LoginIn');
-var jwt = require('jsonwebtoken');
-var upload = require('./RouterForImage/Upload');
-var updateData = require('./RouterSetting/UpdateData');
-var path = require('path');
-var http = require('http');
-var newLot = require('./RouterLots/NewLot');
-var userLot = require('./RouterLots/UserLot');
-var allLots = require('./RouterLots/AllLots');
+let bodyParser = require('body-parser');
+let signUp = require('./RouterSignUp/SignUp');
+let loginIn = require('./RouterSignUp/LoginIn');
+let jwt = require('jsonwebtoken');
+let upload = require('./RouterForImage/Upload');
+let updateData = require('./RouterSetting/UpdateData');
+let path = require('path');
+let http = require('http');
+let newLot = require('./RouterLots/NewLot');
+let userLot = require('./RouterLots/UserLot');
+let allLots = require('./RouterLots/AllLots');
+let editLot = require('./RouterLots/EditLot');
 
 const port = process.env.PORT || 8200;
 
-var server = http.createServer(app);
-var io = module.exports.io = require('socket.io').listen(server);
-var socketConfig = require('./SocketConfig');
+let server = http.createServer(app);
+let io = module.exports.io = require('socket.io').listen(server);
+let socketConfig = require('./SocketConfig');
 
 io.on('connection', socketConfig);
 
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use('/public', express.static((path.join(__dirname, 'public'))));
 app.use('/ImageLot', express.static((path.join(__dirname, 'ImageLot'))));
 
-app.use('/', function(req, res, next) {
+app.use('/', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "*");
     res.header("Access-Control-Allow-Methods", "*");
@@ -49,6 +50,7 @@ app.use('/settingData', updateData);
 app.use('/newLots', newLot);
 app.use('/userLots', userLot);
 app.use('/allLots', allLots);
+app.use('/editLots', editLot)
 
 
 app.post("/authorization", (req, res) => {

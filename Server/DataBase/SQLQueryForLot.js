@@ -74,6 +74,22 @@ exports.updatePriceLot = (data) => {
     return returnPromise(sql, dataPrice);
 };
 
+exports.updateValueLot = (dataLot,lotId) => {
+
+    let data = {
+        nameLot: dataLot.nameLot,
+        startTime: dataLot.startTime,
+        endTime: dataLot.endTime,
+        descriptionLot: dataLot.textField,
+        priceLot: dataLot.price,
+        categoryLot: dataLot.value,
+        nameUser: dataLot.idUsers,
+    };
+
+    let sql = "UPDATE Lot SET ? WHERE idLot = " +  lotId;
+    return returnPromise(sql, data);
+};
+
 returnPromise = (sql, dataForDB) => {
     return Promise.using(getSqlConnection(), (connection) => {
         return connection.query(sql, dataForDB).then((rows) => {

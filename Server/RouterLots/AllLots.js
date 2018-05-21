@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var user = require('../DataBase/SQLQueryForLot');
-var ob = require('../ErrorObject/Errors');
+const express = require('express');
+const router = express.Router();
+const user = require('../DataBase/SQLQueryForLot');
+const ob = require('../ErrorObject/Errors');
 
 
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
     user.getAllLots().then(async(result)=> {
         const promise = [];
         const mas = [];

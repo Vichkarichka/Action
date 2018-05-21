@@ -1,6 +1,6 @@
 import React from 'react'
 import HatWrapper from '../Header/HatWrapper';
-import { Form, Image, Button, TextArea, Message, Icon } from 'semantic-ui-react';
+import { Form, Image, Button, TextArea, Segment, Icon } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
@@ -8,7 +8,7 @@ import Demo from "../DataTimePicker/Demo";
 import "./NewLots.css";
 import moment from 'moment';
 
-class NewLots extends React.Component {
+class EditLot extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +24,6 @@ class NewLots extends React.Component {
             files: [],
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        this.requestServer = this.requestServer.bind(this);
     }
 
     handleInput = (e) => {
@@ -111,15 +110,15 @@ class NewLots extends React.Component {
     };
 
     requestServer = () => {
-        let self = this;
+
         let dataLot = {
-          nameLot: this.state.namelot,
-          price: this.state.price,
-          textField: this.state.textField,
-          value: this.state.value,
-          startTime: this.state.startTime,
-          endTime: this.state.endTime,
-          idUsers: this.props.data.idUsers,
+            nameLot: this.state.namelot,
+            price: this.state.price,
+            textField: this.state.textField,
+            value: this.state.value,
+            startTime: moment(this.state.startTime).format('YYYY-MM-DD HH:mm:ss'),
+            endTime: moment(this.state.endTime).format('YYYY-MM-DD HH:mm:ss'),
+            idUsers: this.props.data.idUsers,
         };
 
         const formData = new FormData();
@@ -128,25 +127,17 @@ class NewLots extends React.Component {
             formData.append( "file", this.state.files[i]);
         }
         formData.append( "lotData" , JSON.stringify(dataLot));
-        axios.post('http://127.0.0.1:8200/newlots', formData)
-            .then(function (response) {
-                console.log(response);
-                    self.setState({
-                        success: true,
-                    });
-                    setTimeout(()=>self.setState({success: false}), 3000);
-                })
+        console.log(this.state.lotId);
+        axios.post('http://127.0.0.1:8200/editLots/' + this.state.lotId, formData)
+            .then(function (res) {
+                console.log(res);
+            })
             .catch(function (error) {
-                console.log("2");
-                self.setState({
-                    success: false,
-                });
+                console.log(error);
             });
     };
 
     handleData = (data) => {
-        data.startData = moment(data.startData).format('YYYY-MM-DD HH:mm:ss');
-        data.endData = moment(data.endData).format('YYYY-MM-DD HH:mm:ss');
         this.setState({
             startTime: data.startData,
             endTime: data.endData,
@@ -157,41 +148,50 @@ class NewLots extends React.Component {
         this.setState({value: event.target.value});
     };
 
-    HandleClose = (e) => {
-        e.preventDefault();
-        let url = this.state.url;
-        while (url.indexOf(e.target.dataset.to) !== -1) {
-            url.splice(url.indexOf(e.target.dataset.to), 1);
-        }
-        this.setState({
-            url: url,
-        });
+    componentWillMount() {
 
-    };
+        this.setState({
+            lotId: this.props.match.params.lotId,
+    },()=>{
+            let lotData = this.props.lots.result.filter(lot => lot.idLot === parseInt(this.state.lotId));
+            console.log(lotData[0]);
+            this.setState({
+               namelot: lotData[0].nameLot,
+               price: lotData[0].priceLot,
+                textField: lotData[0].descriptionLot,
+                value: lotData[0].idCategoryLot,
+                startTime: moment(lotData[0].startTime),
+                endTime: moment(lotData[0].endTime),
+                url: lotData[0].img,
+            });
+        })};
+
+
+
 
     render() {
-        console.log(this.state.success);
+
         let category = this.props.category;
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
         );
+
         let urlImage = this.state.url;
-        let urlImages = urlImage.map((urlItem, index) =>
-            <div  style={{ width: 175, height: 175 }}  key = {index}>
-                <Icon  name='close' onClick = {this.HandleClose} data-to = {urlItem}  />
-                <Image  src = {urlItem} size='medium' bordered className ='imgUrl' />
-            </div>
+        let urlImages = urlImage.map((urlItem) =>
+            <Image  src = {urlItem.imagesLotUrl && ('http://localhost:8200/'+ urlItem.imagesLotUrl) || urlItem } size='medium' bordered className ='imgUrl' />
         );
+
         let { namelot, price, textField } = this.state;
+
         return (
             <div>
                 <div>
                     <HatWrapper/>
                 </div>
-                <h1 className='createLot'>Create new lot</h1>
+                <h1 className='editLot'>Edit lot</h1>
                 {urlImages}
                 <Form className = 'formNewLot' onSubmit={this.handleFormSubmit}>
-                   <Form.Field>
+                    <Form.Field>
                         <input
                             type="file"
                             id="imgLot"
@@ -206,27 +206,19 @@ class NewLots extends React.Component {
                         <Form.Input type = 'number' min = {0} placeholder='Price' onChange={this.handleInput} error={!this.state.priceError} name = 'price' value = {price}/>
                     </Form.Field>
                     <Form.Field>
-                    <Demo onSetData={this.handleData}/>
-                </Form.Field>
-                    <Form.Field>
-                    <select onChange={this.change} value={this.state.value} >
-                        <option>Select category</option>
-                        {optionItems}
-                    </select>
+                        <Demo value = {[this.state.startTime, this.state.endTime]} onSetData={this.handleData}/>
                     </Form.Field>
                     <Form.Field>
-                    <TextArea autoHeight placeholder='Add desription about lot' onChange={this.handleInput} name = 'textField' value = {textField} />
-                </Form.Field>
+                        <select onChange={this.change} value={this.state.value} >
+                            <option>Select category</option>
+                            {optionItems}
+                        </select>
+                    </Form.Field>
+                    <Form.Field>
+                        <TextArea autoHeight placeholder='Add desription about lot' onChange={this.handleInput} name = 'textField' value = {textField} />
+                    </Form.Field>
                     <Button className='buttonCreateLot' basic>Create Lot</Button>
                 </Form>
-                {
-                    this.state.success &&
-                    <Message
-                        success
-                        header='Your lot added successful'
-                        content='You may now watch in My Lots'
-                    />
-                }
             </div>
         )
     }
@@ -236,6 +228,7 @@ const mapStateToProps = (state) => {
     return {
         data: state.data,
         category: state.category,
+        lots: state.lots,
     };
 };
 
@@ -246,4 +239,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewLots);
+export default connect(mapStateToProps, mapDispatchToProps)(EditLot);

@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var user = require('../DataBase/SqlQuerySettingUser');
-var ch  =require('../DataBase/SqlQueryAutorizaition');
-var ob = require('../ErrorObject/Errors');
-var crypto = require('../EncodeDecodeFunc/Crypto');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const user = require('../DataBase/SqlQuerySettingUser');
+const ch  =require('../DataBase/SqlQueryAutorizaition');
+const ob = require('../ErrorObject/Errors');
+const crypto = require('../EncodeDecodeFunc/Crypto');
 
 
 router.use(bodyParser.json());
@@ -12,8 +12,8 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.post('/:id', function(req, res, next) {
-    var data = req.body;
+router.post('/:id', (req, res, next) => {
+    let data = req.body;
     ch.checkEmail(data).then(function(result) {
         if (result.length === 0 || result[0].idUsers === parseInt(req.params.id)) {
             return next();
@@ -29,7 +29,7 @@ router.post('/:id', function(req, res, next) {
     });
 });
 
-router.post("/:id", function(req, res) {
+router.post("/:id", (req, res) => {
     let userId = req.params.id;
     let data = req.body;
     if(data.password.length !== 0) {

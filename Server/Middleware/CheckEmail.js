@@ -1,10 +1,10 @@
-var user = require('../DataBase/SqlQueryAutorizaition');
-var ob = require('../ErrorObject/Errors');
+const user = require('../DataBase/SqlQueryAutorizaition');
+const ob = require('../ErrorObject/Errors');
 
-exports.checkEmail = function checkEmail(req, res, next) {
-    var data = req.body;
+exports.checkEmail = (req, res, next) => {
+    let data = req.body;
 
-    user.checkEmail(data).then(function(result) {
+    user.checkEmail(data).then((result) => {
         if (result.length === 0) {
             return next();
         } else {
@@ -12,7 +12,7 @@ exports.checkEmail = function checkEmail(req, res, next) {
                 message: ob.objERRORS.USER_SINGUP,
             });
         }
-    }).catch(function(error) {
+    }).catch((error) => {
         res.status(404).json({
             message: ob.objERRORS.USER_SINGUP,
         });
@@ -20,10 +20,10 @@ exports.checkEmail = function checkEmail(req, res, next) {
 };
 
 
-exports.checkNameLot = function checkEmail(req, res, next) {
-    var data = req.body;
+exports.checkNameLot = (req, res, next) => {
+    let data = req.body;
 
-    user.checkEmail(data).then(function(result) {
+    user.checkEmail(data).then((result) => {
         if (result.length === 0) {
             return next();
         } else {
@@ -31,7 +31,7 @@ exports.checkNameLot = function checkEmail(req, res, next) {
                 message: ob.objERRORS.USER_SINGUP,
             });
         }
-    }).catch(function(error) {
+    }).catch((error) => {
         res.status(404).json({
             message: ob.objERRORS.USER_SINGUP,
         });

@@ -113,7 +113,6 @@ class SettingUser extends React.Component {
                 self.setState({
                     success: false,
                 });
-                console.log(error);
             });
     };
 
@@ -146,7 +145,7 @@ class SettingUser extends React.Component {
                     <Message
                         success
                         header='Your user registration was successful'
-                        content='You may now log-in with the username you have chosen'
+                        content='You may now log-in with the email you have chosen'
                     />
                 }
                 <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>

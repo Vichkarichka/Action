@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Search, Grid, Item } from 'semantic-ui-react'
 import {connect} from "react-redux";
+import { Redirect } from 'react-router-dom';
 
 class SearchInput extends Component {
     constructor() {
@@ -9,6 +10,7 @@ class SearchInput extends Component {
             isLoading: false,
             value: '',
             results: [],
+            redirect: false,
         };
 
         this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -31,8 +33,16 @@ class SearchInput extends Component {
         }, 500)
     };
 
+    componentDidUpdate () {
+        if (this.state.redirect) {
+            this.setState({
+                redirect: false
+            })
+        }
+    }
+
     handleResultSelect = (e, data) => {
-        console.log(data.result.idLot);
+        if(data.result.idLot) this.setState({redirect: true, idLot: data.result.idLot});
     };
 
 
@@ -52,6 +62,11 @@ class SearchInput extends Component {
 
     render() {
         const { isLoading, value, results } = this.state;
+        if (this.state.redirect) {
+            return (
+                <Redirect push to = {'/lotsUser/' + this.state.idLot}/>
+            )
+        }
         return (
                         <Search
                             loading={isLoading}

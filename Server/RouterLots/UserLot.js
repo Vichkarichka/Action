@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var user = require('../DataBase/SQLQueryForLot');
-var ob = require('../ErrorObject/Errors');
+const express = require('express');
+const router = express.Router();
+const user = require('../DataBase/SQLQueryForLot');
+const ob = require('../ErrorObject/Errors');
 
 
-router.get("/:id", function(req, res) {
+router.get("/:id", (req, res) => {
 
     let userId = req.params.id;
     user.getLots(userId).then(async(result)=> {

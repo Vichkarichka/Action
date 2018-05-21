@@ -1,11 +1,11 @@
-var CryptoJS = require("crypto-js");
+const CryptoJS = require("crypto-js");
 
-exports.encodePassword = function encodePassword(password) {
+exports.encodePassword = (password) => {
     let encryptedPassword = CryptoJS.AES.encrypt(password, "Secret");
     return encryptedPassword;
 }
 
- exports.decodePassword = function decodePassword(password) {
+ exports.decodePassword = (password) => {
     let decrypted = CryptoJS.AES.decrypt(password, "Secret");
     return decrypted;
 }

@@ -89,6 +89,12 @@ export default class Demo extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props !== nextProps && nextProps.value) {
+            this.setState({values: nextProps.value});
+        }
+    }
+
     onChange = (values) => {
         this.setState({
             values: values,
