@@ -79,14 +79,12 @@ class NewLots extends React.Component {
         formData.append( "lotData" , JSON.stringify(dataLot));
         axios.post('http://127.0.0.1:8200/newlots', formData)
             .then(function (response) {
-                console.log(response);
                     self.setState({
                         success: true,
                     });
                     setTimeout(()=>self.setState({success: false}), 3000);
                 })
             .catch(function (error) {
-                console.log("2");
                 self.setState({
                     success: false,
                 });

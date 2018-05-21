@@ -31,7 +31,9 @@ router.post("/:id", upload.any(), (req, res) => {
     let lotData = JSON.parse(req.body.lotData);
     user.updateValueLot(lotData,lotId).then((result) => {
         user.setImage(filesPath, lotId).then((result) => {
-            console.log(result);
+            res.status(201).json({
+                message: "ok",
+            });
         }).catch((error) => {
             console.log(error);
             res.status(401).json({

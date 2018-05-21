@@ -1,6 +1,6 @@
 import React from 'react'
 import HatWrapper from '../Header/HatWrapper';
-import { Button } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
@@ -57,7 +57,7 @@ class EditLot extends React.Component {
     };
 
     requestServer = () => {
-
+        let self = this;
         let dataLot = {
             nameLot: this.state.namelot,
             price: this.state.price,
@@ -76,11 +76,16 @@ class EditLot extends React.Component {
         }
         formData.append( "lotData" , JSON.stringify(dataLot));
         axios.post('http://127.0.0.1:8200/editLots/' + this.state.lotId, formData)
-            .then(function (res) {
-                console.log(res);
+            .then(function (response) {
+                self.setState({
+                    success: true,
+                });
+                setTimeout(()=>self.setState({success: false}), 3000);
             })
             .catch(function (error) {
-                console.log(error);
+                self.setState({
+                    success: false,
+                });
             });
     };
 
@@ -93,6 +98,14 @@ class EditLot extends React.Component {
                 <h1 className='editLot'>Edit lot</h1>
                 <LotForm onInputValue={this.handleInput} dataLot = {this.props.lots} lotId={this.props.match.params.lotId}/>
                     <Button className='buttonCreateLot' basic onClick={this.handleFormSubmit}>Create Lot</Button>
+                {
+                    this.state.success &&
+                    <Message
+                        success
+                        header='Your lot added successful'
+                        content='You may now watch in My Lots'
+                    />
+                }
             </div>
         )
     }
