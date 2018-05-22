@@ -32,23 +32,28 @@ router.get("/", (req, res) => {
 
 router.post("/", upload.any(), (req, res) => {
 
-    let filesPath = [];
-    for(let i = 0; i < req.files.length; i++){
-        filesPath.push(req.files[i].path);
-    }
-        //let filePath = req.files ? req.files.path : null;
         let lotData = JSON.parse(req.body.lotData);
         user.setValueLot(lotData).then((result) => {
-            user.setImage(filesPath, result.insertId).then((result) => {
-                res.status(201).json({
+            if(req.files.length === 0) {
+                return res.status(201).json({
                     message: "ok",
                 });
-            }).catch((error) => {
-                console.log(error);
-                res.status(401).json({
-                    message: ob.objERRORS.USER_SIGNUP,
+            } else {
+                let filesPath = [];
+                for (let i = 0; i < req.files.length; i++) {
+                    filesPath.push(req.files[i].path);
+                }
+                user.setImage(filesPath, result.insertId).then((result) => {
+                    res.status(201).json({
+                        message: "ok",
+                    });
+                }).catch((error) => {
+                    console.log(error);
+                    res.status(401).json({
+                        message: ob.objERRORS.USER_SIGNUP,
+                    });
                 });
-            });
+            }
         }).catch((error) => {
             console.log(error);
             res.status(401).json({

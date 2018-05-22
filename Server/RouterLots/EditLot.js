@@ -21,25 +21,29 @@ const upload = multer({ storage: storage });
 router.post("/:id", upload.any(), (req, res) => {
 
     let lotId = req.params.id;
-
-    let filesPath = [];
-
-    for(let i = 0; i < req.files.length; i++){
-        filesPath.push(req.files[i].path);
-    }
-
     let lotData = JSON.parse(req.body.lotData);
+
     user.updateValueLot(lotData,lotId).then((result) => {
-        user.setImage(filesPath, lotId).then((result) => {
-            res.status(201).json({
+        if(req.files.length === 0) {
+            return res.status(201).json({
                 message: "ok",
             });
-        }).catch((error) => {
-            console.log(error);
-            res.status(401).json({
-                message: ob.objERRORS.USER_SIGNUP,
+        } else {
+            let filesPath = [];
+            for (let i = 0; i < req.files.length; i++) {
+                filesPath.push(req.files[i].path);
+            }
+            user.setImage(filesPath, lotId).then((result) => {
+                res.status(201).json({
+                    message: "ok",
+                });
+            }).catch((error) => {
+                console.log(error);
+                res.status(401).json({
+                    message: ob.objERRORS.USER_SIGNUP,
+                });
             });
-        });
+        }
     }).catch((error) => {
         console.log(error);
         res.status(401).json({
