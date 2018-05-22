@@ -106,8 +106,8 @@ export default class Demo extends React.Component {
     };
 
     handleSubmit() {
-        let startData = this.state.values[0]._d;
-        let endData = this.state.values[1]._d;
+        let startData = this.state.values[0];
+        let endData = this.state.values[1];
         this.props.onSetData({ startData: startData, endData: endData })
     }
 

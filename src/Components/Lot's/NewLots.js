@@ -7,6 +7,7 @@ import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
 import LotForm from '../LotForm';
 
 import "./NewLots.css";
+import moment from "moment/moment";
 
 
 class NewLots extends React.Component {
@@ -66,8 +67,8 @@ class NewLots extends React.Component {
           price: this.state.price,
           textField: this.state.textField,
           value: this.state.value,
-          startTime: this.state.startTime,
-          endTime: this.state.endTime,
+          startTime: moment(this.state.startTime).format('YYYY-MM-DD HH:mm:ss'),
+          endTime: moment(this.state.endTime).format('YYYY-MM-DD HH:mm:ss'),
           idUsers: this.props.data.idUsers,
         };
 

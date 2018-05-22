@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {saveUserAvatar, loginValue} from "../Redux/Reducer";
 import Demo from "./DataTimePicker/Demo";
 import moment from 'moment';
+import './LotForm.css';
 
 class LotForm extends React.Component {
     constructor(props) {
@@ -85,7 +86,6 @@ class LotForm extends React.Component {
 };
 
     handleFileChange = ( e ) => {
-        console.log(e.target.files);
         this.setState( {files: e.target.files , url: []}, () =>{
 
             for (let i = 0; i < this.state.files.length; i++) {
@@ -124,7 +124,7 @@ class LotForm extends React.Component {
         );
         let urlImage = this.state.url;
         let urlImages = urlImage.map((urlItem) =>
-            <Image  src = {urlItem.imagesLotUrl && ('http://localhost:8200/'+ urlItem.imagesLotUrl) || urlItem }/>
+            <Image className= 'displayImg' src = {urlItem.imagesLotUrl && ('http://localhost:8200/'+ urlItem.imagesLotUrl) || urlItem }/>
         );
         let { namelot, price, textField } = this.state;
         return (
