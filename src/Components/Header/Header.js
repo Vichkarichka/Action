@@ -36,7 +36,6 @@ class Header extends Component {
            this.props.logout();
         }
         let storedArray = JSON.parse(sessionStorage.getItem("items"));
-        console.log(storedArray);
         let postData = JSON.stringify({
             token: storedArray,
         });
@@ -48,7 +47,6 @@ class Header extends Component {
 
         axios.post('http://127.0.0.1:8200/authorization', postData, axiosConfig)
             .then(function (response) {
-                console.log(response);
                 if(response.data.success){
                     temp.setState({
                         redirect: true,

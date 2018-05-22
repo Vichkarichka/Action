@@ -27,7 +27,7 @@ class NewLots extends React.Component {
     }
 
     handleInput = (values) => {
-        console.log(values);
+
         this.setState({
             namelot: values.namelot,
             price: values.price,
@@ -100,7 +100,7 @@ class NewLots extends React.Component {
                     <HatWrapper/>
                 </div>
                 <h1 className='createLot'>Create new lot</h1>
-                    <LotForm onInputValue={this.handleInput}/>
+                    <LotForm onInputValue={this.handleInput} />
                     <Button className='buttonCreateLot' basic onClick={this.handleFormSubmit}>Create Lot</Button>
                 {
                     this.state.success &&

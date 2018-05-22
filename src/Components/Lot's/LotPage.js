@@ -25,9 +25,7 @@ class LotPage extends Component {
         });
     }
 
-    checkTime = (value) =>
-        (moment(value).format('DD.MM.YYYY, LTS') <= new Date(Date.now()).toLocaleString('ru'));
-
+    checkTime = (value) => new Date(value) < new Date(Date.now());
 
     render() {
         if(!this.props.lots) return null;

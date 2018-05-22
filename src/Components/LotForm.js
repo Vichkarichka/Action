@@ -28,7 +28,7 @@ class LotForm extends React.Component {
         const value = e.target.value;
         this.setState({[name]: value},() => {
             this.validateField(name, value);
-            this.props.onInputValue(this.state)
+            this.props.onInputValue(this.state);
         })
     };
 
@@ -60,11 +60,11 @@ class LotForm extends React.Component {
             priceError: priceError ,
             selectError: selectError,
         },this.validInput);
-    }
+    };
 
     validInput() {
         this.setState({formValid: this.state.nameError && this.state.priceError && this.state.selectError});
-    }
+    };
 
     componentWillMount() {
         if(this.props.dataLot) {
@@ -83,7 +83,7 @@ class LotForm extends React.Component {
                 });
             })
         }
-};
+    };
 
     handleFileChange = ( e ) => {
         this.setState( {files: e.target.files , url: []}, () =>{
@@ -104,12 +104,14 @@ class LotForm extends React.Component {
             });
         };
         reader.readAsDataURL(files);
-    }
+    };
 
     handleData = (data) => {
         this.setState({
             startTime: data.startData,
             endTime: data.endData,
+        },() => {
+            this.props.onInputValue(this.state);
         });
     };
 

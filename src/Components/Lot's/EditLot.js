@@ -30,8 +30,8 @@ class EditLot extends React.Component {
             textField: values.textField,
             value: values.value,
             files: values.files,
-            startTime: values.startTime,
-            endTime: values.endTime,
+            startTime: moment(values.startTime),
+            endTime: moment(values.endTime),
             formValid: values.formValid,
             lotId: values.lotId,
         });

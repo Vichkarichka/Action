@@ -26,7 +26,7 @@ this.selectDisplay = (start, end) => {
     } else if(new Date(start) < new Date(Date.now())) {
         display =  <CountDown date={end}/>
     } else {
-        display = <strong>{"ACTIONS START " + new Date (new Date(start) - new Date(Date.now())).getDay() + " DAY"}</strong>
+        display = <strong>{"ACTIONS START " + Math.round((new Date(start) - new Date(Date.now()))*1.1574074074074074e-8) + " DAY"}</strong>
     }
     return display;
 };
