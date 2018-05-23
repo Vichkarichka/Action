@@ -16,14 +16,11 @@ class LotPage extends Component {
     constructor(props){
         super(props);
         this.state ={
-            lotId: '',
+
         };
     }
-    componentDidMount () {
-        this.setState ({
-           lotId: this.props.match.params.userId,
-        });
-    }
+
+
 
     checkTime = (value) => new Date(value) < new Date(Date.now());
 
@@ -44,7 +41,7 @@ class LotPage extends Component {
                         </Button>
                     </NavLink>
                 <Divider horizontal>Or</Divider>
-                    <ButtonConfirm display ={this.checkTime(startTime)} lotId = {this.state.lotId}/>
+                    <ButtonConfirm display ={this.checkTime(startTime)} lotId = {this.props.match.params.userId}/>
                 </div>
         } else if (this.checkTime(endTime)){
             display = <Item.Description>
@@ -59,9 +56,10 @@ class LotPage extends Component {
     };
 
     render() {
+        console.log(this.props.match.params.userId);
         if(!this.props.lots) return null;
         let urlImage = this.props.lots.result;
-        let lotData = urlImage.filter(lot => lot.idLot === parseInt(this.state.lotId));
+        let lotData = urlImage.filter(lot => lot.idLot === parseInt(this.props.match.params.userId));
         let urlImages = lotData.map((urlItem) =>
             <Item key = {urlItem.idLot}  >
                 <Carousel className = 'Carousel' dynamicHeight = 'true'>

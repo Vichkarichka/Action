@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Search, Grid, Item } from 'semantic-ui-react'
 import {connect} from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class SearchInput extends Component {
     constructor() {
@@ -61,6 +61,7 @@ class SearchInput extends Component {
     }
 
     render() {
+        console.log(this.state)
         const { isLoading, value, results } = this.state;
         if (this.state.redirect) {
             return (
@@ -86,4 +87,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, null)(SearchInput);
+export default withRouter(connect(mapStateToProps, null)(SearchInput));
