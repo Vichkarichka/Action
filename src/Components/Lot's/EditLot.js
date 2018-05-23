@@ -23,7 +23,6 @@ class EditLot extends React.Component {
     }
 
     handleInput = (values) => {
-        console.log(values);
         this.setState({
             namelot: values.namelot,
             price: values.price,

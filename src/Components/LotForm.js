@@ -1,10 +1,11 @@
 import React from 'react'
-import { Form, Image, TextArea,} from 'semantic-ui-react';
+import { Form, Image, TextArea, Icon} from 'semantic-ui-react';
 import {connect} from "react-redux";
 import {saveUserAvatar, loginValue} from "../Redux/Reducer";
 import Demo from "./DataTimePicker/Demo";
 import moment from 'moment';
 import './LotForm.css';
+import axios from "axios/index";
 
 class LotForm extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class LotForm extends React.Component {
             priceError: true,
             selectError: true,
             files: [],
+            urlDb: [],
         };
     }
 
@@ -79,15 +81,15 @@ class LotForm extends React.Component {
                     value: lotData[0].idCategoryLot,
                     startTime: moment(lotData[0].startTime),
                     endTime: moment(lotData[0].endTime),
-                    url: lotData[0].img,
+                    urlDb: lotData[0].img,
                 });
             })
         }
     };
 
     handleFileChange = ( e ) => {
-        this.setState( {files: e.target.files , url: []}, () =>{
-
+        this.setState( {files: e.target.files, url: []}, () =>{
+            this.props.onInputValue(this.state);
             for (let i = 0; i < this.state.files.length; i++) {
                 this.setupReader(this.state.files[i]);
             }
@@ -116,7 +118,38 @@ class LotForm extends React.Component {
     };
 
     change = (event) => {
-        this.setState({value: event.target.value});
+        this.setState({
+            value: event.target.value
+        }, () => {
+            this.props.onInputValue(this.state);
+        });
+    };
+
+    handleClose = (e) => {
+        e.preventDefault();
+
+        if(e.target.dataset.to) {
+            this.requestServer(e.target.dataset.to);
+        } else {
+            this.setState({files: [], url: []});
+        }
+    };
+
+    requestServer = (idImagesLot) => {
+        let self = this;
+        axios.delete('http://127.0.0.1:8200/editLots/' + this.state.lotId, { data: { idImage: idImagesLot } })
+            .then(function (response) {
+                let urlDb = self.state.urlDb;
+                let obj = urlDb.findIndex(item => item.idImagesLot === parseInt(idImagesLot));
+                    urlDb.splice(obj, 1);
+                    console.log(urlDb);
+                self.setState({
+                    urlDb: urlDb,
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
 
     render() {
@@ -124,11 +157,22 @@ class LotForm extends React.Component {
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
         );
-        let urlImage = this.state.url;
-        let urlImages = urlImage.map((urlItem) =>
-            <Image className= 'displayImg' src = {urlItem.imagesLotUrl && ('http://localhost:8200/'+ urlItem.imagesLotUrl) || urlItem }/>
-        );
-        let { namelot, price, textField } = this.state;
+        let urlImage = this.state.urlDb.concat(this.state.url);
+        let urlImages;
+        if(this.props.dataLot) {
+             urlImages = urlImage.map((urlItem) =>
+                 <div className= 'displayImage'>
+                     <Icon  name='close' onClick = {this.handleClose} data-to = {urlItem.idImagesLot}  />
+                     <Image className= 'displayImg' src = {urlItem.imagesLotUrl && ('http://localhost:8200/'+ urlItem.imagesLotUrl) || urlItem }/>
+                 </div>
+            );
+        } else {
+             urlImages = urlImage.map((urlItem) =>
+                <Image className= 'displayImg' src = {urlItem.imagesLotUrl && ('http://localhost:8200/'+ urlItem.imagesLotUrl) || urlItem }/>
+            );
+        }
+
+        let { namelot, price, textField, value } = this.state;
         return (
             <div>
                 {urlImages}
@@ -151,7 +195,7 @@ class LotForm extends React.Component {
                         <Demo value = {[this.state.startTime, this.state.endTime]} onSetData={this.handleData}/>
                     </Form.Field>
                     <Form.Field>
-                        <select onChange={this.change} value={this.state.value} >
+                        <select onChange={this.change} value={value} >
                             <option>Select category</option>
                             {optionItems}
                         </select>

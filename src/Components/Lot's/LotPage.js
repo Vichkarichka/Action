@@ -27,6 +27,29 @@ class LotPage extends Component {
 
     checkTime = (value) => new Date(value) < new Date(Date.now());
 
+    checkTimeStart = (value) => new Date(value) > new Date(Date.now());
+
+    displayItem = (name, idLot, startTime, lotData, endTime) => {
+        let display;
+        if(!this.props.data) {
+            display = <Item.Description>
+                <strong>{"Please register to make a bet."}</strong>
+            </Item.Description>
+        } else if (name === this.props.data.email) {
+            display = <Link to={`/editLots/${idLot}`}>
+                <Button className='buttonEditLot' disabled ={this.checkTime(startTime)}>EDIT</Button></Link>
+        } else if (this.checkTime(endTime)){
+            display = <Item.Description>
+                <strong>{"AUCTION IS OVER"}</strong>
+            </Item.Description>
+        } else if (this.checkTimeStart(startTime)) {
+            display = <strong>{"AUCTION START " + Math.round((new Date(startTime) - new Date(Date.now()))*1.1574074074074074e-8) + " DAY"}</strong>
+        } else {
+            display = <BidLots value = {lotData} />
+        }
+        return display;
+    };
+
     render() {
         if(!this.props.lots) return null;
         let urlImage = this.props.lots.result;
@@ -61,14 +84,7 @@ class LotPage extends Component {
                         <Label>{urlItem.categoryLot}</Label>
                     </Item.Extra>
                     {
-                        ((!this.props.data) &&
-                            <Item.Description>
-                                <strong>{"Please register to make a bet."}</strong>
-                            </Item.Description>)
-                        || ((urlItem.nameUser === this.props.data.email) &&
-                            <Link to={`/editLots/${urlItem.idLot}`}>
-                            <Button className='buttonEditLot' disabled ={this.checkTime(urlItem.startTime)}>EDIT</Button></Link>) ||
-                        <BidLots value = {lotData} />
+                        this.displayItem(urlItem.nameUser, urlItem.idLot, urlItem.startTime, lotData, urlItem.endTime)
                     }
                 </Item.Content>
             </Item>

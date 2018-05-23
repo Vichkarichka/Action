@@ -11,6 +11,7 @@ class BidLots extends Component {
             currentValue: this.props.value[0].newBid,
             bidValue: 0,
             countBid: this.props.value[0].countBidLot,
+
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);

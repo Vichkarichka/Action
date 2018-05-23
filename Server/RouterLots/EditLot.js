@@ -52,4 +52,21 @@ router.post("/:id", upload.any(), (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+
+    let idLotImg = req.body.idImage;
+
+    user.deleteImage(idLotImg).then((result) => {
+           console.log(result);
+        res.status(200).json({
+            message: 'ok',
+        });
+    }).catch((error) => {
+        console.log(error);
+        res.status(401).json({
+            message: ob.objERRORS.USER_SIGNUP,
+        });
+    });
+});
+
 module.exports = router;

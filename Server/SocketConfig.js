@@ -35,6 +35,7 @@ module.exports = (socket) => {
         });
 
         socket.on('room', (room) => {
+
             if (socket.room)
                 socket.leave(socket.room);
 

@@ -22,11 +22,11 @@ export const getSections = () => {
 this.selectDisplay = (start, end) => {
     let display;
     if(new Date(end) < new Date(Date.now())) {
-        display =  <strong>{"ACTION IS OVER"}</strong>
+        display =  <strong>{"AUCTION IS OVER"}</strong>
     } else if(new Date(start) < new Date(Date.now())) {
         display =  <CountDown date={end}/>
     } else {
-        display = <strong>{"ACTIONS START " + Math.round((new Date(start) - new Date(Date.now()))*1.1574074074074074e-8) + " DAY"}</strong>
+        display = <strong>{"AUCTION START " + Math.round((new Date(start) - new Date(Date.now()))*1.1574074074074074e-8) + " DAY"}</strong>
     }
     return display;
 };

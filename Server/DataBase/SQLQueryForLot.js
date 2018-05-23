@@ -90,6 +90,11 @@ exports.updateValueLot = (dataLot,lotId) => {
     return returnPromise(sql, data);
 };
 
+exports.deleteImage = (idLotImg) => {
+    let sql = "DELETE FROM ImagesLot WHERE idImagesLot = " + idLotImg;
+    return returnPromise(sql);
+};
+
 returnPromise = (sql, dataForDB) => {
     return Promise.using(getSqlConnection(), (connection) => {
         return connection.query(sql, dataForDB).then((rows) => {
