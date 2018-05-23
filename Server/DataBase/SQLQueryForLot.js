@@ -95,6 +95,11 @@ exports.deleteImage = (idLotImg) => {
     return returnPromise(sql);
 };
 
+exports.deleteLot = (idLot) => {
+    let sql = "DELETE FROM Lot WHERE idLot = " + idLot;
+    return returnPromise(sql);
+};
+
 returnPromise = (sql, dataForDB) => {
     return Promise.using(getSqlConnection(), (connection) => {
         return connection.query(sql, dataForDB).then((rows) => {

@@ -69,4 +69,22 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+router.delete("/", (req, res) => {
+
+    let idLot = req.body.idLot;
+
+    user.deleteLot(idLot).then((result) => {
+        console.log(result);
+        res.status(200).json({
+            message: 'ok',
+        });
+    }).catch((error) => {
+        console.log(error);
+        res.status(401).json({
+            message: ob.objERRORS.USER_SIGNUP,
+        });
+    });
+});
+
+
 module.exports = router;

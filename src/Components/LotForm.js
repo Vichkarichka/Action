@@ -81,7 +81,7 @@ class LotForm extends React.Component {
                     value: lotData[0].idCategoryLot,
                     startTime: moment(lotData[0].startTime),
                     endTime: moment(lotData[0].endTime),
-                    urlDb: lotData[0].img,
+                    urlDb: lotData[0].img || [],
                 });
             })
         }
@@ -157,6 +157,7 @@ class LotForm extends React.Component {
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
         );
+        console.log(this.state.urlDb,this.state.url);
         let urlImage = this.state.urlDb.concat(this.state.url);
         let urlImages;
         if(this.props.dataLot) {

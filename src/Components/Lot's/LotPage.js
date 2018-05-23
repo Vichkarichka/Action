@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import HatWrapper from '../Header/HatWrapper';
-import { Item, Label, Button, Container } from 'semantic-ui-react';
+import { Item, Label, Button, Container, Divider  } from 'semantic-ui-react';
 import './LotPage.css';
 import { Carousel } from 'react-responsive-carousel';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
-import moment from "moment/moment";
 import { bidValue } from "../../Redux/Reducer";
 import BidLots from './BidLots';
 import CountDown from '../CountDown';
+import ButtonConfirm from './ButtonConfirm';
 
 class LotPage extends Component {
 
@@ -36,8 +36,16 @@ class LotPage extends Component {
                 <strong>{"Please register to make a bet."}</strong>
             </Item.Description>
         } else if (name === this.props.data.email) {
-            display = <Link to={`/editLots/${idLot}`}>
-                <Button className='buttonEditLot' disabled ={this.checkTime(startTime)}>EDIT</Button></Link>
+            display = <div>
+                <Divider />
+                    <NavLink to={`/editLots/${idLot}`} className={this.checkTime(startTime) && 'disabled-link' || 'enable-link'}>
+                        <Button className='buttonEditLot' disabled ={this.checkTime(startTime)}>
+                            EDIT
+                        </Button>
+                    </NavLink>
+                <Divider horizontal>Or</Divider>
+                    <ButtonConfirm display ={this.checkTime(startTime)} lotId = {this.state.lotId}/>
+                </div>
         } else if (this.checkTime(endTime)){
             display = <Item.Description>
                 <strong>{"AUCTION IS OVER"}</strong>
@@ -56,7 +64,7 @@ class LotPage extends Component {
         let lotData = urlImage.filter(lot => lot.idLot === parseInt(this.state.lotId));
         let urlImages = lotData.map((urlItem) =>
             <Item key = {urlItem.idLot}  >
-                <Carousel className = 'Carousel'>
+                <Carousel className = 'Carousel' dynamicHeight = 'true'>
                     {((urlItem.img &&
                         urlItem.img.map((img) =>
                             <div>

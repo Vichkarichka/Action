@@ -15,5 +15,17 @@
     margin-left: 37%;
 }
 .buttonEditLot {
-    margin-left: 90% !important;
+    width: 100% !important;
+}
+.buttonDeleteLot {
+    width: 100% !important;
+}
+
+.disabled-link {
+    pointer-events: none;
+}
+
+.ui.small.modal.transition.visible.active {
+    display: inline-block !important;
+    margin-top: 200px !important;
 }
