@@ -34,7 +34,7 @@ class SectionsPage extends Component {
             <div>
                 <HatWrapper/>
                 <Container>
-                    <Item.Group divided className = "Lot">
+                    <Item.Group divided className = "LotSections">
                         <Item.Header className = 'HeaderSectionsLots'>
                             {"SECTIONS"}
                         </Item.Header>

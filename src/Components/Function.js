@@ -4,6 +4,7 @@ import axios from "axios/index";
 import { Link } from 'react-router-dom';
 import { Item, Label } from 'semantic-ui-react';
 import CountDown from './CountDown';
+import {ErrorObject} from "./ErrorObject";
 
 
 export const getSections = () => {
@@ -59,4 +60,5 @@ export const renderLot = (lot) => {
     );
     return display;
 };
+
 

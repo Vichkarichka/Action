@@ -1,8 +1,8 @@
 import React from 'react'
-import { Form, Image, TextArea, Icon} from 'semantic-ui-react';
+import { Form, Image, TextArea, Icon, Message} from 'semantic-ui-react';
 import {connect} from "react-redux";
-import {saveUserAvatar, loginValue} from "../Redux/Reducer";
-import Demo from "./DataTimePicker/Demo";
+import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
+import Demo from "../DataTimePicker/Demo";
 import moment from 'moment';
 import './LotForm.css';
 import axios from "axios/index";
@@ -20,6 +20,7 @@ class LotForm extends React.Component {
             nameError: true,
             priceError: true,
             selectError: true,
+            textAreaError: true,
             files: [],
             urlDb: [],
         };
@@ -37,8 +38,10 @@ class LotForm extends React.Component {
     validateField(fieldName, value) {
         let nameError = this.state.nameError;
         let priceError = this.state.priceError;
+        let textAreaError = this.state.textAreaError;
+        let selectValue = this.state.value;
+        let selectError = this.state.selectError;
         let reg;
-        let selectError = this.state.value;
 
         switch(fieldName) {
 
@@ -50,10 +53,13 @@ class LotForm extends React.Component {
                 reg = /^\d{1,8}(?:\.\d{1,4})?$/;
                 priceError = reg.test(value);
                 break;
+            case 'textField':
+                reg = /^[\w ()+.'"?!:;,-]*$/;
+                textAreaError = reg.test(value);
             default:
                 break;
         }
-        if (selectError === 'Select category')
+        if (selectValue === 'Select category')
         {
             selectError = false;
         }
@@ -61,11 +67,14 @@ class LotForm extends React.Component {
             nameError: nameError,
             priceError: priceError ,
             selectError: selectError,
-        },this.validInput);
+            textAreaError: textAreaError,
+        },() => {this.validInput()});
     };
 
     validInput() {
-        this.setState({formValid: this.state.nameError && this.state.priceError && this.state.selectError});
+        this.setState({formValid: this.state.nameError && this.state.priceError
+                && this.state.selectError && this.state.textAreaError},
+            () => { this.props.onInputValue(this.state)});
     };
 
     componentWillMount() {
@@ -88,12 +97,12 @@ class LotForm extends React.Component {
     };
 
     handleFileChange = ( e ) => {
-        this.setState( {files: e.target.files, url: []}, () =>{
-            this.props.onInputValue(this.state);
-            for (let i = 0; i < this.state.files.length; i++) {
-                this.setupReader(this.state.files[i]);
-            }
-        });
+            this.setState({files: e.target.files, url: []}, () => {
+                this.props.onInputValue(this.state);
+                for (let i = 0; i < this.state.files.length; i++) {
+                    this.setupReader(this.state.files[i]);
+                }
+            });
     };
 
     setupReader(files) {
@@ -142,7 +151,6 @@ class LotForm extends React.Component {
                 let urlDb = self.state.urlDb;
                 let obj = urlDb.findIndex(item => item.idImagesLot === parseInt(idImagesLot));
                     urlDb.splice(obj, 1);
-                    console.log(urlDb);
                 self.setState({
                     urlDb: urlDb,
                 });
@@ -153,17 +161,17 @@ class LotForm extends React.Component {
     };
 
     render() {
+
         let category = this.props.category;
         let optionItems = category.map((categoryItem) =>
             <option  key={categoryItem.idCategoryLot} value={categoryItem.idCategoryLot}>{categoryItem.nameCategory}</option>
         );
-        console.log(this.state.urlDb,this.state.url);
         let urlImage = this.state.urlDb.concat(this.state.url);
         let urlImages;
         if(this.props.dataLot) {
              urlImages = urlImage.map((urlItem) =>
                  <div className= 'displayImage'>
-                     <Icon  name='close' onClick = {this.handleClose} data-to = {urlItem.idImagesLot}  />
+                     <Icon  name='close' onClick = {this.handleClose} data-to = {urlItem.idImagesLot} className= 'closeButton' />
                      <Image className= 'displayImg' src = {urlItem.imagesLotUrl && ('http://localhost:8200/'+ urlItem.imagesLotUrl) || urlItem }/>
                  </div>
             );
@@ -176,8 +184,11 @@ class LotForm extends React.Component {
         let { namelot, price, textField, value } = this.state;
         return (
             <div>
+                <div className= 'imageContainer'>
                 {urlImages}
+                </div>
                 <Form className = 'formNewLot'>
+                    <h3>Please load, no more 5 images</h3>
                     <Form.Field>
                         <input
                             type="file"

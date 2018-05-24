@@ -8,6 +8,9 @@ import './SettingUser.css';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
+import moment from "moment/moment";
+import {ErrorObject} from "../ErrorObject";
+import {ErrorMessage} from "../ErrorMessage";
 
 class SettingUser extends React.Component {
     constructor(props) {
@@ -18,6 +21,7 @@ class SettingUser extends React.Component {
             source: emptyUser,
             urlImage: '' ,
             idUsers: '',
+            Error: false,
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
@@ -86,7 +90,35 @@ class SettingUser extends React.Component {
         this.setState( {file: e.target.files[0]} );
     };
 
-    handleClick = () => {
+
+
+    handleClick() {
+
+       let email = this.state.email;
+       let password = this.state.password;
+       let firstName = this.state.firstName;
+       let lastName = this.state.lastName;
+
+        if(!this.state.formValid) {
+            this.setState({
+                Error: true,
+                errorName: ErrorObject.FORM_VALID,
+            });
+            setTimeout(()=>this.setState({Error: false}), 3000);
+        } else if(email.length === 0 || firstName.length === 0 || lastName.length === 0 ) {
+            this.setState({
+                Error: true,
+                errorName: ErrorObject.EMPTY_FIELD,
+            });
+            setTimeout(()=>this.setState({Error: false}), 3000);
+        } else {
+            this.setState({
+                formValid: true,
+            }, this.requestServer);
+        }
+    };
+
+    requestServer = () => {
         let self = this;
         let idUsers = this.props.data.idUsers;
         let postData = JSON.stringify({
@@ -140,15 +172,13 @@ class SettingUser extends React.Component {
                     <Button className='buttonUpload' basic>Upload</Button>
                 </Form>
                 <InputForm onInputValue={this.handleInput}  onValueForm={this.valueForm} data ={this.props.data}/>
-                {
-                    this.state.success &&
-                    <Message
-                        success
-                        header='Your user update info was successful'
-                        content='You may now log-in with the email you have chosen'
-                    />
-                }
-                <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>
+                <div style={{position: 'relative'}} >
+                    <Button className='buttonSave' onClick={this.handleClick} basic type="submit" >Save</Button>
+                    {
+                        this.state.Error &&
+                        ErrorMessage(this.state.errorName)
+                    }
+                </div>
             </div>
         )
     }

@@ -61,7 +61,6 @@ class SearchInput extends Component {
     }
 
     render() {
-        console.log(this.state)
         const { isLoading, value, results } = this.state;
         if (this.state.redirect) {
             return (

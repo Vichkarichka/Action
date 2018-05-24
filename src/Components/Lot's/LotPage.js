@@ -16,7 +16,6 @@ class LotPage extends Component {
     constructor(props){
         super(props);
         this.state ={
-
         };
     }
 
@@ -33,7 +32,7 @@ class LotPage extends Component {
                 <strong>{"Please register to make a bet."}</strong>
             </Item.Description>
         } else if (name === this.props.data.email) {
-            display = <div>
+            display = <div className="ChangeLotButton">
                 <Divider />
                     <NavLink to={`/editLots/${idLot}`} className={this.checkTime(startTime) && 'disabled-link' || 'enable-link'}>
                         <Button className='buttonEditLot' disabled ={this.checkTime(startTime)}>
@@ -42,6 +41,7 @@ class LotPage extends Component {
                     </NavLink>
                 <Divider horizontal>Or</Divider>
                     <ButtonConfirm display ={this.checkTime(startTime)} lotId = {this.props.match.params.userId}/>
+                <Divider />
                 </div>
         } else if (this.checkTime(endTime)){
             display = <Item.Description>
@@ -56,13 +56,12 @@ class LotPage extends Component {
     };
 
     render() {
-        console.log(this.props.match.params.userId);
         if(!this.props.lots) return null;
         let urlImage = this.props.lots.result;
         let lotData = urlImage.filter(lot => lot.idLot === parseInt(this.props.match.params.userId));
         let urlImages = lotData.map((urlItem) =>
             <Item key = {urlItem.idLot}  >
-                <Carousel className = 'Carousel' dynamicHeight = 'true'>
+                <Carousel className = 'Carousel' dynamicHeight = {true}>
                     {((urlItem.img &&
                         urlItem.img.map((img) =>
                             <div>

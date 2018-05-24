@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input, Statistic, Icon } from 'semantic-ui-react';
+import { Button, Input, Statistic, Icon, Divider } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import socketIOClient from 'socket.io-client';
 
@@ -69,6 +69,7 @@ class BidLots extends Component {
                         {'(' + this.state.countBid + 'bid)'}
                     </Statistic.Value>
                 </Statistic>
+                <Divider horizontal>Make your bid</Divider>
                 <Input className='bid' type='number' placeholder='Type your max bid' onChange={ this.handleChange } action >
                     <input />
                     <Button type='submit' onClick={this.handleClick}>BID</Button>

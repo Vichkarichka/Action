@@ -14,5 +14,6 @@ input[type=number]::-webkit-outer-spin-button {
 .buttonCreateLot {
     margin-top: 1% !important;
     margin-left: 35% !important;
+    margin-bottom: 2% !important;
     width: 30% !important;
 }

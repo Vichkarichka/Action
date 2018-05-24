@@ -1,10 +1,13 @@
 import React from 'react'
 import HatWrapper from '../Header/HatWrapper';
-import { Button, Message, } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 import {connect} from "react-redux";
+import { Redirect } from 'react-router-dom';
 import axios from "axios/index";
 import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
-import LotForm from '../LotForm';
+import LotForm from './LotForm';
+import { ErrorMessage } from '../ErrorMessage';
+import { ErrorObject } from "../ErrorObject";
 
 import "./NewLots.css";
 import moment from "moment/moment";
@@ -21,13 +24,15 @@ class NewLots extends React.Component {
             value: 'select',
             url: [],
             files: [],
+            Error: false,
+            redirect: false,
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.requestServer = this.requestServer.bind(this);
     }
 
     handleInput = (values) => {
-
+        console.log(values);
         this.setState({
             namelot: values.namelot,
             price: values.price,
@@ -40,19 +45,28 @@ class NewLots extends React.Component {
         });
     };
 
-    handleFormSubmit(e) {
-
-        e.preventDefault();
+    handleFormSubmit() {
         let nameLot = this.state.namelot;
         let priceLot = this.state.price;
-        console.log(nameLot, priceLot);
-        if(nameLot.length === 0 && priceLot.length === 0 && !this.state.formValid) {
+
+        if(!this.state.formValid) {
             this.setState({
-                nameError: false,
-                priceError: false ,
-                selectError: false,
-                formValid: false,
+                Error: true,
+                errorName: ErrorObject.FORM_VALID,
             });
+            setTimeout(()=>this.setState({Error: false}), 3000);
+        } else if(this.state.files.length > 5) {
+            this.setState({
+                Error: true,
+                errorName: ErrorObject.LIMIT_FILE,
+            });
+            setTimeout(()=>this.setState({Error: false}), 3000);
+        } else if(nameLot.length === 0 || priceLot.length === 0) {
+            this.setState({
+                Error: true,
+                errorName: ErrorObject.EMPTY_FIELD,
+            });
+            setTimeout(()=>this.setState({Error: false}), 3000);
         } else {
             this.setState({
                 formValid: true,
@@ -81,19 +95,22 @@ class NewLots extends React.Component {
         axios.post('http://127.0.0.1:8200/newlots', formData)
             .then(function (response) {
                     self.setState({
-                        success: true,
+                        redirect: true,
                     });
-                    setTimeout(()=>self.setState({success: false}), 3000);
                 })
             .catch(function (error) {
                 self.setState({
-                    success: false,
+                    redirect: false,
                 });
             });
     };
 
-
     render() {
+        if (this.state.redirect) {
+            return (
+                <Redirect push to = '/'/>
+            )
+        }
         return (
             <div>
                 <div>
@@ -101,15 +118,13 @@ class NewLots extends React.Component {
                 </div>
                 <h1 className='createLot'>Create new lot</h1>
                     <LotForm onInputValue={this.handleInput} />
+                <div style={{position: 'relative'}} >
                     <Button className='buttonCreateLot' basic onClick={this.handleFormSubmit}>Create Lot</Button>
                 {
-                    this.state.success &&
-                    <Message
-                        success
-                        header='Your lot added successful'
-                        content='You may now watch in My Lots'
-                    />
+                    this.state.Error &&
+                        ErrorMessage(this.state.errorName)
                 }
+                </div>
             </div>
         )
     }

@@ -1,6 +1,6 @@
 .Carousel {
-    margin: 0 20px;
-    width: 25%;
+    margin: 0 20px 0 10px;
+    width: 40%;
     display: inline-block;
 }
 
@@ -28,4 +28,17 @@
 .ui.small.modal.transition.visible.active {
     display: inline-block !important;
     margin-top: 200px !important;
+}
+.ui.items.Lot {
+    margin-left: 0px !important;
+}
+.ChangeLotButton {
+    margin: 0 auto !important;
+    width: 100% !important;
+    padding-right: 5% !important;
+}
+.ui.negative.message {
+    position: absolute !important;
+    top: -30px;
+    right: 100px;
 }
