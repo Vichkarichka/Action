@@ -9,31 +9,12 @@ exports.checkEmail = (req, res, next) => {
             return next();
         } else {
             res.status(409).json({
-                message: ob.objERRORS.USER_SINGUP,
+                message: ob.objERRORS.USER_EMAIL,
             });
         }
     }).catch((error) => {
         res.status(404).json({
-            message: ob.objERRORS.USER_SINGUP,
-        });
-    });
-};
-
-
-exports.checkNameLot = (req, res, next) => {
-    let data = req.body;
-
-    user.checkEmail(data).then((result) => {
-        if (result.length === 0) {
-            return next();
-        } else {
-            res.status(409).json({
-                message: ob.objERRORS.USER_SINGUP,
-            });
-        }
-    }).catch((error) => {
-        res.status(404).json({
-            message: ob.objERRORS.USER_SINGUP,
+            message: ob.objERRORS.USER_EMAIL,
         });
     });
 };

@@ -5,13 +5,14 @@ const user = require('../DataBase/SqlQueryAutorizaition');
 const ob = require('../ErrorObject/Errors');
 const crypto = require('../EncodeDecodeFunc/Crypto');
 const jwt = require('jsonwebtoken');
+const valid = require('../ErrorObject/ValidationError');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.post('/', (req, res) => {
+router.post('/', valid.validationFieldLoginIn, (req, res) => {
     let data = req.body;
     user.loginUserIntoApp(data).then((result)=> {
         console.log(result);

@@ -3,6 +3,7 @@ const router = express.Router();
 const user = require('../DataBase/SQLQueryForLot');
 const ob = require('../ErrorObject/Errors');
 const path = require('path');
+const valid = require('../ErrorObject/ValidationError');
 
 const multer = require( "multer" );
 
@@ -25,12 +26,12 @@ router.get("/", (req, res) => {
     }).catch((error) => {
         console.log(error);
         res.status(401).json({
-            message: ob.objERRORS.USER_SIGNUP,
+            message: ob.objERRORS.LOT_SECTIONS,
         });
     });
 });
 
-router.post("/", upload.any(), (req, res) => {
+router.post("/", upload.any(), valid.validationFieldNewLot, (req, res) => {
 
         let lotData = JSON.parse(req.body.lotData);
         user.setValueLot(lotData).then((result) => {
@@ -50,14 +51,14 @@ router.post("/", upload.any(), (req, res) => {
                 }).catch((error) => {
                     console.log(error);
                     res.status(401).json({
-                        message: ob.objERRORS.USER_SIGNUP,
+                        message: ob.objERRORS.LOT_IMAGE,
                     });
                 });
             }
         }).catch((error) => {
             console.log(error);
             res.status(401).json({
-                message: ob.objERRORS.USER_SIGNUP,
+                message: ob.objERRORS.LOT_FORM,
             });
         });
 });

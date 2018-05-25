@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import {changeLoginToSignUp, signup} from "../Redux/Reducer";
+import {ErrorMessage} from "./ErrorMessage";
 
 class InputForm extends Component {
 
@@ -106,7 +107,6 @@ class InputForm extends Component {
 
     render() {
         let {email, password, confirmPassword, firstName, lastName} = this.state;
-        let {loginError} = this.props;
         return(
             <Form className = 'formLoginIn'>
                 <h1>Create an account</h1>
@@ -125,11 +125,6 @@ class InputForm extends Component {
                 <Form.Field>
                     <Form.Input placeholder='Last Name' onChange={this.handleInput} error={!this.state.lastNameError} name = 'lastName' value={lastName} />
                 </Form.Field>
-                <div className="message">
-                    { loginError &&
-                    <div>{loginError.message}</div>
-                    }
-                </div>
             </Form>
         );
     }

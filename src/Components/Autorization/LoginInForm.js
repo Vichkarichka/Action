@@ -5,6 +5,8 @@ import { login, changeLoginToSignUp, loginValue } from '../../Redux/Reducer';
 import SocialButton from '../SocialButton';
 import './LoginInForm.css';
 import axios from "axios/index";
+import {ErrorObject} from "../ErrorObject";
+import {ErrorMessage} from "../ErrorMessage";
 
 class LoginInForm extends Component {
 
@@ -14,8 +16,9 @@ class LoginInForm extends Component {
             email: '',
             password: '',
             checkSignUp: false,
-            emailError: false,
-            passwordError: false,
+            emailError: true,
+            passwordError: true,
+            Error: false,
         };
     }
 
@@ -35,11 +38,15 @@ class LoginInForm extends Component {
                    temp.props.parentMethod();
                }
            });
+        } else {
+            this.setState({
+                email: '',
+                password: '',
+                Error: true,
+                errorName: ErrorObject.FORM_VALID,
+            });
+            setTimeout(()=>this.setState({Error: false}), 3000);
         }
-        this.setState({
-            email: '',
-            password: ''
-        });
     };
 
     serverRequest = () => {
@@ -126,7 +133,6 @@ class LoginInForm extends Component {
 
     render() {
         let {email, password} = this.state;
-        let {loginError} = this.props;
         return(
             <Form className = 'formLoginIn' error={this.state.formError}>
                 <h1>Log in to your account</h1>
@@ -136,10 +142,13 @@ class LoginInForm extends Component {
                 <Form.Field>
                     <Form.Input  placeholder='Password' error={!this.state.passwordError} onChange={this.handleInput} name = 'password'  value={password} />
                 </Form.Field>
-                <div className="message">
-                    { loginError && <div>{loginError.message}</div> }
+                <div style={{position: 'relative'}}>
+                    <Button  className='buttonLoginIn' type='submit' onClick = {this.onSubmit} >Login In</Button>
+                    {
+                        this.state.Error &&
+                        ErrorMessage(this.state.errorName)
+                    }
                 </div>
-                <Button  className='buttonLoginIn' type='submit' onClick = {this.onSubmit} >Login In</Button>
                 <p className='Text'>or signup with your social account</p>
                 <SocialButton/>
                 <p className='Text'>Don't have an account?

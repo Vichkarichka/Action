@@ -18,8 +18,6 @@ class FirstPage extends Component {
             <div>
                 <HatWrapper/>
                 <ActiveLots/>
-                {/*<p>{this.state.response}</p>
-                <button onClick = {this.send}>Click</button>*/}
             </div>
         )
     }

@@ -5,6 +5,7 @@ const user = require('../DataBase/SqlQueryAutorizaition');
 const ob = require('../ErrorObject/Errors');
 const crypto = require('../EncodeDecodeFunc/Crypto');
 const ch = require('../Middleware/CheckEmail');
+const valid = require('../ErrorObject/ValidationError');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
@@ -12,7 +13,7 @@ router.use(bodyParser.urlencoded({
 }));
 
 
-router.post('/',ch.checkEmail, (req, res) => {
+router.post('/',ch.checkEmail, valid.validationFieldSignUp, (req, res) => {
     let data = req.body;
     let password = crypto.encodePassword(data.password);
     user.pushRegistationDataToDatabase(data, password).then((result)=> {

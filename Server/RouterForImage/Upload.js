@@ -33,13 +33,13 @@ router.get("/:id", (req, res) => {
             });
         } else {
             res.status(400).json({
-                message: ob.objERRORS.USER_SINGUP,
+                message: ob.objERRORS.LOT_IMAGE,
             });
         }
     }).catch((error) => {
         console.log(error);
         res.status(401).json({
-            message: ob.objERRORS.USER_SINGUP,
+            message: ob.objERRORS.LOT_IMAGE,
         });
     });
 });
@@ -55,12 +55,12 @@ router.post("/", upload.single("file"), (req, res) => {
                     res.status(200).send("Successfully");
                 } else {
                     res.status(409).json({
-                        message: ob.objERRORS.USER_SINGUP,
+                        message: ob.objERRORS.LOT_IMAGE,
                     });
                 }
             }).catch((error) => {
                 res.status(409).json({
-                    message: ob.objERRORS.USER_SINGUP,
+                    message: ob.objERRORS.LOT_IMAGE,
                 });
             });
         } else {
@@ -69,18 +69,18 @@ router.post("/", upload.single("file"), (req, res) => {
                     res.status(200).send("Successfully");
                 } else {
                     res.status(409).json({
-                        message: ob.objERRORS.USER_SINGUP,
+                        message: ob.objERRORS.LOT_IMAGE,
                     });
                 }
             }).catch((error) => {
                 res.status(409).json({
-                    message: ob.objERRORS.USER_SINGUP,
+                    message: ob.objERRORS.LOT_IMAGE,
                 });
             });
         }
     }).catch((error) => {
         res.status(409).json({
-            message: ob.objERRORS.USER_SINGUP,
+            message: ob.objERRORS.LOT_IMAGE,
         });
     });
 });

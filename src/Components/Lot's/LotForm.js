@@ -21,6 +21,7 @@ class LotForm extends React.Component {
             priceError: true,
             selectError: true,
             textAreaError: true,
+            timeError: true,
             files: [],
             urlDb: [],
         };
@@ -118,6 +119,7 @@ class LotForm extends React.Component {
     };
 
     handleData = (data) => {
+
         this.setState({
             startTime: data.startData,
             endTime: data.endData,
@@ -206,13 +208,13 @@ class LotForm extends React.Component {
                     <Form.Field>
                         <Demo value = {[this.state.startTime, this.state.endTime]} onSetData={this.handleData}/>
                     </Form.Field>
-                    <Form.Field>
+                    <Form.Field  error={!this.state.selectError}>
                         <select onChange={this.change} value={value} >
                             <option>Select category</option>
                             {optionItems}
                         </select>
                     </Form.Field>
-                    <Form.Field>
+                    <Form.Field error={!this.state.textAreaError}>
                         <TextArea autoHeight placeholder='Add desription about lot' onChange={this.handleInput} name = 'textField' value = {textField} />
                     </Form.Field>
                 </Form>

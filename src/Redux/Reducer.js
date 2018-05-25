@@ -34,6 +34,9 @@ export function signup(email, password, confirmPassword, firstName, lastName) {
                 dispatch(setSignUpSuccess(true));
             } else {
                 dispatch(setLoginError(error));
+                setTimeout(() => {
+                    dispatch(setLoginError(false))
+                }, 3000)
             }
         });
     }
@@ -74,10 +77,10 @@ function callSignupApi(email, password, confirmPassword, firstName, lastName, ca
         {
             return callback(null);
         } else {
-           return callback(new Error('Wrong password and confirm password'));
+           return callback(new Error('ERROR_PASSWORD_CONFIRM'));
        }
     } else {
-        return callback(new Error('Please fill in the fields'));
+        return callback(new Error('ERROR_EMPTY_FIELD'));
     }
 }
 

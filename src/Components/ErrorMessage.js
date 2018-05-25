@@ -24,6 +24,9 @@ export const ErrorMessage = (error) => {
         case 'ERROR_EMPTY_FIELD': return (
             this.displayError('Validation error', 'Please, fill all field' )
         );
+        case 'ERROR_PASSWORD_CONFIRM': return (
+            this.displayError('Validation error', 'Please, check your password or confirm password' )
+        );
         default:
             break;
     }

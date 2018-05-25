@@ -1,7 +1,7 @@
 import React from 'react'
 import ModalLoginInForm from '../Header/ModalForm';
 import Header from '../Header/Header';
-import { Button, Form, Message, Image } from 'semantic-ui-react';
+import { Button, Form, Image } from 'semantic-ui-react';
 import emptyUser from '../../Style/empty-avatar.jpg';
 import InputForm from '../InputForm';
 import './SettingUser.css';
@@ -11,6 +11,7 @@ import {saveUserAvatar, loginValue} from "../../Redux/Reducer";
 import moment from "moment/moment";
 import {ErrorObject} from "../ErrorObject";
 import {ErrorMessage} from "../ErrorMessage";
+import { Redirect } from 'react-router-dom';
 
 class SettingUser extends React.Component {
     constructor(props) {
@@ -22,6 +23,7 @@ class SettingUser extends React.Component {
             urlImage: '' ,
             idUsers: '',
             Error: false,
+            redirect: false,
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
@@ -136,14 +138,13 @@ class SettingUser extends React.Component {
         axios.post('http://127.0.0.1:8200/settingData/' + idUsers, postData, axiosConfig)
             .then(function (response) {
                 self.setState({
-                    success: true,
+                    redirect: true,
                 });
-                setTimeout(()=>self.setState({success: false}), 3000);
                 self.props.loginValue(self.state);
             })
             .catch(function (error) {
                 self.setState({
-                    success: false,
+                    redirect: false,
                 });
             });
     };
@@ -154,6 +155,12 @@ class SettingUser extends React.Component {
             avatar = "http://localhost:8200/" + this.props.data.urlImage;
         } else {
             avatar = this.state.source;
+        }
+
+        if(this.state.redirect) {
+            return (
+                <Redirect push to = '/'/>
+            )
         }
 
         return (

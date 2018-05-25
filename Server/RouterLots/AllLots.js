@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
     }).catch((error) => {
         console.log(error);
         res.status(401).json({
-            message: ob.objERRORS.USER_SIGNUP,
+            message: ob.objERRORS.LOT_FORM,
         });
     });
 });

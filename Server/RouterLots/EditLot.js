@@ -3,6 +3,7 @@ const router = express.Router();
 const user = require('../DataBase/SQLQueryForLot')
 const ob = require('../ErrorObject/Errors');
 const path = require('path');
+const valid = require('../ErrorObject/ValidationError');
 
 const multer = require( "multer" );
 
@@ -18,7 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-router.post("/:id", upload.any(), (req, res) => {
+router.post("/:id", upload.any(), valid.validationFieldNewLot, (req, res) => {
 
     let lotId = req.params.id;
     let lotData = JSON.parse(req.body.lotData);
@@ -40,14 +41,14 @@ router.post("/:id", upload.any(), (req, res) => {
             }).catch((error) => {
                 console.log(error);
                 res.status(401).json({
-                    message: ob.objERRORS.USER_SIGNUP,
+                    message: ob.objERRORS.LOT_IMAGE,
                 });
             });
         }
     }).catch((error) => {
         console.log(error);
         res.status(401).json({
-            message: ob.objERRORS.USER_SIGNUP,
+            message: ob.objERRORS.LOT_FORM,
         });
     });
 });
@@ -64,7 +65,7 @@ router.delete("/:id", (req, res) => {
     }).catch((error) => {
         console.log(error);
         res.status(401).json({
-            message: ob.objERRORS.USER_SIGNUP,
+            message: ob.objERRORS.LOT_IMAGE,
         });
     });
 });
@@ -81,7 +82,7 @@ router.delete("/", (req, res) => {
     }).catch((error) => {
         console.log(error);
         res.status(401).json({
-            message: ob.objERRORS.USER_SIGNUP,
+            message: ob.objERRORS.LOT_FORM,
         });
     });
 });

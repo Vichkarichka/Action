@@ -12,6 +12,7 @@ let newLot = require('./RouterLots/NewLot');
 let userLot = require('./RouterLots/UserLot');
 let allLots = require('./RouterLots/AllLots');
 let editLot = require('./RouterLots/EditLot');
+var expressValidator = require('express-validator');
 
 const port = process.env.PORT || 8200;
 
@@ -21,7 +22,7 @@ let socketConfig = require('./SocketConfig');
 
 io.on('connection', socketConfig);
 
-
+app.use(expressValidator());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true

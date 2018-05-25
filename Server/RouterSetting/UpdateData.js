@@ -5,7 +5,7 @@ const user = require('../DataBase/SqlQuerySettingUser');
 const ch  =require('../DataBase/SqlQueryAutorizaition');
 const ob = require('../ErrorObject/Errors');
 const crypto = require('../EncodeDecodeFunc/Crypto');
-
+const valid = require('../ErrorObject/ValidationError');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
@@ -19,17 +19,17 @@ router.post('/:id', (req, res, next) => {
             return next();
         } else {
             res.status(409).json({
-                message: ob.objERRORS.USER_CREATE,
+                message: ob.objERRORS.USER_EMAIL,
             });
         }
     }).catch(function(error) {
         res.status(404).json({
-            message: ob.objERRORS.USER_INFO,
+            message: ob.objERRORS.USER_SETTING,
         });
     });
 });
 
-router.post("/:id", (req, res) => {
+router.post("/:id", valid.validationFieldSetting, (req, res) => {
     let userId = req.params.id;
     let data = req.body;
     if(data.password.length !== 0) {
@@ -39,7 +39,7 @@ router.post("/:id", (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.status(401).json({
-                message: ob.objERRORS.USER_SIGNUP,
+                message: ob.objERRORS.USER_SETTING,
             });
         });
     } else {
@@ -48,7 +48,7 @@ router.post("/:id", (req, res) => {
         }).catch((error) => {
             console.log(error);
             res.status(401).json({
-                message: ob.objERRORS.USER_SIGNUP,
+                message: ob.objERRORS.USER_SETTING,
             });
         });
     }
