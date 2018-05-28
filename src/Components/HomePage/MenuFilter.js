@@ -23,10 +23,7 @@ export default class MenuFilter extends Component {
             items = items.substr(1);
         }
         return  (a,b) => {
-            console.log(items);
-
             let result = (a[items] < b[items]) ? -1 : (a[items] > b[items]) ? 1 : 0;
-
             return result * sortOrder;
         }
     };
@@ -63,10 +60,9 @@ export default class MenuFilter extends Component {
 
     render() {
         const { activeItem } = this.state;
-        console.log(this.state.lot);
         return (
             <Container >
-            <Menu className='Filter' pointing secondary>
+            <Menu className='Filter' pointing secondary stackable>
                 <Menu.Item header>Filter</Menu.Item>
                 <Menu.Item name='by Name' active={activeItem === 'by Name'} onClick={this.handleItemClick} />
                 <Menu.Item name='by Sections' active={activeItem === 'by Sections'} onClick={this.handleItemClick} />

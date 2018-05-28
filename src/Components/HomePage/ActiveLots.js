@@ -38,10 +38,7 @@ class ActiveLots extends React.Component {
         });
     };
 
-    setSortData = (value) => {
-        console.log(value);
-        this.setState({ sortData: value});
-    };
+    setSortData = (value) => {this.setState({ sortData: value});};
 
     render() {
         if(!this.props.lots) return null;

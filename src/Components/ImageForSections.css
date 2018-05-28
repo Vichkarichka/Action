@@ -1,0 +1,17 @@
+.texts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family:proxima-nova, sans-serif !important;
+    font-style: normal;
+    font-size: 50px;
+    font-weight:400;
+    letter-spacing: 3px;
+    color: #fdfdff;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0 15px;
+    opacity: 0.6;
+}

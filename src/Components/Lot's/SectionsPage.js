@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import HatWrapper from '../Header/HatWrapper';
-import { Item, Container } from 'semantic-ui-react';
+import { Item, Container, Divider } from 'semantic-ui-react';
 import { bidValue } from "../../Redux/Reducer";
 import { renderLot } from "../Function";
 import PaginationComponent from '../Pagination';
 import './SectionsPage.css';
+import { ImageForSections } from '../ImageForSections';
 
 class SectionsPage extends Component {
 
@@ -28,22 +29,20 @@ class SectionsPage extends Component {
        let sectionsId = this.props.match.params.sectionId;
         if(!this.props.lots) return null;
         let lot = this.props.lots.result;
-        let lotData = lot.filter(lot => lot.idCategoryLot === parseInt(sectionsId));
+        let lotData = lot.filter(lot => lot.idCategoryLot === parseInt(sectionsId))
+                         .slice(this.state.start, this.state.end);
         let displayLot = renderLot(lotData);
         return (
             <div>
                 <HatWrapper/>
                 <Container>
+                    {
+                        ImageForSections(parseInt(sectionsId))
+                    }
                     <Item.Group divided className = "LotSections">
-                        <Item.Header className = 'HeaderSectionsLots'>
-                            {"SECTIONS"}
-                        </Item.Header>
                         {displayLot}
                     </Item.Group>
-                    {
-                        lotData.length > this.state.end &&
                         <PaginationComponent onSetStartEndValue={this.handleValue}/>
-                    }
                 </Container>
             </div>
         )
