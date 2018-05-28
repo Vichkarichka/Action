@@ -30,7 +30,6 @@ class Header extends Component {
     handleSetting = (e) => {
         e.preventDefault();
         let address = e.target.dataset.to;
-        let temp = this;
         if(address === '/')
         {
            this.props.logout();
@@ -46,15 +45,15 @@ class Header extends Component {
         };
 
         axios.post('http://127.0.0.1:8200/authorization', postData, axiosConfig)
-            .then(function (response) {
+            .then((response) => {
                 if(response.data.success){
-                    temp.setState({
+                    this.setState({
                         redirect: true,
                         address: address,
                     });
                 }
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
     };

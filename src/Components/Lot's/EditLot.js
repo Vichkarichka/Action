@@ -73,7 +73,7 @@ class EditLot extends React.Component {
     };
 
     requestServer = () => {
-        let self = this;
+
         let dataLot = {
             nameLot: this.state.namelot,
             price: this.state.price,
@@ -91,13 +91,13 @@ class EditLot extends React.Component {
         }
         formData.append( "lotData" , JSON.stringify(dataLot));
         axios.post('http://127.0.0.1:8200/editLots/' + this.state.lotId, formData)
-            .then(function (response) {
-                self.setState({
+            .then((response) => {
+                this.setState({
                     redirect: true,
                 });
             })
-            .catch(function (error) {
-                self.setState({
+            .catch((error) => {
+                this.setState({
                     redirect: false,
                 });
             });

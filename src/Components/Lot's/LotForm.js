@@ -147,17 +147,16 @@ class LotForm extends React.Component {
     };
 
     requestServer = (idImagesLot) => {
-        let self = this;
         axios.delete('http://127.0.0.1:8200/editLots/' + this.state.lotId, { data: { idImage: idImagesLot } })
-            .then(function (response) {
-                let urlDb = self.state.urlDb;
+            .then((response) => {
+                let urlDb = this.state.urlDb;
                 let obj = urlDb.findIndex(item => item.idImagesLot === parseInt(idImagesLot));
                     urlDb.splice(obj, 1);
-                self.setState({
+                this.setState({
                     urlDb: urlDb,
                 });
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
     };

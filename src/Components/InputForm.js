@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Label } from 'semantic-ui-react';
 import {connect} from "react-redux";
 import {changeLoginToSignUp, signup} from "../Redux/Reducer";
 import {ErrorMessage} from "./ErrorMessage";

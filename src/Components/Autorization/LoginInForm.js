@@ -24,19 +24,20 @@ class LoginInForm extends Component {
 
     onSubmit = () => {
 
-        let temp = this;
         let { email, password } = this.state;
 
         if(this.state.emailError && this.state.passwordError) {
-           this.serverRequest().then(function () {
-               if(temp.state.error) {
-                   temp.setState({
+           this.serverRequest().then(() =>{
+               if(this.state.error) {
+                   this.setState({
                        email: '',
                    });
                } else {
-                   temp.props.login(email, password);
-                   temp.props.parentMethod();
+                   this.props.login(email, password);
+                   this.props.parentMethod();
                }
+           }).catch((error) =>{
+               console.log(error);
            });
         } else {
             this.setState({
@@ -50,7 +51,6 @@ class LoginInForm extends Component {
     };
 
     serverRequest = () => {
-        let self = this;
         let postData = JSON.stringify({
             email: this.state.email,
             password: this.state.password,
@@ -63,11 +63,11 @@ class LoginInForm extends Component {
         };
 
        return axios.post('http://127.0.0.1:8200/loginIn', postData, axiosConfig)
-            .then(function (response) {
+            .then((response) => {
                 window.sessionStorage.setItem("items", JSON.stringify(response.data.token));
                 if(!response.data.urlImage)
                 {
-                    self.setState({
+                    this.setState({
                         email: response.data.email,
                         firstName: response.data.firstName,
                         idUsers: response.data.idUsers,
@@ -76,7 +76,7 @@ class LoginInForm extends Component {
                         urlImage: "public/empty-avatar.jpg",
                     });
                 } else {
-                    self.setState({
+                    this.setState({
                         email: response.data.email,
                         firstName: response.data.firstName,
                         idUsers: response.data.idUsers,
@@ -85,13 +85,13 @@ class LoginInForm extends Component {
                         urlImage: response.data.urlImage,
                     });
                 }
-                self.props.loginValue(self.state);
-                self.setState({
+                this.props.loginValue(this.state);
+                this.setState({
                     error: false,
                 });
-            }).catch(function (error) {
+            }).catch((error) => {
                 console.log(error);
-                self.setState({
+                this.setState({
                     error: true,
                 });
             });

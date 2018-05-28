@@ -54,7 +54,6 @@ class SignUpForm extends Component {
     };
 
     requestServer = () => {
-        let self = this;
         let postData = JSON.stringify({
             email: this.state.email,
             password: this.state.password,
@@ -68,13 +67,13 @@ class SignUpForm extends Component {
         };
       return axios.post('http://127.0.0.1:8200/signUp', postData, axiosConfig)
             .then((response) => {
-                self.setState({
+                this.setState({
                     error: false,
                 });
             })
             .catch((error) => {
                 console.log(error.response.data.message);
-                self.setState({
+                this.setState({
                     error: true,
                 });
             });

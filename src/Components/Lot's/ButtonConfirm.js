@@ -21,12 +21,11 @@ class ButtonConfirm extends Component {
     };
 
     requestServer = (idLot) => {
-        let self = this;
         axios.delete('http://127.0.0.1:8200/editLots/', { data: { idLot: idLot } })
-            .then(function (response) {
-                self.setState({ open: false, redirect: true });
+            .then((response) => {
+                this.setState({ open: false, redirect: true });
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
     };

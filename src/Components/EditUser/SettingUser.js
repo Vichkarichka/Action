@@ -68,21 +68,20 @@ class SettingUser extends React.Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        let self = this;
         const formData = new FormData();
         formData.append( "file", this.state.file);
-        formData.append('data', self.state.idUsers);
+        formData.append('data', this.state.idUsers);
 
         axios.post('http://127.0.0.1:8200/upload', formData)
-            .then(function (res) {
-              axios.get('http://127.0.0.1:8200/upload/' + self.state.idUsers)
+            .then((res) => {
+              axios.get('http://127.0.0.1:8200/upload/' + this.state.idUsers)
                     .then(res => {
-                        self.props.saveUserAvatar(res.data.urlImage);
-                    }).catch(function (error) {
+                        this.props.saveUserAvatar(res.data.urlImage);
+                    }).catch((error) => {
                     console.log(error);
                 });
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
         return false;
@@ -97,7 +96,6 @@ class SettingUser extends React.Component {
     handleClick() {
 
        let email = this.state.email;
-       let password = this.state.password;
        let firstName = this.state.firstName;
        let lastName = this.state.lastName;
 
@@ -121,7 +119,6 @@ class SettingUser extends React.Component {
     };
 
     requestServer = () => {
-        let self = this;
         let idUsers = this.props.data.idUsers;
         let postData = JSON.stringify({
             email: this.state.email,
@@ -136,14 +133,14 @@ class SettingUser extends React.Component {
             }
         };
         axios.post('http://127.0.0.1:8200/settingData/' + idUsers, postData, axiosConfig)
-            .then(function (response) {
-                self.setState({
+            .then((response) => {
+                this.setState({
                     redirect: true,
                 });
-                self.props.loginValue(self.state);
+                this.props.loginValue(this.state);
             })
-            .catch(function (error) {
-                self.setState({
+            .catch((error) => {
+                this.setState({
                     redirect: false,
                 });
             });
