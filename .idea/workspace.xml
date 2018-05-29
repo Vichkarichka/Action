@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="69b514f5-0f6b-4eee-a9db-38b3ea236c78" name="Default" comment="connect webstorm">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/finalproject.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/DataBase/DataBaseConnection.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/DataBase/SqlQueryAutorizaition.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/DataBase/SqlQuerySettingUser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/EncodeDecodeFunc/Crypto.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ErrorObject/Errors.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ErrorObject/ValidationError.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/empty.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058321910.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058321919.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058321920.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058548714.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058548724.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058548725.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058689085.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526058689086.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526277916102.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526277916104.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526277916107.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526545840685.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526545840689.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526545840691.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526545840693.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526546043266.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526546043268.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526546043272.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526546043273.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526548321336.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526548321340.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526548321343.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526548380451.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526886426566.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526886426570.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526886426582.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526892303313.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526892386108.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526899226776.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526899226777.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526899226778.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526905075412.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526905227737.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526905443477.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526905549045.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526905696660.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907530275.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907530277.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907530281.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907755366.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907755368.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907755372.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907897023.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907897024.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526907897026.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526908027335.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526908027340.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526908027343.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526908308942.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526908308946.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526908308950.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526926228006.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526926228008.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526928618166.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526928707085.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526928779125.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526975762430.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526975875556.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526975919115.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526976433862.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526976524211.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526976602408.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526976896042.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526977918959.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526977918962.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526987841839.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1526992163397.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527066370490.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527076246651.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527076246656.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527076246659.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527076246660.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527082982822.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527082982825.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527082982827.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527082982828.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527082982831.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527082982833.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083006323.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083006325.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083006327.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083006328.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083006330.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083006334.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083267144.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083267146.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083267147.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083436404.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083436405.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083436406.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083578212.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083578214.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083578215.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083578216.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083866340.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083866341.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083866347.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083866349.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527083866351.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148043590.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148043591.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148152911.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148152913.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148207035.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148207036.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148207037.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527148272805.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527150683595.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527150683596.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527150683597.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527150683598.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527152859604.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527152859605.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527152859606.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527153098302.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154111599.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154111600.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154111601.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154117267.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154117268.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154117269.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154198408.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154198409.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527154198410.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527234635099.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527234635102.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527414828802.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527414828809.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527504685275.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527504685278.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527504707418.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527504707419.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527505441133.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527505441137.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527505441138.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518234184.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518234186.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518234188.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518548126.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518548128.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518843154.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518843155.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518843157.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527518843159.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519167940.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519167956.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519167976.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519167985.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519447129.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519447137.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519447145.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519734935.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519734939.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527519734946.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530552164.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530552166.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530552167.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530941594.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530941596.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530948833.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530948835.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530966931.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530966933.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530990955.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527530990959.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531002092.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531002096.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531340425.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531340427.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531340428.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531340430.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531347465.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531347466.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531347467.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531365279.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531365280.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531365282.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/ImageLot/file-1527531365283.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/Middleware/CheckEmail.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterForImage/Upload.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterLots/AllLots.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterLots/EditLot.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterLots/NewLot.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterLots/UserLot.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterSetting/UpdateData.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterSignUp/LoginIn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterSignUp/SignUp.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/SocketConfig.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/empty-avatar.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525416127751.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525416170676.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525416187551.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525418363552.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525418389926.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525419250545.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525419276422.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525419361005.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525419479248.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525419523342.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525419827920.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525419975761.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525420057342.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525420078635.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525420089430.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525421165561.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525421465022.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525421497919.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525421590849.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525421617464.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525421874046.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525421885580.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525432261955.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525433688810.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525436277727.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525690109947.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525690278035.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525690371885.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525779955292.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1525780059727.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/public/file-1526108108847.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/server.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/favicon.ico" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/manifest.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/App.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/App.test.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Autorization/LoginInForm.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Autorization/LoginInForm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Autorization/SignUpForm.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Autorization/SignUpForm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/CountDown.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/CountDown.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/DataTimePicker/Demo.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/DataTimePicker/Demo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/EditUser/SettingUser.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/EditUser/SettingUser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/ErrorMessage.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/ErrorObject.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Function.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Header/HatWrapper.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Header/Header.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Header/Header.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Header/ModalForm.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Header/ModalForm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Header/Sections.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/HomePage/ActiveLots.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/HomePage/ActiveLots.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/HomePage/FirstPage.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/HomePage/FirstPage.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/HomePage/MenuFilter.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/HomePage/MenuFilter.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/ImageForSections.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/ImageForSections.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/InputForm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/LoadingView.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/ButtonConfirm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/EditLot.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/LotForm.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/LotForm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/LotPage.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/LotPage.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/NewLots.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/NewLots.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/SectionsPage.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/UserLots.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/UserLots.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Pagination.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/SearchInput.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/SocialButton.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/SocialButton.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Redux/Reducer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Redux/Store.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Books/Book.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Clothing.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Computers.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Footwear.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Furniture.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Jewelry.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Painting.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/Phone.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/empty-avatar.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Style/logo.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/index.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/logo.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/registerServiceWorker.js" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ImageForSections.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/ImageForSections.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageForSections.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/ImageForSections.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FirstPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/HomePage/FirstPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HatWrapper.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Header/HatWrapper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SectionsPage.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserLots.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserLots.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="29" column="67" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SectionsPage.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Lot's/SectionsPage.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>margin-top</find>
+      <find>changeLoginToSignUp</find>
+      <find>data</find>
+      <find>console</find>
+      <find>loginError</find>
+      <find>parentMethod</find>
+      <find>loginValue</find>
+      <find>login</find>
+      <find>resultRenderer</find>
+      <find>saveUserAvatar</find>
+      <find>let</find>
+      <find>var</find>
+      <find>lotId</find>
+      <find>cons</find>
+      <find>formValid</find>
+      <find>e</find>
+      <find>checkNameLot</find>
+      <find>self</find>
+      <find>temp</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>let</replace>
+      <replace>const</replace>
+      <replace>this</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/Components/Header</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Components/Pagination.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/UserLots.css" />
+        <option value="$PROJECT_DIR$/src/Components/Header/ModalForm.js" />
+        <option value="$PROJECT_DIR$/src/Components/Main.js" />
+        <option value="$PROJECT_DIR$/Server/EncodeDecodeFunc/Crypto.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/UserLots.js" />
+        <option value="$PROJECT_DIR$/src/Components/DataTimePicker/Demo.js" />
+        <option value="$PROJECT_DIR$/Server/SocketConfig.js" />
+        <option value="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" />
+        <option value="$PROJECT_DIR$/src/Components/SearchInput.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" />
+        <option value="$PROJECT_DIR$/src/Components/LotForm.css" />
+        <option value="$PROJECT_DIR$/src/Components/LotForm.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/LotPage.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/NewLots.css" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/LotPage.css" />
+        <option value="$PROJECT_DIR$/src/Components/ErrorObject.js" />
+        <option value="$PROJECT_DIR$/src/Components/Function.js" />
+        <option value="$PROJECT_DIR$/Server/RouterSignUp/SignUp.js" />
+        <option value="$PROJECT_DIR$/Server/server.js" />
+        <option value="$PROJECT_DIR$/src/Components/ErrorMessage.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Reducer.js" />
+        <option value="$PROJECT_DIR$/src/Components/Autorization/SignUpForm.css" />
+        <option value="$PROJECT_DIR$/Server/RouterSignUp/LoginIn.js" />
+        <option value="$PROJECT_DIR$/Server/RouterSetting/UpdateData.js" />
+        <option value="$PROJECT_DIR$/Server/ErrorObject/ValidationError.js" />
+        <option value="$PROJECT_DIR$/Server/RouterLots/NewLot.js" />
+        <option value="$PROJECT_DIR$/Server/ErrorObject/Errors.js" />
+        <option value="$PROJECT_DIR$/Server/RouterLots/EditLot.js" />
+        <option value="$PROJECT_DIR$/Server/RouterForImage/Upload.js" />
+        <option value="$PROJECT_DIR$/Server/RouterLots/AllLots.js" />
+        <option value="$PROJECT_DIR$/Server/RouterLots/UserLot.js" />
+        <option value="$PROJECT_DIR$/Server/Middleware/CheckEmail.js" />
+        <option value="$PROJECT_DIR$/src/Components/InputForm.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/NewLots.js" />
+        <option value="$PROJECT_DIR$/src/Components/Autorization/SignUpForm.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/EditLot.js" />
+        <option value="$PROJECT_DIR$/src/Components/Autorization/LoginInForm.js" />
+        <option value="$PROJECT_DIR$/src/Components/Header/Header.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/ButtonConfirm.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/LotForm.js" />
+        <option value="$PROJECT_DIR$/src/Components/EditUser/SettingUser.js" />
+        <option value="$PROJECT_DIR$/src/Components/HomePage/FirstPage.js" />
+        <option value="$PROJECT_DIR$/src/Components/HomePage/MenuFilter.css" />
+        <option value="$PROJECT_DIR$/src/Components/HomePage/MenuFilter.js" />
+        <option value="$PROJECT_DIR$/src/Components/HomePage/ActiveLots.js" />
+        <option value="$PROJECT_DIR$/src/Components/Header/Sections.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/SectionsPage.css" />
+        <option value="$PROJECT_DIR$/src/Components/ImageForSections.css" />
+        <option value="$PROJECT_DIR$/src/Components/ImageForSections.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-11" />
+    <option name="y" value="-4" />
+    <option name="width" value="1366" />
+    <option name="height" value="568" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="DataTimePicker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="Header" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="HomePage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="Lot's" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Redux" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="last_opened_file_path" value="$USER_HOME$/ExampleSocket" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/villy/finalproject/Server/server.js" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/Lot's" />
+      <recent name="$PROJECT_DIR$/src/Components/Header" />
+      <recent name="$PROJECT_DIR$/src/Components/EditUser" />
+      <recent name="$PROJECT_DIR$/src/Components/Autorization" />
+      <recent name="$PROJECT_DIR$/src/Components/HomePage" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Server/public" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="69b514f5-0f6b-4eee-a9db-38b3ea236c78" name="Default" comment="" />
+      <created>1524147296027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1524147296027</updated>
+      <workItem from="1524147303477" duration="11786000" />
+      <workItem from="1524466096836" duration="70833000" />
+      <workItem from="1524735324734" duration="191498000" />
+      <workItem from="1526041097838" duration="22401000" />
+      <workItem from="1526195417310" duration="94105000" />
+      <workItem from="1526565407285" duration="32133000" />
+      <workItem from="1526885267532" duration="96744000" />
+      <workItem from="1527491926938" duration="24273000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="543773000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-11" y="-4" width="1366" height="772" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20774385" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27682737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="connect webstorm" />
+    <option name="LAST_COMMIT_MESSAGE" value="connect webstorm" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="15" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Components/Autorization/LoginInForm.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/NewLots.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/Reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1152">
+          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterSignUp/LoginIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/ErrorObject/ValidationError.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="48" column="40" lean-forward="true" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterSignUp/SignUp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterLots/NewLot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="60" column="47" lean-forward="true" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/EncodeDecodeFunc/Crypto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/Middleware/CheckEmail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterLots/UserLot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterLots/AllLots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="26" column="25" lean-forward="true" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterLots/EditLot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterForImage/Upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="82" column="43" lean-forward="false" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterSetting/UpdateData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-336">
+          <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/ErrorObject/Errors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Autorization/SignUpForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="68" column="33" lean-forward="true" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Autorization/SignUpForm.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Autorization/LoginInForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2074">
+          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/BidLots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1098">
+          <caret line="67" column="46" lean-forward="false" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/ButtonConfirm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/EditLot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="111" column="16" lean-forward="true" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/LotForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1332">
+          <caret line="146" column="6" lean-forward="true" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/LotPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/LotPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="936">
+          <caret line="63" column="25" lean-forward="false" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/EditUser/SettingUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="99" column="42" lean-forward="true" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#25#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/SocialButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/CountDown.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#52#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/SearchInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="62" column="14" lean-forward="false" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Pagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ErrorObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/LoadingView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/InputForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="117" column="28" lean-forward="false" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/DataTimePicker/Demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="95" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/HomePage/ActiveLots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="52" column="48" lean-forward="true" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#25#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/HomePage/MenuFilter.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/HomePage/MenuFilter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Header/ModalForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="33" column="70" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Function.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="61" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/NewLots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ErrorMessage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#25#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Header/Sections.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/SectionsPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Header/HatWrapper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ImageForSections.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ImageForSections.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/HomePage/FirstPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserLots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="29" column="67" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

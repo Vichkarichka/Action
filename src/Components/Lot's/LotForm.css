@@ -1,0 +1,18 @@
+.displayImg {
+    display: inline-block !important;
+    margin-left: 2% !important;
+    width: 152px !important;
+}
+.displayImage {
+    display: inline-block !important;
+}
+.imageContainer {
+    margin: 0 auto !important;
+    width: 65% !important;
+}
+.closeButton {
+    margin-left: 90% !important;
+}
+.editLot {
+    margin-left: 45% !important;
+}

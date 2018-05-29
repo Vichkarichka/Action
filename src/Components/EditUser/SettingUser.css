@@ -1,0 +1,22 @@
+.avatar {
+    width: 152px !important;
+    margin-left: 15% !important;
+    margin-top: 2% !important;
+    margin-right: 50% !important;
+}
+
+.FormImage{
+    margin-left: 35% !important;
+}
+.buttonSave {
+    width: 30% !important;
+    margin-left: 35% !important;
+}
+#file{
+    width: 46% !important;
+}
+.buttonUpload {
+    width: 46% !important;
+    margin-left: -46% !important;
+    margin-top: 6% !important;
+}
