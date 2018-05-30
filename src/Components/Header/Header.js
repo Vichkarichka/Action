@@ -78,7 +78,7 @@ class Header extends Component {
                             <Dropdown.Item data-to ='/lotsUser' onClick={this.handleSetting}>
                                 Your Lot's
                             </Dropdown.Item>
-                            <Dropdown.Item data-to ='' onClick={this.handleSetting}>
+                            <Dropdown.Item data-to ={'/bid/'  + this.props.data.idUsers} onClick={this.handleSetting}>
                                 Your Bid's
                             </Dropdown.Item>
                             <Dropdown.Item>Lot's History</Dropdown.Item>

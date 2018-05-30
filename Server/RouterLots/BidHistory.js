@@ -10,13 +10,12 @@ router.use(bodyParser.urlencoded({
 }));
 
 
-/*router.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     let userId = req.params.id;
-    user.getUrlImages(userId).then((result)=> {
+    user.getBid(userId).then((result)=> {
         if (result.length !== 0) {
-            console.log(result[0].urlImage);
             res.status(201).json({
-                urlImage: result[0].urlImage,
+                Bid: result,
             });
         } else {
             res.status(400).json({
@@ -29,7 +28,7 @@ router.use(bodyParser.urlencoded({
             message: ob.objERRORS.LOT_IMAGE,
         });
     });
-});*/
+});
 
 router.post("/:id", (req, res) => {
 

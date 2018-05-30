@@ -132,6 +132,11 @@ exports.updateBuyer = (bidValue, lotId) => {
 
 };
 
+exports.getBid = (id) => {
+    let sql = "SELECT idLot, idBuyer, bidValue FROM BidHistory WHERE idBuyer = " + id;
+    return returnPromise(sql);
+};
+
 returnPromise = (sql, dataForDB) => {
     return Promise.using(getSqlConnection(), (connection) => {
         return connection.query(sql, dataForDB).then((rows) => {
