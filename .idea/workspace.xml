@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69b514f5-0f6b-4eee-a9db-38b3ea236c78" name="Default" comment="">
+    <list default="true" id="69b514f5-0f6b-4eee-a9db-38b3ea236c78" name="Default" comment="add bid history to the server side">
+      <change beforePath="" afterPath="$PROJECT_DIR$/Server/RouterLots/BidHistory.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" afterPath="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" />
-      <change beforePath="$PROJECT_DIR$/Server/ErrorObject/Errors.js" afterPath="$PROJECT_DIR$/Server/ErrorObject/Errors.js" />
-      <change beforePath="$PROJECT_DIR$/Server/SocketConfig.js" afterPath="$PROJECT_DIR$/Server/SocketConfig.js" />
-      <change beforePath="$PROJECT_DIR$/Server/server.js" afterPath="$PROJECT_DIR$/Server/server.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.js" afterPath="$PROJECT_DIR$/src/Components/Header/Header.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/ActiveLots.js" afterPath="$PROJECT_DIR$/src/Components/HomePage/ActiveLots.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" afterPath="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js" afterPath="$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Lot's/UserLots.js" afterPath="$PROJECT_DIR$/src/Components/Lot's/UserLots.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pagination.js" afterPath="$PROJECT_DIR$/src/Components/Pagination.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BidHistory.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BidHistory.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/RouterLots/BidHistory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="45" />
+            <state relative-caret-position="270">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="e#302#878#0" expanded="false" />
               </folding>
@@ -68,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQLQueryForLot.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SQLQueryForLot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="126" column="31" lean-forward="true" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
+            <state relative-caret-position="277">
+              <caret line="127" column="0" lean-forward="true" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -421,7 +412,7 @@
       <workItem from="1526195417310" duration="94105000" />
       <workItem from="1526565407285" duration="32133000" />
       <workItem from="1526885267532" duration="96744000" />
-      <workItem from="1527491926938" duration="32370000" />
+      <workItem from="1527491926938" duration="32604000" />
     </task>
     <task id="LOCAL-00001" summary="connect webstorm">
       <created>1527578493216</created>
@@ -430,11 +421,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527578493216</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add bid history to the server side">
+      <created>1527672625413</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1527672625413</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="551870000" />
+    <option name="totallyTimeSpent" value="552104000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -447,13 +445,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-4" width="1366" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20774385" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5026061" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27682737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27682737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -471,12 +470,39 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="connect webstorm" />
-    <option name="LAST_COMMIT_MESSAGE" value="connect webstorm" />
+    <MESSAGE value="add bid history to the server side" />
+    <option name="LAST_COMMIT_MESSAGE" value="add bid history to the server side" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -891,16 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/RouterLots/BidHistory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="45" />
-          <folding>
-            <element signature="e#302#878#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/RouterSetting/UpdateData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-302">
@@ -911,9 +927,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="126" column="31" lean-forward="true" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
+        <state relative-caret-position="277">
+          <caret line="127" column="0" lean-forward="true" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterLots/BidHistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#302#878#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
