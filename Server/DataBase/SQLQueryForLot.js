@@ -100,6 +100,38 @@ exports.deleteLot = (idLot) => {
     return returnPromise(sql);
 };
 
+exports.getBuyer = (bidValue, lotId) => {
+    let sql = "SELECT idLot, idBuyer FROM BidHistory WHERE idLot = " + lotId +
+        " AND idBuyer = " + bidValue.buyer;
+    return returnPromise(sql);
+};
+
+exports.insertBuyer = (bidValue, lotId) => {
+
+    let data = {
+        idLot: lotId,
+        idBuyer: bidValue.buyer,
+        bidValue: bidValue.bid,
+
+    };
+    let sql = "INSERT INTO BidHistory SET ?";
+    return returnPromise(sql, data);
+
+};
+
+exports.updateBuyer = (bidValue, lotId) => {
+
+    let data = {
+        idLot: lotId,
+        idBuyer: bidValue.buyer,
+        bidValue: bidValue.bid,
+
+    };
+    let sql = "UPDATE BidHistory SET ? WHERE idLot = " +  lotId + " AND idBuyer = " + bidValue.buyer;
+    return returnPromise(sql, data);
+
+};
+
 returnPromise = (sql, dataForDB) => {
     return Promise.using(getSqlConnection(), (connection) => {
         return connection.query(sql, dataForDB).then((rows) => {

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Input, Statistic, Icon, Divider } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import socketIOClient from 'socket.io-client';
+import axios from "axios/index";
+import moment from "moment/moment";
 
 class BidLots extends Component {
 
@@ -19,6 +21,23 @@ class BidLots extends Component {
 
     sendData = (bidValues) => {
         this.state.socket.emit('bidValue', bidValues);
+        this.requestServer();
+    };
+
+    requestServer = () => {
+
+        let dataBid = {
+            bid: this.state.bidValue,
+            buyer: this.props.data.idUsers,
+        };
+
+        axios.post('http://127.0.0.1:8200/bid/' + this.props.value[0].idLot, dataBid)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
      componentWillMount() {

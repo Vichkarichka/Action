@@ -13,4 +13,5 @@ exports.objERRORS = objERRORS = {
     LOT_TIME: "LOT_TIME_ERROR",
     LOT_IMAGE: "LOT_IMAGE_ERROR",
     LOT_FORM: "LOT_FORM_ERROR",
+    LOT_BID: "LOT_BID_ERROR",
 };

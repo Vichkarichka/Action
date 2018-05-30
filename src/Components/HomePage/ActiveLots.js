@@ -60,7 +60,7 @@ class ActiveLots extends React.Component {
                 {displayLot}
 
                 </Item.Group>
-                <PaginationComponent onSetStartEndValue={this.handleValue}/>
+                <PaginationComponent onSetStartEndValue={this.handleValue} lotLength = {this.props.lots.result.length}/>
             </div>
         )
     }

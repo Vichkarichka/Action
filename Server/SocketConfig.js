@@ -6,7 +6,6 @@ module.exports = (socket) => {
         console.log("Connected succesfully to the socket ...");
 
         socket.on('bidValue', (data) => {
-            console.log(data);
             user.getPriceLot(data.idLot)
                 .then(res => {
                     if (!res.length) return null;

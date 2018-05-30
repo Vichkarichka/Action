@@ -27,8 +27,8 @@ class UserLots extends React.Component {
         if(!this.props.lots) return null;
         let lot = this.props.lots.result;
         let lotUser = lot.filter(lot => lot.nameUser === this.props.data.email)
-                          .slice(this.state.start, this.state.end);
-        let displayLot = renderLot(lotUser);
+        let pagination = lotUser.slice(this.state.start, this.state.end);
+        let displayLot = renderLot(pagination);
         return (
             <div>
                 <div>
@@ -42,7 +42,10 @@ class UserLots extends React.Component {
                     {displayLot}
 
                 </Item.Group>
-                    <PaginationComponent onSetStartEndValue={this.handleValue}/>
+                {
+                    lotUser.length >= this.state.end &&
+                    <PaginationComponent onSetStartEndValue={this.handleValue} lotLength = {lotUser.length}/>
+                }
             </div>
         )
     }

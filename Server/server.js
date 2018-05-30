@@ -12,7 +12,8 @@ let newLot = require('./RouterLots/NewLot');
 let userLot = require('./RouterLots/UserLot');
 let allLots = require('./RouterLots/AllLots');
 let editLot = require('./RouterLots/EditLot');
-var expressValidator = require('express-validator');
+let bidHistory = require('./RouterLots/BidHistory')
+let expressValidator = require('express-validator');
 
 const port = process.env.PORT || 8200;
 
@@ -51,7 +52,8 @@ app.use('/settingData', updateData);
 app.use('/newLots', newLot);
 app.use('/userLots', userLot);
 app.use('/allLots', allLots);
-app.use('/editLots', editLot)
+app.use('/editLots', editLot);
+app.use('/bid', bidHistory);
 
 
 app.post("/authorization", (req, res) => {

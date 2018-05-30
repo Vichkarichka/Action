@@ -19,6 +19,7 @@ class SectionsPage extends Component {
     }
 
     handleValue = (value) => {
+        console.log(value);
         this.setState({
             start: value.start,
             end: value.end
@@ -26,12 +27,15 @@ class SectionsPage extends Component {
     };
 
     render() {
+
        let sectionsId = this.props.match.params.sectionId;
         if(!this.props.lots) return null;
         let lot = this.props.lots.result;
-        let lotData = lot.filter(lot => lot.idCategoryLot === parseInt(sectionsId))
-                         .slice(this.state.start, this.state.end);
-        let displayLot = renderLot(lotData);
+        let lotData = lot.filter(lot => lot.idCategoryLot === parseInt(sectionsId));
+
+        let pagination = lotData.slice(this.state.start, this.state.end);
+        let displayLot = renderLot(pagination);
+
         return (
             <div>
                 <HatWrapper/>
@@ -42,7 +46,10 @@ class SectionsPage extends Component {
                     <Item.Group divided className = "LotSections">
                         {displayLot}
                     </Item.Group>
-                        <PaginationComponent onSetStartEndValue={this.handleValue}/>
+                    {
+                        lotData.length >= this.state.end &&
+                        <PaginationComponent onSetStartEndValue={this.handleValue} lotLength = {lotData.length}/>
+                    }
                 </Container>
             </div>
         )
