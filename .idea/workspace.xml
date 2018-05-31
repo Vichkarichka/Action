@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69b514f5-0f6b-4eee-a9db-38b3ea236c78" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/UserBidLots.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Components/Lot's/BidLots.css" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" afterPath="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" />
       <change beforePath="$PROJECT_DIR$/Server/RouterLots/BidHistory.js" afterPath="$PROJECT_DIR$/Server/RouterLots/BidHistory.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.js" afterPath="$PROJECT_DIR$/src/Components/Header/Header.js" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Main.js" afterPath="$PROJECT_DIR$/src/Components/Main.js" />
+      <change beforePath="$PROJECT_DIR$/Server/SocketConfig.js" afterPath="$PROJECT_DIR$/Server/SocketConfig.js" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Function.js" afterPath="$PROJECT_DIR$/src/Components/Function.js" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" afterPath="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Lot's/UserBidLots.js" afterPath="$PROJECT_DIR$/src/Components/Lot's/UserBidLots.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,31 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BidHistory.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/RouterLots/BidHistory.js">
+      <file leaf-file-name="Function.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Function.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+            <state relative-caret-position="216">
+              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-720">
-              <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserBidLots.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserBidLots.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserBidLots.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="34" column="11" lean-forward="true" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+            <state relative-caret-position="342">
+              <caret line="41" column="73" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -54,30 +46,8 @@
       <file leaf-file-name="SectionsPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
+            <state relative-caret-position="288">
               <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Header/Header.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="72" column="68" lean-forward="false" selection-start-line="72" selection-start-column="68" selection-end-line="72" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserLots.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserLots.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -86,30 +56,60 @@
       <file leaf-file-name="UserLots.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserLots.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
+            <state relative-caret-position="813">
               <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Main.js">
+      <file leaf-file-name="LotPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Lot's/LotPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="33" />
+            <state relative-caret-position="200">
+              <caret line="52" column="48" lean-forward="false" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BidLots.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Lot's/BidLots.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-36">
+              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sections.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Header/Sections.js">
+      <file leaf-file-name="SocketConfig.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server/SocketConfig.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="39" column="73" lean-forward="false" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="73" />
+            <state relative-caret-position="500">
+              <caret line="29" column="62" lean-forward="false" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BidHistory.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/RouterLots/BidHistory.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="89">
+              <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BidLots.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Lot's/BidLots.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -118,8 +118,8 @@
       <file leaf-file-name="SQLQueryForLot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="132" column="2" lean-forward="true" selection-start-line="132" selection-start-column="2" selection-end-line="132" selection-end-column="2" />
+            <state relative-caret-position="1573">
+              <caret line="142" column="2" lean-forward="true" selection-start-line="142" selection-start-column="2" selection-end-line="142" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -130,8 +130,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -172,16 +172,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Server/EncodeDecodeFunc/Crypto.js" />
         <option value="$PROJECT_DIR$/src/Components/DataTimePicker/Demo.js" />
         <option value="$PROJECT_DIR$/src/Components/SearchInput.js" />
         <option value="$PROJECT_DIR$/src/Components/LotForm.css" />
         <option value="$PROJECT_DIR$/src/Components/LotForm.js" />
-        <option value="$PROJECT_DIR$/src/Components/Lot's/LotPage.js" />
         <option value="$PROJECT_DIR$/src/Components/Lot's/NewLots.css" />
         <option value="$PROJECT_DIR$/src/Components/Lot's/LotPage.css" />
         <option value="$PROJECT_DIR$/src/Components/ErrorObject.js" />
-        <option value="$PROJECT_DIR$/src/Components/Function.js" />
         <option value="$PROJECT_DIR$/Server/RouterSignUp/SignUp.js" />
         <option value="$PROJECT_DIR$/src/Components/ErrorMessage.js" />
         <option value="$PROJECT_DIR$/src/Redux/Reducer.js" />
@@ -214,15 +211,18 @@
         <option value="$PROJECT_DIR$/src/Components/Pagination.js" />
         <option value="$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js" />
         <option value="$PROJECT_DIR$/src/Components/Lot's/UserLots.js" />
-        <option value="$PROJECT_DIR$/Server/SocketConfig.js" />
-        <option value="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" />
         <option value="$PROJECT_DIR$/Server/server.js" />
         <option value="$PROJECT_DIR$/Server/ErrorObject/Errors.js" />
         <option value="$PROJECT_DIR$/src/Components/Main.js" />
         <option value="$PROJECT_DIR$/src/Components/Header/Header.js" />
-        <option value="$PROJECT_DIR$/Server/RouterLots/BidHistory.js" />
-        <option value="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" />
+        <option value="$PROJECT_DIR$/src/Components/Function.js" />
         <option value="$PROJECT_DIR$/src/Components/Lot's/UserBidLots.js" />
+        <option value="$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/LotPage.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/BidLots.css" />
+        <option value="$PROJECT_DIR$/Server/RouterLots/BidHistory.js" />
+        <option value="$PROJECT_DIR$/Server/SocketConfig.js" />
+        <option value="$PROJECT_DIR$/src/Components/Lot's/BidLots.js" />
       </list>
     </option>
   </component>
@@ -404,7 +404,7 @@
       <workItem from="1526195417310" duration="94105000" />
       <workItem from="1526565407285" duration="32133000" />
       <workItem from="1526885267532" duration="96744000" />
-      <workItem from="1527491926938" duration="35590000" />
+      <workItem from="1527491926938" duration="44161000" />
     </task>
     <task id="LOCAL-00001" summary="connect webstorm">
       <created>1527578493216</created>
@@ -427,11 +427,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527672819106</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add bid history to the front side">
+      <created>1527679775653</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1527679775653</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="555090000" />
+    <option name="totallyTimeSpent" value="563661000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -455,7 +462,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30482116" sideWeight="0.4973939" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30948678" sideWeight="0.4973939" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -501,23 +508,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="connect webstorm" />
     <MESSAGE value="add bid history to the server side" />
-    <option name="LAST_COMMIT_MESSAGE" value="add bid history to the server side" />
+    <MESSAGE value="add bid history to the front side" />
+    <option name="LAST_COMMIT_MESSAGE" value="add bid history to the front side" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/RouterSignUp/SignUp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/RouterLots/NewLot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
@@ -746,36 +746,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/BidLots.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/RouterForImage/Upload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="87" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/LotPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="63" column="25" lean-forward="false" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="25" />
-          <folding>
-            <element signature="e#895#2247#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/SocketConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -820,14 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Function.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="19" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-720">
@@ -840,14 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserLots.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -876,11 +834,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Header/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="162">
+          <caret line="72" column="68" lean-forward="false" selection-start-line="72" selection-start-column="68" selection-end-line="72" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="18" column="64" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -892,46 +862,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Main.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Function.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="216">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/RouterLots/BidHistory.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/SectionsPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+        <state relative-caret-position="288">
+          <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserLots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="813">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/LotPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="52" column="48" lean-forward="false" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/BidLots.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/DataBase/SQLQueryForLot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="132" column="2" lean-forward="true" selection-start-line="132" selection-start-column="2" selection-end-line="132" selection-end-column="2" />
+        <state relative-caret-position="1573">
+          <caret line="142" column="2" lean-forward="true" selection-start-line="142" selection-start-column="2" selection-end-line="142" selection-end-column="2" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Header/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="72" column="68" lean-forward="false" selection-start-line="72" selection-start-column="68" selection-end-line="72" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Lot's/UserBidLots.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="34" column="11" lean-forward="true" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+        <state relative-caret-position="342">
+          <caret line="41" column="73" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Lot's/BidLots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/RouterLots/BidHistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/SocketConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="29" column="62" lean-forward="false" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
           <folding />
         </state>
       </provider>

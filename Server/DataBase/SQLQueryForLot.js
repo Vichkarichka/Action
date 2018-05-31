@@ -137,6 +137,11 @@ exports.getBid = (id) => {
     return returnPromise(sql);
 };
 
+exports.getAllBid = () => {
+    let sql = "SELECT idLot, bidValue, emailUsers as idBuyer FROM BidHistory LEFT JOIN Users ON BidHistory.idBuyer = Users.idUsers";
+    return returnPromise(sql);
+};
+
 returnPromise = (sql, dataForDB) => {
     return Promise.using(getSqlConnection(), (connection) => {
         return connection.query(sql, dataForDB).then((rows) => {

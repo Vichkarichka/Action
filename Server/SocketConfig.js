@@ -24,11 +24,13 @@ module.exports = (socket) => {
                     if (!newPriceData) return;
                     user.updatePriceLot(newPriceData)
                         .then((res) => {
-                            console.log(res);
                             io.emit('bidValue', newPriceData).to(socket.room);
+                            user.getAllBid().then((response) => {
+                                console.log(response);
+                                io.emit('bidHistory', response).to(socket.room);
+                            }).catch(err => console.log(err));
                         })
                         .catch(err => console.log(err));
-
                 })
                 .catch(err => console.log(err));
         });
@@ -40,6 +42,10 @@ module.exports = (socket) => {
 
             socket.room = room;
             socket.join(room);
-            console.log(socket.handshake.address + ' ' + room)
+            console.log(socket.handshake.address + ' ' + room);
+            user.getAllBid().then((response) => {
+                console.log(response);
+                io.emit('bidHistory', response).to(socket.room);
+            }).catch(err => console.log(err));
         });
 };

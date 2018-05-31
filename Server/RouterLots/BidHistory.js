@@ -30,6 +30,26 @@ router.get("/:id", (req, res) => {
     });
 });
 
+/*router.get("/", (req, res) => {
+
+    user.getAllBid().then((result)=> {
+        if (result.length !== 0) {
+            res.status(201).json({
+                Bid: result,
+            });
+        } else {
+            res.status(400).json({
+                message: ob.objERRORS.LOT_IMAGE,
+            });
+        }
+    }).catch((error) => {
+        console.log(error);
+        res.status(401).json({
+            message: ob.objERRORS.LOT_IMAGE,
+        });
+    });
+});*/
+
 router.post("/:id", (req, res) => {
 
     let lotId = req.params.id;

@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import { Button, Input, Statistic, Icon, Divider } from 'semantic-ui-react';
+import { Button, Input, Statistic, Icon, Divider, Table, Header } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import socketIOClient from 'socket.io-client';
 import axios from "axios/index";
 import moment from "moment/moment";
+import './BidLots.css';
 
 class BidLots extends Component {
 
     constructor(props){
         super(props);
-        this.state ={
+        this.state = {
             currentValue: this.props.value[0].newBid,
             bidValue: 0,
             countBid: this.props.value[0].countBidLot,
-
+            bidHistoryLot: [],
         };
+
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -42,6 +44,14 @@ class BidLots extends Component {
 
      componentWillMount() {
          this.initSocket();
+         /*axios.get('http://127.0.0.1:8200/bid')
+             .then(response => {
+                 this.setState({
+                     bidHistoryLot: response.data.Bid,
+                 });
+             }).catch((error) => {
+             console.log(error);
+         });*/
      };
 
      componentWillUnmount() {
@@ -50,12 +60,20 @@ class BidLots extends Component {
 
      initSocket = () => {
          const socket = socketIOClient("http://localhost:8200");
+
          socket.on('connect', () => {
              socket.emit('room', this.props.value[0].idLot);
          });
 
          socket.on('bidValue', (value) => {
              this.setState({currentValue: value.bid, countBid: value.countBid});
+         });
+
+         socket.on('bidHistory', (value) => {
+             console.log(value);
+             this.setState({
+                 bidHistoryLot: value
+             })
          });
 
          this.setState({socket});
@@ -78,6 +96,41 @@ class BidLots extends Component {
         this.sendData(bidValues);
     };
 
+    renderHistory = () => {
+        let historyBid = this.state.bidHistoryLot;
+        let isHistory = historyBid.filter(historyBid => historyBid.idLot === this.props.value[0].idLot);
+        if( isHistory.length === 0) {
+            return  <strong>{"Bids history is empty"}</strong>
+        } else {
+            let bid =
+                <Table basic='very' celled collapsing className='TableHistory'>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell>User Name</Table.HeaderCell>
+                            <Table.HeaderCell>Value Bid</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    {  historyBid.map((bidItem) =>
+                    <Table.Body>
+                        <Table.Row>
+                            <Table.Cell>
+                                <Header>
+                                    <Header.Content>
+                                        {bidItem.idBuyer}
+                                    </Header.Content>
+                                </Header>
+                            </Table.Cell>
+                            <Table.Cell>
+                                {bidItem.bidValue + " $"}
+                            </Table.Cell>
+                        </Table.Row>
+                    </Table.Body>
+                    )}
+                </Table>;
+            return bid;
+        }
+    };
+
     render() {
         return (
             <div>
@@ -93,6 +146,10 @@ class BidLots extends Component {
                     <input />
                     <Button type='submit' onClick={this.handleClick}>BID</Button>
                 </Input>
+                <Divider horizontal>History bid</Divider>
+                {
+                    this.renderHistory()
+                }
             </div>
         );
     }
