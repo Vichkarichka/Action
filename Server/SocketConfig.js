@@ -26,8 +26,7 @@ module.exports = (socket) => {
                         .then((res) => {
                             io.emit('bidValue', newPriceData).to(socket.room);
                             user.getAllBid().then((response) => {
-                                console.log(response);
-                                io.emit('bidHistory', response).to(socket.room);
+                                io.sockets.in(socket.room).emit('bidHistory', response);
                             }).catch(err => console.log(err));
                         })
                         .catch(err => console.log(err));
@@ -44,8 +43,7 @@ module.exports = (socket) => {
             socket.join(room);
             console.log(socket.handshake.address + ' ' + room);
             user.getAllBid().then((response) => {
-                console.log(response);
-                io.emit('bidHistory', response).to(socket.room);
+                io.sockets.in(socket.room).emit('bidHistory', response);
             }).catch(err => console.log(err));
         });
 };

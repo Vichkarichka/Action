@@ -44,14 +44,6 @@ class BidLots extends Component {
 
      componentWillMount() {
          this.initSocket();
-         /*axios.get('http://127.0.0.1:8200/bid')
-             .then(response => {
-                 this.setState({
-                     bidHistoryLot: response.data.Bid,
-                 });
-             }).catch((error) => {
-             console.log(error);
-         });*/
      };
 
      componentWillUnmount() {
@@ -110,7 +102,7 @@ class BidLots extends Component {
                             <Table.HeaderCell>Value Bid</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
-                    {  historyBid.map((bidItem) =>
+                    {  isHistory.map((bidItem) =>
                     <Table.Body>
                         <Table.Row>
                             <Table.Cell>

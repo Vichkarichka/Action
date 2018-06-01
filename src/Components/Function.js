@@ -32,7 +32,7 @@ this.selectDisplay = (start, end) => {
     return display;
 };
 
-export const renderLot = (lot, valueBid) => {
+export const renderLot = (lot) => {
 
     let display = lot.map((urlItem) =>
         <Item key = {urlItem.idLot} >
@@ -46,10 +46,6 @@ export const renderLot = (lot, valueBid) => {
                 </Link>
                 <Item.Meta>
                     <span>{urlItem.newBid + '$'}</span>
-                    {
-                        valueBid &&
-                        <span>{'Your last bid: ' + valueBid + '$'}</span>
-                    }
                 </Item.Meta>
                 <Item.Description>{urlItem.descriptionLot}</Item.Description>
                 {

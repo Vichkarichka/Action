@@ -133,7 +133,7 @@ exports.updateBuyer = (bidValue, lotId) => {
 };
 
 exports.getBid = (id) => {
-    let sql = "SELECT idLot, idBuyer, bidValue FROM BidHistory WHERE idBuyer = " + id;
+    let sql = "SELECT idLot, bidValue, emailUsers as idBuyer FROM BidHistory LEFT JOIN Users ON BidHistory.idBuyer = Users.idUsers WHERE idBuyer = " + id;
     return returnPromise(sql);
 };
 
